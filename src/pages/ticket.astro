@@ -1,5 +1,5 @@
 ---
-// src/pages/ticket.astro - Responsive Digital E-Ticket Pass
+// src/pages/ticket.astro - Luxury Centered Digital E-Ticket Pass
 import '../styles/global.css';
 ---
 
@@ -8,9 +8,9 @@ import '../styles/global.css';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitaal E-Ticket | Whisky Fest Amsterdam 2026</title>
+  <title>E-Ticket | Whisky Fest Amsterdam 2026</title>
   <meta name="robots" content="noindex, nofollow">
-  <!-- Fonts -->
+  <!-- Premium Typography Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,14 +18,16 @@ import '../styles/global.css';
 
   <style>
     :root {
-      --bg-page: #F5EFE6;
-      --bg-ticket: #FAF7F2;
-      --text-charcoal: #1D1C1A;
-      --text-muted: #6E685F;
-      --whisky-gold: #C58B39;
-      --whisky-gold-dark: #8C6E46;
-      --brand-red: #E30613;
-      --border-dark: #1D1C1A;
+      --bg-canvas: #F4EFE6;
+      --bg-ticket-paper: #FAF7F2;
+      --bg-stub: #F1E9DC;
+      --charcoal: #1D1C1A;
+      --muted-gray: #736C62;
+      --gold-primary: #C58B39;
+      --gold-dark: #8C6E46;
+      --gold-border: #D5C28A;
+      --brand-accent: #E30613;
+      --valid-green: #1E6B48;
     }
 
     * {
@@ -34,124 +36,138 @@ import '../styles/global.css';
       padding: 0;
     }
 
-    body {
-      background-color: var(--bg-page);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    html, body {
       min-height: 100vh;
+      width: 100%;
+      background-color: var(--bg-canvas);
+      background-image: radial-gradient(#D5C28A 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--charcoal);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 2.5rem 1rem 4rem 1rem;
-      color: var(--text-charcoal);
+      justify-content: center;
     }
 
-    .ticket-app-container {
+    /* Outer Wrapper - Perfectly Centered in Screen */
+    .ticket-viewport-center {
       width: 100%;
-      max-width: 740px;
+      max-width: 860px;
+      padding: 2rem 1.5rem;
+      margin: auto;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
-    /* Top Action Bar */
-    .ticket-action-bar {
+    /* TOP HEADER & ACTIONS BAR */
+    .ticket-top-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      width: 100%;
       padding: 0 0.25rem;
     }
 
-    .ticket-brand-tag {
-      display: inline-flex;
+    .brand-identity-title {
+      display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-family: 'Cinzel', serif;
-      font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: 0.06em;
-      color: var(--text-charcoal);
+      gap: 0.75rem;
       text-decoration: none;
+      color: var(--charcoal);
     }
 
-    .ticket-brand-tag span.badge-pill {
-      background: var(--whisky-gold);
-      color: #FFF;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.7rem;
+    .brand-icon {
+      font-size: 1.25rem;
+    }
+
+    .brand-text {
+      font-family: 'Cinzel', serif;
       font-weight: 800;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+
+    .brand-pill {
+      background-color: var(--gold-primary);
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .ticket-btn-controls {
+    .action-buttons-group {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.75rem;
     }
 
-    .btn-ticket-nav {
+    .btn-action-pass {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 0.82rem;
-      padding: 0.65rem 1.15rem;
+      padding: 0.7rem 1.35rem;
       border-radius: 4px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       text-decoration: none;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 2px 2px 0px var(--border-dark);
-      border: 2px solid var(--border-dark);
-      line-height: 1;
-      text-transform: uppercase;
+      box-shadow: 3px 3px 0px var(--charcoal);
+      border: 2px solid var(--charcoal);
       letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
     }
 
-    .btn-nav-primary {
-      background-color: var(--brand-red);
+    .btn-action-primary {
+      background-color: var(--brand-accent);
       color: #FFFFFF;
     }
 
-    .btn-nav-primary:hover {
+    .btn-action-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 4px 4px 0px var(--border-dark);
+      box-shadow: 5px 5px 0px var(--charcoal);
       filter: brightness(1.1);
     }
 
-    .btn-nav-secondary {
+    .btn-action-secondary {
       background-color: #FFFFFF;
-      color: var(--text-charcoal);
+      color: var(--charcoal);
     }
 
-    .btn-nav-secondary:hover {
+    .btn-action-secondary:hover {
       transform: translateY(-2px);
-      box-shadow: 4px 4px 0px var(--border-dark);
-      background-color: #FAF7F2;
+      box-shadow: 5px 5px 0px var(--charcoal);
+      background-color: var(--bg-ticket-paper);
     }
 
-    /* DIGITAL E-TICKET CARD */
-    .official-ticket-card {
-      background-color: var(--bg-ticket);
-      border: 3px solid var(--border-dark);
+    /* THE LUXURY PASS CARD */
+    .luxury-pass-card {
+      width: 100%;
+      background-color: var(--bg-ticket-paper);
+      border: 2.5px solid var(--charcoal);
       border-radius: 6px;
-      box-shadow: 0 20px 45px rgba(29, 28, 26, 0.12), 6px 6px 0px var(--border-dark);
+      box-shadow: 0 25px 60px rgba(29, 28, 26, 0.12), 6px 6px 0px var(--charcoal);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: row;
-      min-height: 300px;
+      min-height: 320px;
     }
 
-    /* Left Stub: Main Information */
-    .ticket-content-left {
-      flex-grow: 1;
-      padding: 2.25rem 2.25rem 2rem 2.25rem;
+    /* LEFT SIDE: MAIN TICKET INFORMATION */
+    .ticket-left-main {
+      flex: 1;
+      padding: 2.5rem 2.5rem 2.25rem 2.5rem;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -159,14 +175,14 @@ import '../styles/global.css';
       overflow: hidden;
     }
 
-    .ticket-watermark-letter {
+    .ticket-watermark-bg {
       position: absolute;
-      right: 1.5rem;
+      right: 2rem;
       top: 50%;
       transform: translateY(-50%);
       font-family: 'Cinzel', serif;
-      font-size: 13rem;
-      color: rgba(197, 139, 57, 0.07);
+      font-size: 14rem;
+      color: rgba(197, 139, 57, 0.06);
       line-height: 1;
       pointer-events: none;
       user-select: none;
@@ -179,290 +195,325 @@ import '../styles/global.css';
       gap: 1.25rem;
     }
 
-    .ticket-date-box {
-      background-color: var(--text-charcoal);
+    .ticket-date-badge {
+      background-color: var(--charcoal);
       color: #FAF7F2;
       border-radius: 4px;
-      padding: 0.5rem 0.85rem;
+      padding: 0.55rem 0.95rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       line-height: 1;
       flex-shrink: 0;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
     }
 
-    .date-box-month {
+    .date-month-text {
       font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
-    }
-
-    .date-box-day {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-top: 0.2rem;
-    }
-
-    .ticket-card-org {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .org-est-lbl {
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--whisky-gold-dark);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
+      color: var(--gold-primary);
       text-transform: uppercase;
     }
 
-    .org-main-title {
+    .date-day-text {
       font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-charcoal);
-      line-height: 1.15;
-    }
-
-    .org-venue-sub {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .ticket-ornament-line {
-      height: 1px;
-      background: repeating-linear-gradient(90deg, #D5C28A 0, #D5C28A 6px, transparent 6px, transparent 12px);
-      margin: 1.15rem 0;
-    }
-
-    .ticket-session-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
+      font-size: 1.65rem;
       font-weight: 700;
-      color: var(--text-charcoal);
-      line-height: 1.2;
-      margin-bottom: 1.15rem;
+      margin-top: 0.2rem;
+      color: #FFFFFF;
     }
 
-    .ticket-info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 1.5rem;
-    }
-
-    .info-cell {
+    .ticket-org-details {
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
     }
 
-    .cell-label {
+    .org-badge-est {
       font-size: 0.68rem;
       font-weight: 800;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      color: var(--gold-dark);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .cell-value {
-      font-size: 1rem;
+    .org-title-main {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.15;
+    }
+
+    .org-venue-line {
+      font-size: 0.85rem;
+      color: var(--muted-gray);
+      font-weight: 500;
+    }
+
+    .ticket-gold-divider {
+      height: 1px;
+      background: repeating-linear-gradient(90deg, #D5C28A 0, #D5C28A 6px, transparent 6px, transparent 12px);
+      margin: 1.35rem 0;
+    }
+
+    .ticket-headline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1.35rem;
+    }
+
+    .ticket-fields-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem 2rem;
+    }
+
+    .field-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .field-lbl {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--muted-gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .field-val {
+      font-size: 1.08rem;
       font-weight: 700;
-      color: var(--text-charcoal);
+      color: var(--charcoal);
     }
 
-    .cell-value.status-valid {
-      color: #1e6b48;
+    .field-val.val-green {
+      color: var(--valid-green);
+      font-weight: 800;
     }
 
-    .cell-value.code-highlight {
-      color: var(--brand-red);
+    .field-val.val-code {
+      color: var(--brand-accent);
       font-family: monospace;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
+      font-weight: 800;
     }
 
-    .ticket-disclaimer-note {
-      margin-top: 1.35rem;
+    .ticket-footer-legal {
+      margin-top: 1.5rem;
       border-top: 1px solid #E8E0D2;
-      padding-top: 0.75rem;
-      font-size: 0.74rem;
-      color: var(--text-muted);
+      padding-top: 0.85rem;
+      font-size: 0.75rem;
+      color: var(--muted-gray);
       font-style: italic;
       line-height: 1.4;
     }
 
-    /* Right Stub: Barcode & Scanner */
-    .ticket-content-right {
-      width: 220px;
-      background-color: #F4ECE1;
-      border-left: 2px dashed var(--border-dark);
-      padding: 2rem 1.25rem;
+    /* RIGHT SIDE: SCANNER & BARCODE STUB */
+    .ticket-right-scanner {
+      width: 240px;
+      background-color: var(--bg-stub);
+      border-left: 2px dashed var(--charcoal);
+      padding: 2.25rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       text-align: center;
       flex-shrink: 0;
+      position: relative;
     }
 
-    .scanner-header-lbl {
-      font-size: 0.7rem;
+    .scanner-top-badge {
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      color: var(--muted-gray);
       text-transform: uppercase;
     }
 
-    .qr-frame-box {
+    .qr-frame-wrapper {
       background: #FFFFFF;
-      padding: 0.65rem;
-      border: 2px solid var(--border-dark);
+      padding: 0.75rem;
+      border: 2px solid var(--charcoal);
       border-radius: 4px;
-      box-shadow: 2px 2px 0px var(--border-dark);
+      box-shadow: 3px 3px 0px var(--charcoal);
+      display: inline-block;
     }
 
-    .scanner-door-text {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--text-charcoal);
-      letter-spacing: 0.05em;
-      margin-top: 0.5rem;
+    .scanner-bottom-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
-    .scanner-code-text {
-      font-family: monospace;
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: var(--brand-red);
-    }
-
-    .ticket-page-footer {
-      text-align: center;
+    .scanner-inst-text {
       font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
+    .scanner-hash-display {
+      font-family: monospace;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--brand-accent);
+    }
+
+    .ticket-footer-hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted-gray);
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
-      body {
-        padding: 1.25rem 0.75rem;
+      .ticket-viewport-center {
+        padding: 1.25rem 1rem;
       }
-      .official-ticket-card {
+      .luxury-pass-card {
         flex-direction: column-reverse;
       }
-      .ticket-content-right {
+      .ticket-right-scanner {
         width: 100%;
         border-left: none;
-        border-bottom: 2px dashed var(--border-dark);
-        padding: 1.75rem 1.25rem;
+        border-bottom: 2px dashed var(--charcoal);
+        padding: 2rem 1.5rem;
       }
-      .ticket-content-left {
-        padding: 1.5rem 1.25rem;
+      .ticket-left-main {
+        padding: 1.75rem 1.5rem;
       }
-      .ticket-info-grid {
+      .ticket-fields-grid {
         grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+      .ticket-headline-title {
+        font-size: 1.6rem;
+      }
+      .ticket-top-controls {
+        flex-direction: column;
+        align-items: stretch;
         gap: 0.75rem;
       }
-      .ticket-session-name {
-        font-size: 1.5rem;
+      .action-buttons-group {
+        width: 100%;
+      }
+      .btn-action-pass {
+        flex: 1;
+        justify-content: center;
       }
     }
 
     @media print {
       body {
-        background: #FFF !important;
+        background: #FFFFFF !important;
+        background-image: none !important;
         padding: 0 !important;
+        display: block !important;
       }
-      .ticket-action-bar, .ticket-page-footer {
+      .ticket-top-controls, .ticket-footer-hint {
         display: none !important;
       }
-      .official-ticket-card {
-        box-shadow: none !important;
-        border: 2px solid #000 !important;
-        page-break-inside: avoid;
-        margin: 0 auto !important;
-        width: 100% !important;
+      .ticket-viewport-center {
         max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .luxury-pass-card {
+        box-shadow: none !important;
+        border: 2px solid #000000 !important;
+        page-break-inside: avoid;
+        width: 100% !important;
       }
     }
   </style>
 </head>
 <body>
-  <div class="ticket-app-container">
+  <div class="ticket-viewport-center">
     <!-- Top Action Bar -->
-    <div class="ticket-action-bar">
-      <a href="/" class="ticket-brand-tag">
-        <span>🥃 Whisky Fest Amsterdam</span>
-        <span class="badge-pill">E-Ticket</span>
+    <div class="ticket-top-controls">
+      <a href="/" class="brand-identity-title">
+        <span class="brand-icon">🥃</span>
+        <span class="brand-text">Whisky Fest Amsterdam</span>
+        <span class="brand-pill">E-Ticket</span>
       </a>
 
-      <div class="ticket-btn-controls">
-        <button type="button" class="btn-ticket-nav btn-nav-primary" onclick="window.print()">
+      <div class="action-buttons-group">
+        <button type="button" class="btn-action-pass btn-action-primary" onclick="window.print()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Download / Print PDF
+          Download PDF / Print
         </button>
-        <a href="/account" class="btn-ticket-nav btn-nav-secondary">
+        <a href="/account" class="btn-action-pass btn-action-secondary">
           Mijn Account
         </a>
       </div>
     </div>
 
-    <!-- Official Digital E-Ticket Card -->
-    <div class="official-ticket-card" id="official-ticket-card">
-      <!-- Main Content Stub -->
-      <div class="ticket-content-left">
-        <div class="ticket-watermark-letter">WF</div>
+    <!-- Official Luxury Ticket Pass -->
+    <div class="luxury-pass-card" id="luxury-pass-card">
+      <!-- Main Content Stub (Left) -->
+      <div class="ticket-left-main">
+        <div class="ticket-watermark-bg">WF</div>
 
         <div class="ticket-card-header">
-          <div class="ticket-date-box">
-            <span class="date-box-month" id="tv-month">NOV</span>
-            <span class="date-box-day" id="tv-day">13</span>
+          <div class="ticket-date-badge">
+            <span class="date-month-text" id="tv-month">NOV</span>
+            <span class="date-day-text" id="tv-day">13</span>
           </div>
-          <div class="ticket-card-org">
-            <span class="org-est-lbl">EST. 2004</span>
-            <span class="org-main-title">Whisky Fest Amsterdam</span>
-            <span class="org-venue-sub">De Kromhouthal Amsterdam</span>
-          </div>
-        </div>
-
-        <div class="ticket-ornament-line"></div>
-
-        <h1 class="ticket-session-name" id="tv-session-title">VIP Sessie - Vrijdag</h1>
-
-        <div class="ticket-info-grid">
-          <div class="info-cell">
-            <span class="cell-label">Kaarthouder</span>
-            <strong class="cell-value" id="tv-name">Deon Draijer</strong>
-          </div>
-          <div class="info-cell">
-            <span class="cell-label">Toegangsstatus</span>
-            <strong class="cell-value status-valid">✓ GELDIG TOEGANGSBEWIJS</strong>
-          </div>
-          <div class="info-cell">
-            <span class="cell-label">Tijdslot</span>
-            <strong class="cell-value" id="tv-time">13:00 - 17:00 UUR</strong>
-          </div>
-          <div class="info-cell">
-            <span class="cell-label">Ticket Code</span>
-            <strong class="cell-value code-highlight" id="tv-ticket-code">#WF-2026-84387-1</strong>
+          <div class="ticket-org-details">
+            <span class="org-badge-est">EST. 2004</span>
+            <h2 class="org-title-main">Whisky Fest Amsterdam</h2>
+            <span class="org-venue-line">De Kromhouthal Amsterdam</span>
           </div>
         </div>
 
-        <div class="ticket-disclaimer-note">
+        <div class="ticket-gold-divider"></div>
+
+        <h1 class="ticket-headline-title" id="tv-session-title">VIP Sessie - Vrijdag</h1>
+
+        <div class="ticket-fields-grid">
+          <div class="field-block">
+            <span class="field-lbl">Kaarthouder</span>
+            <strong class="field-val" id="tv-name">Deon Draijer</strong>
+          </div>
+          <div class="field-block">
+            <span class="field-lbl">Toegangsstatus</span>
+            <strong class="field-val val-green">✓ GELDIG TOEGANGSBEWIJS</strong>
+          </div>
+          <div class="field-block">
+            <span class="field-lbl">Tijdslot</span>
+            <strong class="field-val" id="tv-time">13:00 - 17:00 UUR</strong>
+          </div>
+          <div class="field-block">
+            <span class="field-lbl">Ticket Code</span>
+            <strong class="field-val val-code" id="tv-ticket-code">#WF-2026-84387-1</strong>
+          </div>
+        </div>
+
+        <div class="ticket-footer-legal">
           * Toegang 18+. Toon deze QR-code digitaal op uw smartphone of uitgeprint bij de entree van De Kromhouthal Amsterdam (Gedempt Hamerkanaal 231, 1021 KP Amsterdam).
         </div>
       </div>
 
-      <!-- Right Scanner Stub -->
-      <div class="ticket-content-right">
-        <span class="scanner-header-lbl">CONTROLE STUB</span>
+      <!-- Scanner Stub (Right) -->
+      <div class="ticket-right-scanner">
+        <span class="scanner-top-badge">CONTROLE STUB</span>
 
-        <div class="qr-frame-box">
-          <svg width="120" height="120" viewBox="0 0 100 100" style="shape-rendering: crispedges; display:block;">
+        <div class="qr-frame-wrapper">
+          <svg width="125" height="125" viewBox="0 0 100 100" style="shape-rendering: crispedges; display:block;">
             <path d="M0,0 h30 v10 h-20 v20 h-10 z" fill="#1D1C1A"/>
             <path d="M10,10 h10 v10 h-10 z" fill="#1D1C1A"/>
             <path d="M70,0 h30 v30 h-10 v-20 h-20 z" fill="#1D1C1A"/>
@@ -477,15 +528,15 @@ import '../styles/global.css';
           </svg>
         </div>
 
-        <div>
-          <p class="scanner-door-text">SCAN BIJ DE DEUR</p>
-          <p class="scanner-code-text" id="tv-code">#WF-2026-84387-1</p>
+        <div class="scanner-bottom-group">
+          <p class="scanner-inst-text">SCAN BIJ DE ENTREE</p>
+          <p class="scanner-hash-display" id="tv-code">#WF-2026-84387-1</p>
         </div>
       </div>
     </div>
 
-    <p class="ticket-page-footer">
-      💡 Tip: U kunt dit scherm direct op uw smartphone laten zien bij de ingang van het festival.
+    <p class="ticket-footer-hint">
+      💡 Tip: U kunt dit e-ticket direct op uw smartphone laten zien of opslaan als PDF.
     </p>
   </div>
 
