@@ -2118,373 +2118,6 @@ import masterclassesData from '../data/masterclasses.json';
 
   </main>
 
-  
-  <!-- MASTERCLASSES DATA (CMS Compatible) -->
-  <script id="masterclasses-data" type="application/json" set:html={JSON.stringify(masterclassesData)}></script>
-
-<script>
-  // Enforce 100% reliable background video autoplay
-  const heroBgVideo = document.getElementById("hero-bg-video") as HTMLVideoElement;
-  if (heroBgVideo) {
-    heroBgVideo.muted = true;
-    heroBgVideo.defaultMuted = true;
-    heroBgVideo.playsInline = true;
-    const tryPlay = () => {
-      heroBgVideo.play().catch(() => {
-        // Retry on user interaction if browser policy blocks initial autoplay
-        document.addEventListener('click', () => heroBgVideo.play(), { once: true });
-        document.addEventListener('touchstart', () => heroBgVideo.play(), { once: true });
-        document.addEventListener('scroll', () => heroBgVideo.play(), { once: true });
-      });
-    };
-    tryPlay();
-    window.addEventListener('load', tryPlay);
-  }
-    
-  // safe-preloader-dismiss: Guaranteed preloader fade-out
-  (function() {
-    const pl = document.getElementById('hp-preloader');
-    if (pl) {
-      setTimeout(() => {
-        pl.classList.add('fade-out');
-        document.body.style.overflow = '';
-      }, 1800);
-      setTimeout(() => {
-        pl.style.display = 'none';
-      }, 2300);
-    }
-  })();
-
-  // ====================================================
-  // PERSISTENT CART & MASTERCLASS MODAL ENHANCEMENTS
-  // ====================================================
-
-  let currentDetailMcId = "";
-
-  
-
-  
-
-  // Masterclass Modal Logic
-  const mcModal = document.getElementById("masterclass-detail-modal");
-  const mcCloseX = document.getElementById("mc-modal-close-x");
-  const mcCancelBtn = document.getElementById("mc-modal-cancel-btn");
-  const mcAddBtn = document.getElementById("mc-modal-add-btn");
-
-  let masterclassesDataList: any[] = [];
-  try {
-    const dataEl = document.getElementById("masterclasses-data");
-    if (dataEl && dataEl.textContent) {
-      masterclassesDataList = JSON.parse(dataEl.textContent);
-    }
-  } catch(e) {}
-
-  function openMasterclassModal(mcId: string) {
-    currentDetailMcId = mcId;
-    const match = masterclassesDataList.find(m => m.id === mcId) || {
-      id: mcId,
-      title: "Exclusieve Masterclass",
-      subtitle: "Nosing & Tasting Sessie",
-      price: "€ 22,50",
-      duration: "45 minuten",
-      location: "De Kromhouthal",
-      ambassador: {
-        name: "Brand Ambassador",
-        title: "Master of Malt",
-        bio: "Ervaren whiskyexpert die u meeneemt door een exclusieve selectie van zeldzame single malts."
-      },
-      tastingLineup: [
-        "Single Malt Cask Strength Sample",
-        "Sherry Cask Finished Single Malt",
-        "Distillery Exclusive Release",
-        "Mystery Tasting Dram"
-      ],
-      description: "Een diepgaande en intieme proeverij onder leiding van een internationale expert."
-    };
-
-    const titleEl = document.getElementById("mc-modal-title");
-    const subEl = document.getElementById("mc-modal-subtitle");
-    const ambNameEl = document.getElementById("mc-modal-amb-name");
-    const ambTitleEl = document.getElementById("mc-modal-amb-title");
-    const ambBioEl = document.getElementById("mc-modal-amb-bio");
-    const durEl = document.getElementById("mc-modal-duration");
-    const locEl = document.getElementById("mc-modal-loc");
-    const priceEl = document.getElementById("mc-modal-price");
-    const descEl = document.getElementById("mc-modal-desc");
-    const dramsList = document.getElementById("mc-modal-drams-list");
-
-    if (titleEl) titleEl.textContent = match.title;
-    if (subEl) subEl.textContent = match.subtitle || "";
-    if (ambNameEl) ambNameEl.textContent = match.ambassador?.name || "Brand Ambassador";
-    if (ambTitleEl) ambTitleEl.textContent = match.ambassador?.title || "";
-    if (ambBioEl) ambBioEl.textContent = match.ambassador?.bio || "";
-    if (durEl) durEl.textContent = match.duration || "45 min";
-    if (locEl) locEl.textContent = match.location || "De Kromhouthal";
-    if (priceEl) priceEl.textContent = match.price || "€ 22,50";
-    if (descEl) descEl.textContent = match.description || "";
-
-    if (dramsList) {
-      dramsList.innerHTML = (match.tastingLineup || []).map((dram: string) => `<li>🥃 ${dram}</li>`).join("");
-    }
-
-    if (mcModal) mcModal.style.display = "flex";
-  }
-
-  function closeMasterclassModal() {
-    if (mcModal) mcModal.style.display = "none";
-  }
-
-  if (mcCloseX) mcCloseX.addEventListener("click", closeMasterclassModal);
-  if (mcCancelBtn) mcCancelBtn.addEventListener("click", closeMasterclassModal);
-  if (mcAddBtn) {
-    mcAddBtn.addEventListener("click", () => {
-      if (currentDetailMcId) {
-        const ticketCard = document.querySelector(`.ticket-stub[data-ticket-id="${currentDetailMcId}"]`);
-        if (ticketCard) {
-          const plusBtn = ticketCard.querySelector('[data-action="plus"]') as HTMLButtonElement;
-          if (plusBtn) plusBtn.click();
-        }
-      }
-      closeMasterclassModal();
-    });
-  }
-
-  // Attach click listener to all "Meer Info" buttons
-  document.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    const btn = target.closest(".masterclass-info-btn") as HTMLElement;
-    if (btn) {
-      e.preventDefault();
-      e.stopPropagation();
-      const mcId = btn.getAttribute("data-mc-id") || "intro-tickets";
-      openMasterclassModal(mcId);
-    }
-  });
-
-  // Add-ons Upsell Modal Logic
-  const addonsModal = document.getElementById("addons-upsell-modal");
-  const addonsCloseX = document.getElementById("addons-modal-close-x");
-  const addonsSkipBtn = document.getElementById("addons-skip-checkout-btn");
-  const addonsContinueBtn = document.getElementById("addons-continue-checkout-btn");
-  let addonsShown = false;
-
-  function openAddonsModal() {
-    if (addonsModal) addonsModal.style.display = "flex";
-  }
-
-  function closeAddonsModal() {
-    if (addonsModal) addonsModal.style.display = "none";
-  }
-
-  if (addonsCloseX) addonsCloseX.addEventListener("click", closeAddonsModal);
-  
-  if (addonsSkipBtn) {
-    addonsSkipBtn.addEventListener("click", () => {
-      addonsShown = true;
-      closeAddonsModal();
-      openCheckoutModalDirect();
-    });
-  }
-
-  if (addonsContinueBtn) {
-    addonsContinueBtn.addEventListener("click", () => {
-      addonsShown = true;
-      closeAddonsModal();
-      openCheckoutModalDirect();
-    });
-  }
-
-  // Quick Add Buttons in Addons Modal
-  document.querySelectorAll(".addon-add-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const stubId = (e.currentTarget as HTMLElement).getAttribute("data-target-stub");
-      if (stubId) {
-        const ticketCard = document.querySelector(`.ticket-stub[data-ticket-id="${stubId}"]`);
-        if (ticketCard) {
-          const plusBtn = ticketCard.querySelector('[data-action="plus"]') as HTMLButtonElement;
-          if (plusBtn) plusBtn.click();
-          (e.currentTarget as HTMLElement).textContent = "✓ Toegevoegd";
-          (e.currentTarget as HTMLElement).classList.remove("btn-gold");
-          (e.currentTarget as HTMLElement).classList.add("btn-outline");
-        }
-      }
-    });
-  });
-
-  function openCheckoutModalDirect() {
-    const checkoutModal = document.getElementById("checkout-modal");
-    if (checkoutModal) checkoutModal.style.display = "flex";
-  }
-
-</script>
-
-  <!-- MASTERCLASS DETAIL POPUP MODAL -->
-  <div class="checkout-modal-overlay" id="masterclass-detail-modal" style="display: none;">
-    <div class="checkout-modal-card mc-modal-card">
-      <button type="button" class="modal-close-btn" id="mc-modal-close-x">&times;</button>
-      
-      <div class="mc-modal-header">
-        <span class="mc-badge-tag" id="mc-modal-cat">SPECIAL MASTERCLASS</span>
-        <h3 class="mc-title" id="mc-modal-title">Titel Masterclass</h3>
-        <p class="mc-subtitle" id="mc-modal-subtitle">Subtitel van de masterclass</p>
-      </div>
-
-      <div class="mc-modal-body-grid">
-        <!-- Left: Ambassador Bio & Details -->
-        <div class="mc-info-panel">
-          <div class="mc-ambassador-card">
-            <div class="mc-ambassador-avatar">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </div>
-            <div>
-              <strong class="mc-ambassador-name" id="mc-modal-amb-name">Brand Ambassador</strong>
-              <span class="mc-ambassador-role" id="mc-modal-amb-title">Functietitel</span>
-            </div>
-          </div>
-          <p class="mc-ambassador-bio" id="mc-modal-amb-bio">Bio beschrijving...</p>
-
-          <div class="mc-specs-list">
-            <div class="mc-spec-item">
-              <span class="spec-label">Duur:</span>
-              <strong class="spec-val" id="mc-modal-duration">45 minuten</strong>
-            </div>
-            <div class="mc-spec-item">
-              <span class="spec-label">Locatie:</span>
-              <strong class="spec-val" id="mc-modal-loc">De Kromhouthal</strong>
-            </div>
-            <div class="mc-spec-item">
-              <span class="spec-label">Prijs per persoon:</span>
-              <strong class="spec-val text-gold" id="mc-modal-price">€ 22,50</strong>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Tasting Lineup -->
-        <div class="mc-tasting-panel">
-          <h4 class="tasting-heading">🥃 Wat u gaat proeven:</h4>
-          <ul class="tasting-drams-list" id="mc-modal-drams-list">
-            <!-- Populated dynamically -->
-          </ul>
-          <p class="mc-general-desc" id="mc-modal-desc">Algemene beschrijving van de masterclass.</p>
-        </div>
-      </div>
-
-      <div class="mc-modal-footer">
-        <button type="button" class="btn btn-outline" id="mc-modal-cancel-btn">Sluiten</button>
-        <button type="button" class="btn btn-gold" id="mc-modal-add-btn">
-          + Voeg Masterclass Toe aan Bestelling
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ADD-ONS / UPSELL POPUP MODAL (Before Checkout) -->
-  <div class="checkout-modal-overlay" id="addons-upsell-modal" style="display: none;">
-    <div class="checkout-modal-card addons-modal-card">
-      <button type="button" class="modal-close-btn" id="addons-modal-close-x">&times;</button>
-      
-      <div class="addons-modal-header text-center">
-        <span class="tt-tag">Maak uw festivalbeleving compleet</span>
-        <h3 class="modal-title" style="font-size: 1.8rem; margin: 0.25rem 0;">Aanbevolen Extra's & Belevingen</h3>
-        <div class="vintage-line" style="margin: 0.5rem auto 1rem;"></div>
-        <p class="modal-subtitle" style="margin: 0 auto; max-width: 540px;">
-          Wilt u uw festivalbezoek verrijken met een exclusieve masterclass, historische tramrit of de officiële jubileumbotteling?
-        </p>
-      </div>
-
-      <!-- Quick Add-ons Grid -->
-      <div class="addons-cards-grid">
-        <!-- Addon 1: Introductie Masterclass -->
-        <div class="addon-quick-card">
-          <div class="addon-card-info">
-            <span class="addon-icon">🥃</span>
-            <div>
-              <strong class="addon-name">Whisky Introductie Masterclass</strong>
-              <p class="addon-meta">Ideaal voor beginners • 40 min proeverij</p>
-            </div>
-          </div>
-          <div class="addon-card-action">
-            <span class="addon-price">€ 7,50</span>
-            <button type="button" class="btn btn-sm btn-gold addon-add-btn" data-target-stub="intro-tickets">+ Toevoegen</button>
-          </div>
-        </div>
-
-        <!-- Addon 2: Whiskytram -->
-        <div class="addon-quick-card">
-          <div class="addon-card-info">
-            <span class="addon-icon">🚋</span>
-            <div>
-              <strong class="addon-name">Amsterdamse Whiskytram</strong>
-              <p class="addon-meta">Rijdende proeverij met 4 topdrams</p>
-            </div>
-          </div>
-          <div class="addon-card-action">
-            <span class="addon-price">€ 39,50</span>
-            <button type="button" class="btn btn-sm btn-gold addon-add-btn" data-target-stub="whiskytram">+ Toevoegen</button>
-          </div>
-        </div>
-
-        <!-- Addon 3: Festival Trail -->
-        <div class="addon-quick-card">
-          <div class="addon-card-info">
-            <span class="addon-icon">🗺️</span>
-            <div>
-              <strong class="addon-name">Festival Whisky Trail</strong>
-              <p class="addon-meta">Rondleiding met gids + 5 gratis proefdrams!</p>
-            </div>
-          </div>
-          <div class="addon-card-action">
-            <span class="addon-price">€ 5,00</span>
-            <button type="button" class="btn btn-sm btn-gold addon-add-btn" data-target-stub="trail-tickets">+ Toevoegen</button>
-          </div>
-        </div>
-
-        <!-- Addon 4: Festival Botteling -->
-        <div class="addon-quick-card">
-          <div class="addon-card-info">
-            <span class="addon-icon">🍾</span>
-            <div>
-              <strong class="addon-name">Officiële Festival Botteling 2026</strong>
-              <p class="addon-meta">Gelimiteerde Cask Strength Single Malt (70cl)</p>
-            </div>
-          </div>
-          <div class="addon-card-action">
-            <span class="addon-price">€ 69,50</span>
-            <button type="button" class="btn btn-sm btn-gold addon-add-btn" data-target-stub="botteling-2026">+ Toevoegen</button>
-          </div>
-        </div>
-
-        <!-- Addon 5: Vatenmaken -->
-        <div class="addon-quick-card">
-          <div class="addon-card-info">
-            <span class="addon-icon">🪵</span>
-            <div>
-              <strong class="addon-name">Workshop Vatenmaken</strong>
-              <p class="addon-meta">Ambachtelijke kuiperij demonstratie</p>
-            </div>
-          </div>
-          <div class="addon-card-action">
-            <span class="addon-price">€ 5,00</span>
-            <button type="button" class="btn btn-sm btn-gold addon-add-btn" data-target-stub="vatenmaken-tickets">+ Toevoegen</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add-on Modal Footer Actions -->
-      <div class="addons-modal-footer-row">
-        <button type="button" class="btn btn-outline" id="addons-skip-checkout-btn">
-          Overslaan & Direct Afrekenen →
-        </button>
-        <button type="button" class="btn btn-gold" id="addons-continue-checkout-btn">
-          Doorgaan naar Gegevens & Afrekenen →
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- MOCK CHECKOUT MODAL OVERLAY (Kept intact for full functionality) -->
   <div class="checkout-modal-overlay" id="checkout-modal" style="display: none;">
     <div class="checkout-modal-card">
@@ -2626,7 +2259,7 @@ import masterclassesData from '../data/masterclasses.json';
               </div>
             </div>
             <p class="ticket-delivery-notice">
-              De officiële E-tickets zijn naar uw e-mailadres verzonden. Neem uw geprinte ticket of mobiele barcode mee naar de ingang van De Kromhouthal Amsterdam.
+              De officiële E-tickets zijn naar uw e-mailadres verzonden. Neem uw geprinte ticket of mobiele barcode mee naar de ingang van De Kromhouthal.
             </p>
  
             <!-- Mijn Account Banner -->
@@ -2652,1581 +2285,177 @@ import masterclassesData from '../data/masterclasses.json';
       </div>
     </div>
   </div>
-
 </Layout>
 
-<style>
-  /* --- 2.5-SECOND COIN-FLIP PRELOADER --- */
-  .hp-preloader-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background-color: var(--bg-parchment);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease, filter 0.4s ease;
-  }
 
-  .hp-preloader-overlay.fade-out {
-    opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.04);
-    pointer-events: none;
-  }
-
-  .preloader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.25rem;
-    perspective: 1200px;
-  }
-
-  /* Butter-smooth 3D Coin Toss */
-  .coin-3d-stage {
-    position: relative;
-    width: 140px;
-    height: 170px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-  }
-
-  .coin-flipper-core {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0 14px 28px rgba(45, 42, 38, 0.25));
-    will-change: transform;
-    animation: coinTossSmooth 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-
-  .coin-flipper-core svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
-  @keyframes coinTossSmooth {
-    0% {
-      transform: translateY(0) rotateY(0deg) scale(0.85);
-    }
-    40% {
-      transform: translateY(-40px) rotateY(360deg) scale(1.15);
-    }
-    80% {
-      transform: translateY(0) rotateY(720deg) scale(0.98);
-    }
-    92% {
-      transform: translateY(-6px) rotateY(720deg) scale(1.02);
-    }
-    100% {
-      transform: translateY(0) rotateY(720deg) scale(1);
-    }
-  }
-
-  /* Pulsing Floor Shadow */
-  .coin-glow-shadow {
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 18px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(197, 139, 57, 0.55) 0%, transparent 75%);
-    animation: coinShadowPulse 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-
-  @keyframes coinShadowPulse {
-    0% { transform: translateX(-50%) scale(0.5); opacity: 0.3; }
-    40% { transform: translateX(-50%) scale(1.35); opacity: 0.85; }
-    80% { transform: translateX(-50%) scale(0.95); opacity: 0.5; }
-    100% { transform: translateX(-50%) scale(1); opacity: 0.65; }
-  }
-
-  /* Preloader Text & Progress Bar */
-  .preloader-text-group {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.65rem;
-  }
-
-  .preloader-title {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 0.85rem;
-    letter-spacing: 0.22em;
-    color: var(--text-charcoal);
-    text-transform: uppercase;
-  }
-
-  .preloader-progress-track {
-    width: 220px;
-    height: 4px;
-    background-color: rgba(45, 42, 38, 0.12);
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .preloader-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--whisky-gold-dark), var(--whisky-gold), var(--whisky-gold-light));
-    border-radius: 4px;
-    animation: fillLoader 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  @keyframes fillLoader {
-    0% { width: 0%; }
-    40% { width: 45%; }
-    75% { width: 85%; }
-    100% { width: 100%; }
-  }
-
-  .preloader-subtitle {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    color: var(--whisky-gold-dark);
-  }
-
-  /* ----------------------------------------------------
-     SECTION LAYOUTS (TICKET TAILOR STYLE)
-     ---------------------------------------------------- */
-  .section-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  .text-center { text-align: center; }
-
-  .tt-hero-section {
-    position: relative;
-    padding: 15.5rem 0 3rem; /* Generous top clearance ensuring logo badge sits cleanly above title */
-    background-color: var(--bg-parchment);
-    overflow: hidden;
-  }
-
-  .tt-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--whisky-gold-dark);
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--whisky-gold);
-    padding-bottom: 0.5rem;
-  }
-  .tt-hero-title {
-    font-size: 5.75rem; /* Massive, high-impact grand title */
-    color: var(--text-charcoal);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-  .tt-hero-subtitle {
-    font-size: 1.05rem; /* Refined smaller subtitle font */
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 620px;
-  }
-  .tt-hero-text {
-    padding-bottom: 4rem;
-    position: relative;
-    z-index: 3;
-    transition: all 0.3s;
-  }
-  .hero-barrel-art {
-    position: absolute;
-    left: -50px;
-    bottom: -10px;
-    width: 380px;
-    height: auto;
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .hero-barrel-art img {
-    width: 100%;
-    height: auto;
-    filter: sepia(0.5) contrast(0.9);
-  }
-  .tt-hero-text > *:not(.hero-barrel-art) {
-    position: relative;
-    z-index: 1;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 1.5rem;
-  }
-  /* --- FULL-BLEED SEAMLESS HERO VIDEO BANNER --- */
-  .hero-video-full-right {
-    position: absolute;
-    inset: 0; /* Spans 100% width and height of hero section */
-    z-index: 1;
-    overflow: hidden;
-    /* Alpha Mask: Completely transparent on left 35%, smooth transition to solid on right 72% */
-    mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 72%, black 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 72%, black 100%);
-  }
-
-  .hero-video-element {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 75% center;
-    display: block;
-  }
-
-  /* Multi-stop Parchment Blend & Vignette Overlay */
-  .hero-video-blend-gradient {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: 
-      linear-gradient(
-        to right, 
-        var(--bg-parchment) 0%, 
-        var(--bg-parchment) 32%, 
-        rgba(245, 240, 230, 0.85) 48%, 
-        rgba(245, 240, 230, 0.3) 65%, 
-        transparent 85%
-      ),
-      linear-gradient(
-        to bottom, 
-        var(--bg-parchment) 0%, 
-        rgba(245, 240, 230, 0.6) 12%, 
-        transparent 28%, 
-        transparent 78%, 
-        var(--bg-parchment) 100%
-      );
-  }
-
-  /* Subtle Warm Golden Tint Overlay */
-  .hero-video-tint-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(
-      circle at 70% 50%,
-      rgba(197, 139, 57, 0.06) 0%,
-      rgba(29, 28, 26, 0.22) 100%
-    );
-  }
-
-  /* Center Right Whisky Glass Artwork (Middel 14.svg) 1-op-1 overgenomen */
-  .tt-hero-visual-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 5;
-    pointer-events: none;
-    height: 100%;
-  }
-
-  .hero-glass-art-card {
-    width: 100%;
-    max-width: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
-    opacity: 0.95;
-    margin-bottom: 5.5rem; /* Lift logo higher independently */
-    /* No animation - clean static artwork */
-  }
-
-  .hero-glass-art-card svg {
-    width: 100%;
-    height: auto;
-    max-height: 420px;
-    display: block;
-  }
-
-  /* floatingGlass removed */
-
-  .hero-video-badge {
-    position: absolute;
-    bottom: 6.5rem;
-    right: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(29, 28, 26, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--whisky-gold);
-    color: var(--whisky-gold-light);
-    padding: 0.45rem 1rem;
-    border-radius: 20px;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
-    z-index: 5;
-  }
-
-  .hero-video-badge .badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--whisky-gold);
-    box-shadow: 0 0 8px var(--whisky-gold);
-    animation: pulseGlow 1.5s infinite;
-  }
-
-  /* Authentic festival photos for hero infinite masonry */
-  .img-1 { background-image: url('/Afbeeldingen/whisky-festival-2025-0155.jpg'); height: 350px; }
-  .img-2 { background-image: url('/Afbeeldingen/whisky-festival-2025-0114.jpg'); height: 260px; }
-  .img-3 { background-image: url('/Afbeeldingen/whisky-festival-2025-0072.jpg'); height: 420px; }
-  .img-4 { background-image: url('/Afbeeldingen/whisky-festival-2025-0081.jpg'); height: 280px; }
-  .img-5 { background-image: url('/Afbeeldingen/whisky-festival-2025-0102.jpg'); height: 380px; }
-  .img-6 { background-image: url('/Afbeeldingen/whisky-festival-2025-0060.jpg'); height: 320px; }
-  .img-7 { background-image: url('/Afbeeldingen/whisky-festival-2025-0176.jpg'); height: 290px; } 
-  .img-8 { background-image: url('/Afbeeldingen/whisky-festival-2025-0038.jpg'); height: 360px; }
-
-  /* --- HORIZONTAL 2-ROW INFINITE MARQUEE SECTION --- */
-  .horizontal-photo-gallery-section {
-    padding: 4rem 0 5rem;
-    background-color: transparent;
-    border-top: none;
-    border-bottom: none;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .horizontal-marquee-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 3rem 0;
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-  }
-
-  .marquee-row-wrapper {
-    width: 100%;
-    overflow: visible;
-    display: flex;
-    padding: 1rem 0;
-  }
-
-  .marquee-row {
-    display: flex;
-    gap: 2.5rem;
-    width: max-content;
-    will-change: transform;
-  }
-
-  .marquee-row-left {
-    animation: scrollMarqueeLeft 50s linear infinite;
-  }
-
-  .marquee-row-right {
-    animation: scrollMarqueeRight 55s linear infinite;
-  }
-
-  .horizontal-marquee-container:hover .marquee-row {
-    animation-play-state: paused;
-  }
-
-  @keyframes scrollMarqueeLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @keyframes scrollMarqueeRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-
-  .marquee-photo-card {
-    flex-shrink: 0;
-    width: 400px;
-    height: 280px;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-    padding: 10px;
-  }
-
-  .marquee-photo-card.rotate-neg-1 { transform: rotate(-1.8deg); }
-  .marquee-photo-card.rotate-pos-2 { transform: rotate(2.2deg); }
-  .marquee-photo-card.rotate-neg-2 { transform: rotate(-2.2deg); }
-  .marquee-photo-card.rotate-pos-1 { transform: rotate(1.8deg); }
-
-  .marquee-photo-card:hover {
-    transform: scale(1.08) rotate(0deg) !important;
-    z-index: 10;
-  }
-
-  .photo-mask-frame {
-    width: 100%;
-    height: 100%;
-    -webkit-mask-image: url('/torn-mask.svg');
-    mask-image: url('/torn-mask.svg');
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    filter: drop-shadow(0 10px 20px rgba(45, 42, 38, 0.2));
-  }
-
-  .photo-mask-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-
-  .marquee-photo-card:hover .photo-mask-frame img {
-    transform: scale(1.08);
-  }
-
-  /* Hero Text Highlights & Reviews */
-  .highlight-text {
-    background-color: rgba(213, 194, 138, 0.4); /* Translucent brand gold */
-    padding: 0 0.5rem;
-    border-radius: 8px;
-    display: inline-block;
-    line-height: 1.1;
-  }
-
-  .tt-hero-reviews {
-    margin-top: 4rem;
-    position: relative;
-    max-width: 500px;
-  }
-  .reviews-title {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    color: var(--text-charcoal);
-    margin-bottom: 1.25rem;
-  }
-  .reviews-grid {
-    display: flex;
-    gap: 3rem;
-  }
-  .review-item {
-    display: flex;
-    flex-direction: column;
-  }
-  .review-item .stars {
-    color: var(--whisky-gold);
-    font-size: 1.25rem;
-    letter-spacing: 2px;
-    margin-bottom: 0.35rem;
-  }
-  .review-item .review-source {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-  .trophy-icon {
-    position: absolute;
-    right: -20px;
-    bottom: -10px;
-    font-size: 4rem;
-    transform: rotate(15deg);
-    opacity: 0.9;
-  }
-
-  /* Trust Logos text mock */
-  .trust-text-logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--text-charcoal);
-    opacity: 0.4;
-    transition: opacity 0.3s;
-    letter-spacing: 0.1em;
-  }
-  .trust-text-logo:hover {
-    opacity: 1;
-  }
-
-  /* ====== TEAR SECTION ====== */
-  .tear-section {
-    position: relative;
-    background-color: var(--bg-parchment);
-  }
-
-  .tear-header-area {
-    padding-top: 6rem;
-    padding-bottom: 3rem;
-    background-color: var(--bg-parchment);
-  }
-
-  /* Torn edge images */
-  .torn-edge-wrap {
-    position: relative;
-    z-index: 20;
-    line-height: 0;
-    filter: drop-shadow(0px 18px 18px rgba(0,0,0,0.55));
-  }
-
-  .torn-edge-img {
-    display: block;
-    width: 100%;
-    height: 60px;
-  }
-
-  /* Top edge: shadow only visible BELOW (into dark gap), clipped above */
-  .torn-edge-wrap:not(.torn-edge-bottom) {
-    margin-bottom: -30px;
-    clip-path: inset(0 -50px -50px -50px);
-  }
-
-  /* Bottom edge: shadow only visible ABOVE (into dark gap), clipped below */
-  .torn-edge-bottom {
-    margin-top: -30px;
-    margin-bottom: 0;
-    filter: drop-shadow(0px -18px 18px rgba(0,0,0,0.55));
-    clip-path: inset(-50px -50px 0px -50px);
-  }
-
-  /* Dark ticket area — sits BEHIND the torn edges */
-  .dark-gap {
-    padding: 3rem 0;
-    padding-top: 3.5rem; /* Reduced to pull content closer to torn edge overlap */
-    background-color: var(--success-green); /* Rich brand dark green (#006448) */
-    position: relative;
-    z-index: 1;
-  }
-
-  :global(.ticket-stub.hidden-by-filter),
-  :global(.ticket-stub.hidden-by-limit) {
-    display: none !important;
-  }
-
-  .shop-filters-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    box-shadow: none;
-  }
-  .filter-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .filter-label {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(250, 247, 242, 0.6);
-    width: 60px;
-    flex-shrink: 0;
-  }
-  .filter-buttons {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .filter-tab-btn {
-    background-color: rgba(250, 247, 242, 0.05);
-    border: 1px solid rgba(250, 247, 242, 0.18);
-    color: #FAF7F2;
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .filter-tab-btn:hover {
-    border-color: #d5c28a;
-    background-color: rgba(213, 194, 138, 0.1);
-  }
-  .filter-tab-btn.active {
-    background-color: #d5c28a;
-    border-color: #d5c28a;
-    color: var(--text-charcoal);
-    font-weight: 700;
-  }
-
-  /* Fade-in animation for tickets on scroll */
-  .fade-in-group :global(.ticket-stub) {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  .fade-in-group.is-visible :global(.ticket-stub) {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .fade-in-group.is-visible :global(.ticket-stub):nth-child(2) { transition-delay: 0.1s; }
-  .fade-in-group.is-visible :global(.ticket-stub):nth-child(3) { transition-delay: 0.2s; }
-  .fade-in-group.is-visible :global(.ticket-stub):nth-child(4) { transition-delay: 0.3s; }
-
-  /* Drams banner — light theme matching hero */
-  .banner-drams {
-    background-color: var(--bg-parchment); /* Match parchment background */
-    color: var(--text-charcoal);
-    padding: 5rem 2rem;
-    text-align: center;
-  }
-
-  .tt-section-header {
-    max-width: 650px;
-    margin: 0 auto 3rem;
-  }
-  .tt-section-title {
-    font-size: 2.75rem;
-    margin-bottom: 1rem;
-  }
-  .tt-section-subtitle {
-    font-size: 1.1rem;
-  }
-  .shop-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 5rem;
-    /* align-items: stretch by default allows the sidebar to fill the height, enabling position: sticky to work */
-  }
-  .tickets-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  /* TT Split Layout specifics */
-  .split-features-section {
-    padding: 8rem 0 2rem;
-    background-color: var(--bg-parchment);
-  }
-  .tt-tag {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--whisky-gold-dark);
-    margin-bottom: 1rem;
-  }
-  .tt-split-title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .tt-split-desc {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  .tt-feature-list {
-    list-style: none;
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
-    color: var(--text-charcoal);
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .tt-text-link {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--whisky-gold-dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--whisky-gold);
-    padding-bottom: 2px;
-    transition: all 0.2s;
-  }
-  .tt-text-link:hover {
-    color: var(--text-charcoal);
-    border-color: var(--text-charcoal);
-  }
-
-  /* Tab Accordion Section */
-  .tab-section {
-    padding: 5rem 0 8rem;
-    background-color: var(--bg-parchment);
-  }
-
-  /* Heritage Stats Bar */
-  .heritage-bar {
-    background-color: var(--bg-paper);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 4rem 0;
-  }
-  .heritage-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
-    gap: 2rem;
-  }
-  .heritage-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .stat-icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-color: rgba(140, 110, 70, 0.07);
-    border: 1px solid rgba(140, 110, 70, 0.25);
-    margin-bottom: 0.25rem;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-  .heritage-stat:hover .stat-icon-wrapper {
-    transform: translateY(-3px);
-    border-color: var(--whisky-gold-dark);
-  }
-  .stat-val {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--text-charcoal);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--whisky-gold-dark);
-  }
-
-  /* Testimonials Section */
-  .testimonials-section {
-    padding: 8rem 0;
-    background-color: var(--bg-parchment);
-  }
-  .play-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: var(--whisky-gold);
-    color: #FFF;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(197, 139, 57, 0.4);
-    transition: transform 0.2s;
-  }
-  .play-button:hover {
-    transform: scale(1.1);
-  }
-  .testimonial-quote {
-    font-size: 2.25rem;
-    line-height: 1.4;
-    text-transform: none;
-    letter-spacing: 0;
-    margin-bottom: 1.5rem;
-    color: var(--text-charcoal);
-  }
-  .testimonial-author {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-  }
-  .review-stars {
-    color: var(--whisky-gold);
-    font-size: 1.5rem;
-  }
-
-  /* Responsive fixes */
-  @media (max-width: 1024px) {
-    .tt-hero-grid, .shop-grid, .split-layout, .tab-container {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .split-layout.reverse > * {
-      direction: ltr; /* reset */
-    }
-    .tt-hero-visual {
-      height: 400px;
-    }
-    .float-1 {
-      position: static;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-    .float-2 {
-      position: static;
-    }
-    .checkout-sidebar-container {
-      position: static;
-    }
-    .heritage-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .split-text {
-      max-width: 100%;
-    }
-  }
-
-
-
-  /* Modal Overlay CSS duplicated from before */
-  .checkout-modal-overlay { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(29, 28, 26, 0.75); 
-    backdrop-filter: blur(5px); 
-    z-index: 1000; 
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: center; 
-    padding: 2rem 1rem; 
-    overflow-y: auto; 
-    animation: fadeIn 0.3s ease-out; 
-  }
-  .checkout-modal-card { 
-    background-color: var(--bg-paper-card); 
-    border: 2px solid var(--text-charcoal); 
-    border-radius: 12px; 
-    width: 100%; 
-    max-width: 860px; 
-    padding: 2rem; 
-    position: relative; 
-    box-shadow: 0 30px 70px rgba(0,0,0,0.5); 
-    transition: max-width 0.3s; 
-    margin: auto;
-  }
   
-  /* 2-Column Modal Layout */
-  .modal-two-columns {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.25rem;
-  }
-  .modal-form-side {
-    flex: 1.2;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    min-width: 0;
-  }
-  .modal-summary-side {
-    flex: 1;
-    background-color: rgba(0, 100, 72, 0.03);
-    border: 1px solid rgba(140, 110, 70, 0.25);
-    border-radius: 8px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 0;
-  }
-  .modal-summary-title {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--success-green);
-    margin-bottom: 0.5rem;
-    border-bottom: 1px dashed rgba(140, 110, 70, 0.25);
-    padding-bottom: 0.25rem;
-  }
-  .modal-summary-items-list {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: var(--text-charcoal);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    max-height: 120px;
-    overflow-y: auto;
-    margin-bottom: 0.75rem;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 100, 72, 0.2) transparent;
-  }
-  .modal-summary-items-list::-webkit-scrollbar {
-    width: 4px;
-  }
-  .modal-summary-items-list::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .modal-summary-items-list::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 100, 72, 0.2);
-    border-radius: 2px;
-  }
-  .modal-summary-item-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-  .modal-summary-calc {
-    border-top: 1px solid rgba(140, 110, 70, 0.2);
-    padding-top: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-  }
-  .modal-summary-total-row {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--text-charcoal);
-    border-top: 1px dashed rgba(140, 110, 70, 0.25);
-    padding-top: 0.5rem;
-    margin-top: 0.25rem;
-    margin-bottom: 1rem;
-  }
-  .modal-summary-total-row span {
-    color: var(--success-green);
-  }
-
-  @media (max-width: 800px) {
-    .checkout-modal-card {
-      max-width: 520px;
-      padding: 1.25rem;
-    }
-    .modal-two-columns {
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-  }
-
-  .modal-close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; background: transparent; border: none; cursor: pointer; color: var(--text-muted); transition: color 0.2s; }
-  .modal-close-btn:hover { color: var(--text-charcoal); }
-  .modal-title { font-size: 1.5rem; color: var(--text-charcoal); text-align: center; margin-bottom: 0.25rem; }
-  .modal-subtitle { font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 1rem; }
-  .form-group { margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
-  .form-label { font-family: var(--font-sans); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-charcoal); }
-  .form-control { background-color: var(--bg-parchment); border: 1px solid var(--border-color-dark); padding: 0.6rem 0.85rem; border-radius: 6px; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-charcoal); transition: all 0.3s; }
-  .form-control:focus { outline: none; border-color: var(--whisky-gold-dark); box-shadow: 0 0 8px rgba(197, 139, 57, 0.15); }
-  .payment-method-section { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); }
-  .payment-method-title { display: block; font-family: var(--font-sans); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-charcoal); margin-bottom: 0.5rem; }
-  .payment-grids { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
-  .pay-method-card { border: 1px solid var(--border-color-dark); padding: 0.6rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: var(--bg-parchment); transition: all 0.2s; }
-  .pay-method-card input[type="radio"] { display: none; }
-  .pay-logo { font-family: var(--font-sans); font-weight: 800; font-size: 0.95rem; color: var(--text-muted); }
-  .pay-method-card.active { border-color: var(--whisky-gold-dark); background-color: var(--whisky-gold-trans); }
-  .pay-method-card.active .pay-logo { color: var(--whisky-gold-dark); }
-  .modal-amount-row { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 1.05rem; margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--border-color-dark); border-bottom: 1px solid var(--border-color-dark); margin-bottom: 1.5rem; }
-  .modal-amount-row strong { font-size: 1.45rem; color: var(--whisky-gold-dark); }
-  .btn-block { width: 100%; padding: 1rem; }
-  .spinner { width: 50px; height: 50px; border: 4px solid var(--bg-sand); border-top: 4px solid var(--whisky-gold); border-radius: 50%; margin: 0 auto 1.5rem; animation: spin 1s linear infinite; }
-  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  .processing-title { font-size: 1.35rem; color: var(--text-charcoal); margin-bottom: 0.5rem; }
-  .processing-desc { font-size: 0.95rem; color: var(--text-muted); }
-  .success-ticket-stub { display: flex; flex-direction: column; }
-  .success-header { text-align: center; padding: 0.5rem 0 0.5rem; }
-  .success-icon { display: inline-flex; width: 48px; height: 48px; border-radius: 50%; background-color: rgba(0, 100, 72, 0.08); color: var(--success-green); align-items: center; justify-content: center; margin-bottom: 0.75rem; border: 2px solid var(--success-green); }
-  .success-title { font-size: 1.5rem; color: var(--text-charcoal); margin-bottom: 0.1rem; }
-  .success-subtitle { font-size: 0.85rem; color: var(--text-muted); }
-  .success-body { padding-top: 0.75rem; }
-  .ticket-summary-box { background-color: #FAF7F2; border: 1.5px solid #d5c28a; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.01); }
-  .summary-item { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 0.85rem; }
-  .summary-item span { color: var(--text-muted); font-weight: 600; }
-  .summary-item strong { color: var(--text-charcoal); font-weight: 700; }
-  .summary-divider { border-top: 1px dashed rgba(140, 110, 70, 0.25); margin: 0.4rem 0; }
-  .summary-items-header { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--success-green); margin-bottom: 0.25rem; text-align: left; }
-  .receipt-tickets-ul { font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-charcoal); display: flex; flex-direction: column; gap: 0.35rem; text-align: left; }
-  .receipt-ticket-li { display: flex; justify-content: space-between; padding-left: 0.75rem; position: relative; }
-  .receipt-ticket-li::before { content: "•"; color: var(--whisky-gold-dark); position: absolute; left: 0; font-weight: bold; }
-  .ticket-delivery-notice { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; text-align: center; margin-bottom: 1rem; }
-
-  /* ====================================================
-     VINTAGE HORIZONTAL TIMELINE STYLING
-     ==================================================== */
-  .timeline-scroll-section {
-    position: relative;
-    background-color: var(--bg-parchment);
-    /* On desktop, we want a taller section to map vertical scroll to horizontal scroll */
-    height: 300vh;
-  }
-
-  .timeline-sticky-viewport {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    padding: 2rem 0;
-  }
-
-  .timeline-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 4rem;
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 4rem;
-    align-items: center;
-    height: calc(100vh - 180px);
-    width: 100%;
-  }
-
-  .timeline-left-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  .timeline-title {
-    font-size: 3rem;
-    color: var(--text-charcoal);
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-
-  .timeline-intro-text {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  /* Left Era List styling */
-  .timeline-era-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-top: 1rem;
-    border-left: 2px solid var(--border-color);
-    padding-left: 1.5rem;
-  }
-
-  .era-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    left: -25px; /* overlay the dot on the border line */
-  }
-
-  .era-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--border-color-dark);
-    border: 2px solid var(--bg-parchment);
-    transition: all 0.3s ease;
-    box-sizing: content-box;
-  }
-
-  .era-text {
-    transition: transform 0.3s ease;
-  }
-
-  .era-item.active {
-    color: var(--whisky-gold-dark);
-  }
-
-  .era-item.active .era-dot {
-    background-color: var(--whisky-gold);
-    transform: scale(1.5);
-    box-shadow: 0 0 0 4px var(--whisky-gold-trans);
-  }
-
-  .era-item.active .era-text {
-    transform: translateX(4px);
-  }
-
-  /* Right Side Scrolling Track */
-  .timeline-track-viewport {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .timeline-track {
-    cursor: grab;
-    user-select: none;
-    display: flex;
-    gap: 3rem;
-    padding: 2rem 0;
-    will-change: transform;
-    /* On desktop, translate is controlled by JS. We add a smooth transition for tick-button clicks */
-    /* CSS transition disabled during scroll to prevent stutter */
-  }
-
-  .timeline-card {
-    width: 400px;
-    flex-shrink: 0;
-    background-color: var(--bg-paper-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2.25rem;
-    box-shadow: var(--shadow-paper);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    height: fit-content;
-  }
-
-  .timeline-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--border-color-dark);
-  }
-
-  .timeline-card.active {
-    border-color: var(--whisky-gold);
-    box-shadow: 0 15px 40px rgba(197, 139, 57, 0.1), var(--shadow-paper);
-  }
-
-  /* Special Highlighted Card for Jubilee */
-  .timeline-card.highlighted-jubilee {
-    background: linear-gradient(145deg, #1d1c1a 0%, #2f2a24 100%);
-    border: 2px solid var(--whisky-gold);
-    color: #fff;
-  }
-
-  .timeline-card.highlighted-jubilee:hover {
-    box-shadow: 0 25px 55px rgba(197, 139, 57, 0.25), 0 10px 30px rgba(0,0,0,0.5);
-  }
-
-  .timeline-card.highlighted-jubilee .card-title {
-    color: var(--whisky-gold-light);
-  }
-
-  .text-white-muted {
-    color: rgba(250, 247, 242, 0.6) !important;
-  }
-
-  .card-year-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.75rem;
-  }
-
-  .timeline-card.highlighted-jubilee .card-year-row {
-    border-color: rgba(222, 214, 201, 0.2);
-  }
-
-  .card-year {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    color: var(--whisky-gold-dark);
-    line-height: 1;
-  }
-
-  .card-num {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-  }
-
-  .card-title {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-transform: none;
-    letter-spacing: 0;
-    color: var(--text-charcoal);
-  }
-
-  .card-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0;
-    min-height: 90px;
-  }
-
-  .card-img-frame {
-    width: 100%;
-    height: 180px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    position: relative;
-    /* Sepia vintage mask / look */
-    filter: sepia(0.35) contrast(1.05) brightness(0.95);
-    transition: filter 0.3s ease;
-  }
-
-  .timeline-card:hover .card-img-frame {
-    filter: sepia(0) contrast(1) brightness(1);
-  }
-
-  .card-img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Bottom Axis Wrap */
-  .timeline-axis-wrap {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 4rem;
-    margin-top: 1.5rem;
-    position: relative;
-    z-index: 10;
-  }
-
-  .timeline-axis-line {
-    width: 100%;
-    height: 2px;
-    background-color: var(--border-color);
-    position: relative;
-  }
-
-  .timeline-axis-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background-color: var(--whisky-gold);
-    transition: width 0.3s ease-out;
-  }
-
-  .timeline-axis-ticks {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.75rem;
-  }
-
-  .axis-tick {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    position: relative;
-    padding: 0.25rem 0.5rem;
-    transition: all 0.3s ease;
-  }
-
-  .axis-tick::before {
-    content: '';
-    position: absolute;
-    top: -11px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--border-color-dark);
-    transition: all 0.3s ease;
-  }
-
-  .axis-tick:hover {
-    color: var(--text-charcoal);
-  }
-
-  .axis-tick.active {
-    color: var(--whisky-gold-dark);
-    font-weight: 800;
-  }
-
-  .axis-tick.active::before {
-    background-color: var(--whisky-gold);
-    transform: translateX(-50%) scale(1.5);
-    box-shadow: 0 0 0 3px var(--whisky-gold-trans);
-  }
-
-  /* ====================================================
-     RESPONSIVE TIMELINE (MOBILE DEGRADATION)
-     ==================================================== */
-  @media (max-width: 1024px) {
-    .timeline-scroll-section {
-      height: auto !important; /* Disables the sticky scroll track depth */
-      padding: 6rem 0;
-    }
-
-    .timeline-sticky-viewport {
-      position: relative !important;
-      height: auto !important;
-      top: auto !important;
-      padding: 0 !important;
-    }
-
-    .timeline-container {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      height: auto !important;
-      padding: 0 2rem;
-    }
-
-    .timeline-left-header {
-      text-align: center;
-      align-items: center;
-    }
-
-    .timeline-intro-text {
-      max-width: 600px;
-    }
-
-    .timeline-era-list {
-      display: none; /* Hide era list on mobile to save vertical space */
-    }
-
-    .timeline-track-viewport {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1.5rem;
-      scrollbar-width: none; /* Hide standard scrollbar on Firefox */
-    }
-
-    .timeline-track-viewport::-webkit-scrollbar {
-      display: none; /* Hide standard scrollbar on Chrome/Safari */
-    }
-
-    .timeline-track {
-      padding: 1rem 0;
-      gap: 1.5rem;
-      /* On mobile we want natural touch swipe, no JS transform override */
-      transform: none !important; 
-      transition: none !important;
-    }
-
-    .timeline-card {
-      width: 290px;
-      scroll-snap-align: center;
-      padding: 1.75rem;
-    }
-
-    .card-desc {
-      min-height: auto;
-    }
-
-    .timeline-axis-wrap {
-      padding: 0 2rem;
-      margin-top: 1rem;
-    }
-
-    .axis-tick span {
-      font-size: 0.75rem;
-    }
-  }
-
-  /* Interactive Timetable Styles */
-  .timetable-section {
-    background: var(--bg-parchment);
-    padding: 5rem 0;
-    border-top: 1px solid rgba(140, 110, 70, 0.15);
-  }
-  .timetable-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-  .timetable-tab-btn {
-    background-color: transparent;
-    border: 2px solid rgba(140, 110, 70, 0.3);
-    color: var(--text-charcoal);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .timetable-tab-btn:hover {
-    border-color: var(--success-green);
-    background-color: rgba(0, 100, 72, 0.05);
-  }
-  .timetable-tab-btn.active {
-    background-color: var(--success-green);
-    border-color: var(--success-green);
-    color: #FAF7F2;
-  }
-  .timetable-time-filter {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: rgba(140, 110, 70, 0.08);
-    padding: 0.4rem 1rem;
-    border-radius: 30px;
-    border: 1px solid rgba(140, 110, 70, 0.15);
-  }
-  .time-filter-label {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-right: 0.35rem;
-  }
-  .tt-time-btn {
-    padding: 0.4rem 0.9rem;
-    font-family: var(--font-sans);
-    font-size: 0.825rem;
-    font-weight: 700;
-    border-radius: 20px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--text-charcoal);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .tt-time-btn:hover {
-    color: var(--success-green);
-    background-color: rgba(0, 100, 72, 0.08);
-  }
-  .tt-time-btn.active {
-    background-color: var(--success-green);
-    border-color: var(--success-green);
-    color: #FAF7F2;
-    box-shadow: 0 2px 8px rgba(0, 100, 72, 0.25);
-  }
-  .timetable-pane {
-    display: none;
-    animation: fadeIn 0.4s ease-out;
-  }
-  .timetable-pane.active {
-    display: block;
-  }
-  .timetable-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-  .tt-card {
-    background: var(--bg-paper-card);
-    border: 1px solid rgba(140, 110, 70, 0.2);
-    border-radius: 8px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    position: relative;
-    overflow: hidden;
-  }
-  .tt-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-color: var(--success-green);
-  }
-  .tt-card-time {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--success-green);
-    margin-bottom: 0.25rem;
-  }
-  .tt-card-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  .tt-loc {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-  }
-  .tt-price {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--success-green);
-  }
-  .tt-card-title {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--text-charcoal);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-  .tt-card-desc {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    line-height: 1.45;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-  }
-  .tt-book-btn {
-    align-self: flex-start;
-    padding: 0.5rem 1rem !important;
-    font-size: 0.85rem !important;
-  }
-</style>
-
+  <!-- MASTERCLASSES DATA (CMS Compatible) -->
+  <script id="masterclasses-data" type="application/json" set:html={JSON.stringify(masterclassesData)}></script>
 <script>
-  // Tabs Interactive Logic
+  // 1. Enforce 100% reliable background video autoplay
+  const heroBgVideo = document.getElementById("hero-bg-video") as HTMLVideoElement;
+  if (heroBgVideo) {
+    heroBgVideo.muted = true;
+    heroBgVideo.defaultMuted = true;
+    heroBgVideo.playsInline = true;
+    const tryPlay = () => {
+      heroBgVideo.play().catch(() => {
+        document.addEventListener('click', () => heroBgVideo.play(), { once: true });
+        document.addEventListener('touchstart', () => heroBgVideo.play(), { once: true });
+        document.addEventListener('scroll', () => heroBgVideo.play(), { once: true });
+      });
+    };
+    tryPlay();
+    window.addEventListener('load', tryPlay);
+  }
+
+  // 2. Safe Preloader Dismiss
+  (function() {
+    const pl = document.getElementById('hp-preloader');
+    if (pl) {
+      setTimeout(() => {
+        pl.classList.add('fade-out');
+        document.body.style.overflow = '';
+      }, 1800);
+      setTimeout(() => {
+        pl.style.display = 'none';
+      }, 2300);
+    }
+  })();
+
+  // 3. Tab Triggers (Alles wat u moet weten)
   const tabTriggers = document.querySelectorAll('.tab-trigger-card');
   tabTriggers.forEach(tab => {
     tab.addEventListener('click', () => {
       tabTriggers.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      // In a real build, we swap the image in .tab-visual here.
     });
   });
 
-  // Ticket Filtering Logic
+  // 4. Cart & Shop State
+  const cart: Record<string, { title: string; price: number; qty: number; category: string; timeslot?: string; delivery?: string; guide?: string }> = {};
+  const serviceFee = 4.50;
+  const cartItemsContainer = document.getElementById("cart-items");
+  const subtotalEl = document.getElementById("receipt-subtotal");
+  const feeEl = document.getElementById("receipt-fee");
+  const shippingRow = document.getElementById("shipping-row");
+  const shippingEl = document.getElementById("receipt-shipping");
+  const totalEl = document.getElementById("receipt-total");
+  const checkoutBtn = document.getElementById("checkout-trigger-btn") as HTMLButtonElement;
+
+  function updateShop() {
+    let subtotal = 0;
+    let totalItems = 0;
+    let shippingActive = false;
+
+    Object.keys(cart).forEach(id => {
+      const item = cart[id];
+      if (item && item.qty > 0) {
+        subtotal += item.price * item.qty;
+        totalItems += item.qty;
+        if (item.category === "botteling" && item.delivery === "shipping") {
+          shippingActive = true;
+        }
+      }
+    });
+
+    const activeShipping = shippingActive ? 12.50 : 0;
+    const activeFee = totalItems > 0 ? serviceFee : 0;
+    const finalTotal = subtotal + activeFee + activeShipping;
+
+    if (cartItemsContainer) {
+      if (totalItems === 0) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Selecteer hiernaast uw ticket(s) om de bestelling te starten.</p>';
+      } else {
+        let listHtml = "";
+        const entries = Object.keys(cart).filter(id => cart[id] && cart[id].qty > 0);
+        
+        entries.forEach((id, index) => {
+          const item = cart[id];
+          let displayTitle = item.title;
+          
+          if (item.category === "tram" && item.timeslot) {
+            displayTitle = `${item.title} (${item.timeslot})`;
+          } else if (item.category === "masterclass" && item.timeslot) {
+            displayTitle = `${item.title} (${item.timeslot})`;
+          } else if (item.category === "trail" && item.timeslot) {
+            const guideSuffix = item.guide ? ` - Gids: ${item.guide}` : '';
+            displayTitle = `${item.title} (${item.timeslot}${guideSuffix})`;
+          } else if (item.category === "vatenmaken" && item.timeslot) {
+            displayTitle = `${item.title} (${item.timeslot})`;
+          } else if (item.category === "botteling" && item.delivery) {
+            const methodText = item.delivery === "shipping" ? "Verzenden" : "Ophalen";
+            displayTitle = `${item.title} [${methodText}]`;
+          }
+
+          const isLast = index === entries.length - 1;
+          listHtml += `
+            <div class="cart-item-row" ${isLast ? 'style="border-bottom:none;"' : ''}>
+              <div class="cart-item-info">
+                <span class="cart-item-name">${displayTitle}</span>
+                <span class="cart-item-meta">${item.qty} × €${item.price.toFixed(2)}</span>
+              </div>
+              <span class="cart-item-price">€${(item.price * item.qty).toFixed(2)}</span>
+            </div>
+          `;
+        });
+        
+        cartItemsContainer.innerHTML = listHtml;
+      }
+    }
+    
+    if (subtotalEl) subtotalEl.innerHTML = `&euro;${subtotal.toFixed(2)}`;
+    if (feeEl) feeEl.innerHTML = `&euro;${activeFee.toFixed(2)}`;
+    if (shippingRow && shippingEl) {
+      if (shippingActive) {
+        shippingRow.style.display = "flex";
+        shippingEl.innerHTML = `&euro;12.50`;
+      } else {
+        shippingRow.style.display = "none";
+      }
+    }
+    if (totalEl) totalEl.innerHTML = `&euro;${finalTotal.toFixed(2)}`;
+    if (checkoutBtn) checkoutBtn.disabled = totalItems === 0;
+
+    saveCartToLocalStorage(subtotal, totalItems);
+  }
+
+  function saveCartToLocalStorage(subtotalVal: number, totalItemsVal: number) {
+    try {
+      localStorage.setItem("whiskyfest_cart", JSON.stringify({
+        subtotal: subtotalVal,
+        totalItems: totalItemsVal,
+        cartRaw: cart
+      }));
+    } catch(e) {}
+  }
+
+  function restoreCartFromLocalStorage() {
+    try {
+      const raw = localStorage.getItem("whiskyfest_cart");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed.cartRaw) {
+          Object.assign(cart, parsed.cartRaw);
+          Object.keys(cart).forEach(id => {
+            const card = document.querySelector(`.ticket-stub[data-ticket-id="${id}"]`);
+            if (card) {
+              const qtyDisplay = card.querySelector(".qty-val");
+              if (qtyDisplay) qtyDisplay.textContent = String(cart[id].qty || 0);
+              if (cart[id].qty > 0) card.classList.add("selected");
+              else card.classList.remove("selected");
+            }
+          });
+        }
+      }
+    } catch(e) {}
+  }
+
+  // 5. Ticket Filtering Logic
   const dayButtons = document.querySelectorAll('#day-filter-buttons .filter-tab-btn');
   const catButtons = document.querySelectorAll('#cat-filter-buttons .filter-tab-btn');
   const timeButtons = document.querySelectorAll('#time-filter-buttons .filter-tab-btn');
   const timeFilterRow = document.getElementById('time-filter-row');
-  const ticketCards = document.querySelectorAll(".ticket-stub");
   
   let activeDay = 'all';
   let activeCat = 'entree';
@@ -4237,11 +2466,10 @@ import masterclassesData from '../data/masterclasses.json';
   const showMoreBtn = document.getElementById('show-more-btn');
 
   function applyFilters() {
-    // Show/hide time filter row depending on selected category
     if (timeFilterRow) {
       if (activeCat === 'tram' || activeCat === 'botteling' || activeCat === 'trail' || activeCat === 'vatenmaken') {
         timeFilterRow.style.display = 'none';
-        activeTime = 'all'; // reset time filter
+        activeTime = 'all';
         timeButtons.forEach(b => {
           if (b.getAttribute('data-filter-time') === 'all') b.classList.add('active');
           else b.classList.remove('active');
@@ -4251,9 +2479,82 @@ import masterclassesData from '../data/masterclasses.json';
       }
     }
 
+    const cards = document.querySelectorAll(".ticket-stub");
     const matchingCards: HTMLElement[] = [];
 
-    // ====== BULLETPROOF EVENT-DELEGATED TICKET SHOP QUANTITY & CART LOGIC ======
+    cards.forEach(card => {
+      const cardDay = card.getAttribute('data-day') || 'all';
+      const cardCat = card.getAttribute('data-category') || 'entree';
+      const cardTime = card.getAttribute('data-daypart') || 'all';
+
+      const matchDay = (activeDay === 'all') || (cardDay === 'all') || (cardDay === activeDay);
+      const matchCat = (activeCat === 'all') || (cardCat === activeCat);
+      const matchTime = (activeTime === 'all') || (cardTime === 'all') || (cardTime === activeTime);
+
+      if (matchDay && matchCat && matchTime) {
+        card.classList.remove('hidden-by-filter');
+        matchingCards.push(card as HTMLElement);
+      } else {
+        card.classList.add('hidden-by-filter');
+        card.classList.remove('hidden-by-limit');
+      }
+    });
+
+    const limit = 6;
+    if (matchingCards.length > limit && !showAllTickets) {
+      matchingCards.forEach((card, idx) => {
+        if (idx >= limit) {
+          card.classList.add('hidden-by-limit');
+        } else {
+          card.classList.remove('hidden-by-limit');
+        }
+      });
+      if (showMoreContainer) showMoreContainer.style.display = 'block';
+      if (showMoreBtn) showMoreBtn.textContent = `Toon alle tickets (${matchingCards.length - limit} extra) ↓`;
+    } else {
+      matchingCards.forEach(card => card.classList.remove('hidden-by-limit'));
+      if (showMoreContainer) showMoreContainer.style.display = 'none';
+    }
+  }
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+      showAllTickets = true;
+      applyFilters();
+    });
+  }
+
+  dayButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dayButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeDay = btn.getAttribute('data-filter-day') || 'all';
+      showAllTickets = false;
+      applyFilters();
+    });
+  });
+
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.getAttribute('data-filter-cat') || 'all';
+      showAllTickets = false;
+      applyFilters();
+    });
+  });
+
+  timeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      timeButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTime = btn.getAttribute('data-filter-time') || 'all';
+      showAllTickets = false;
+      applyFilters();
+    });
+  });
+
+  // 6. Global Event-Delegated Quantity Click Listeners
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('.qty-btn') as HTMLButtonElement;
@@ -4274,7 +2575,6 @@ import masterclassesData from '../data/masterclasses.json';
       cart[id] = { title, price, qty: 0, category };
     }
 
-    // Capture dropdown options
     const tramSelect = card.querySelector('.tram-select') as HTMLSelectElement;
     const introSelect = card.querySelector('.intro-select') as HTMLSelectElement;
     const bottlingSelect = card.querySelector('.bottling-select') as HTMLSelectElement;
@@ -4304,7 +2604,7 @@ import masterclassesData from '../data/masterclasses.json';
     }
   });
 
-  // Delegated dropdown change listeners
+  // 7. Delegated Dropdown Change Listeners
   document.addEventListener('change', (e) => {
     const target = e.target as HTMLElement;
     const select = target.closest('select') as HTMLSelectElement;
@@ -4333,7 +2633,22 @@ import masterclassesData from '../data/masterclasses.json';
     }
   });
 
-  // Mock Checkout Flow JS
+  // Initial Filter & Cart Pass
+  applyFilters();
+  restoreCartFromLocalStorage();
+  updateShop();
+  document.addEventListener("DOMContentLoaded", () => {
+    applyFilters();
+    restoreCartFromLocalStorage();
+    updateShop();
+  });
+  window.addEventListener("load", () => {
+    applyFilters();
+    restoreCartFromLocalStorage();
+    updateShop();
+  });
+
+  // 8. Checkout Modal Flow
   const modalOverlay = document.getElementById("checkout-modal");
   const modalCloseX = document.getElementById("modal-close-x");
   const modalSuccessClose = document.getElementById("modal-success-close");
@@ -4366,7 +2681,6 @@ import masterclassesData from '../data/masterclasses.json';
 
     const activeShipping = shippingActive ? 12.50 : 0;
     const activeFee = totalItems > 0 ? serviceFee : 0;
-    
     const totalBeforeDiscount = subtotal + activeFee + activeShipping;
     const finalTotal = Math.max(0, totalBeforeDiscount - promoDiscount);
 
@@ -4374,7 +2688,6 @@ import masterclassesData from '../data/masterclasses.json';
       modalTotalAmt.innerHTML = `&euro;${finalTotal.toFixed(2)}`;
     }
 
-    // Populate dynamic summary items breakdown in popup
     const modalSummaryItems = document.getElementById("modal-summary-items");
     if (modalSummaryItems) {
       modalSummaryItems.innerHTML = "";
@@ -4517,7 +2830,6 @@ import masterclassesData from '../data/masterclasses.json';
     });
   }
 
-  // Close modal when clicking backdrop
   if (modalOverlay) {
     modalOverlay.addEventListener("click", (e) => {
       if (e.target === modalOverlay) {
@@ -4594,7 +2906,6 @@ import masterclassesData from '../data/masterclasses.json';
           
           const finalResNumber = `#${resPrefix}-2026-${Math.floor(10000 + Math.random() * 90000)}`;
 
-          // Save order to localStorage for dynamic account environment
           const orderData = {
             name: name,
             email: email,
@@ -4631,7 +2942,7 @@ import masterclassesData from '../data/masterclasses.json';
     });
   }
 
-  // ====== INTERACTIVE TIMETABLE LOGIC ======
+  // 9. Interactive Timetable Logic
   const ttTabs = document.querySelectorAll('.timetable-tab-btn');
   const ttPanes = document.querySelectorAll('.timetable-pane');
   const ttTimeBtns = document.querySelectorAll('.tt-time-btn');
@@ -4683,54 +2994,26 @@ import masterclassesData from '../data/masterclasses.json';
       const targetStubId = btn.getAttribute('data-target-stub') || "";
       const targetSelectVal = btn.getAttribute('data-target-select') || "";
       
-      // If it's an addon checkbox
-      if (targetStubId.startsWith('addon-')) {
-        const checkbox = document.getElementById(targetStubId) as HTMLInputElement;
-        if (checkbox) {
-          // If disabled, warn the user
-          if (checkbox.disabled) {
-            alert("U moet eerst een entreeticket in uw winkelwagen leggen om deze add-on te boeken!");
-            document.getElementById('ticket-gap')?.scrollIntoView({ behavior: 'smooth' });
-            return;
+      const ticketStub = document.querySelector(`.ticket-stub[data-ticket-id="${targetStubId}"]`);
+      if (ticketStub) {
+        if (targetSelectVal) {
+          const select = ticketStub.querySelector('select') as HTMLSelectElement;
+          if (select) {
+            select.value = targetSelectVal;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
           }
-          checkbox.checked = true;
-          // Trigger change event to run updateShop()
-          checkbox.dispatchEvent(new Event('change'));
-          // Set dropdown value for vaten workshop if needed
-          if (targetStubId === "addon-vaten" && targetSelectVal && vatenTimeSelect) {
-            vatenTimeSelect.value = targetSelectVal;
-            vatenTimeSelect.dispatchEvent(new Event('change'));
-          }
-          // Alert and scroll to cart
-          alert(`Toegevoegd aan winkelwagen: ${checkbox.getAttribute('data-title')}!`);
-          document.getElementById('ticket-gap')?.scrollIntoView({ behavior: 'smooth' });
         }
-      } else {
-        // It's a ticket stub card in the shop
-        const ticketStub = document.querySelector(`.ticket-stub[data-ticket-id="${targetStubId}"]`);
-        if (ticketStub) {
-          // If there's a select field and target select val
-          if (targetSelectVal) {
-            const select = ticketStub.querySelector('select') as HTMLSelectElement;
-            if (select) {
-              select.value = targetSelectVal;
-              // Trigger change event on select to ensure timeslot is updated in cart
-              select.dispatchEvent(new Event('change'));
-            }
-          }
-          // Find plus button and click it
-          const plusBtn = ticketStub.querySelector('[data-action="plus"]') as HTMLButtonElement;
-          if (plusBtn) {
-            plusBtn.click();
-            alert(`Toegevoegd aan winkelwagen: ${ticketStub.getAttribute('data-title')}!`);
-            document.getElementById('ticket-gap')?.scrollIntoView({ behavior: 'smooth' });
-          }
+        const plusBtn = ticketStub.querySelector('.plus-btn') as HTMLButtonElement;
+        if (plusBtn) {
+          plusBtn.click();
+          alert(`Toegevoegd aan winkelwagen: ${ticketStub.getAttribute('data-title')}!`);
+          document.getElementById('ticket-gap')?.scrollIntoView({ behavior: 'smooth' });
         }
       }
     });
   });
 
-  // ====== SCROLL FADE-IN FOR TICKETS ======
+  // 10. Scroll Fade-In
   const fadeGroups = document.querySelectorAll('.fade-in-group');
   if (fadeGroups.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -4750,7 +3033,7 @@ import masterclassesData from '../data/masterclasses.json';
     });
   }
 
-  // ====== VINTAGE HORIZONTAL TIMELINE LOGIC ======
+  // 11. Interactive Horizontal Timeline
   const timelineSection = document.querySelector('.timeline-scroll-section') as HTMLElement;
   const timelineTrack = document.getElementById('timeline-track') as HTMLElement;
   const timelineViewport = document.querySelector('.timeline-track-viewport') as HTMLElement;
@@ -4847,11 +3130,9 @@ import masterclassesData from '../data/masterclasses.json';
     });
   }
 
-  // Scroll listeners
   window.addEventListener('scroll', updateTimelineScroll, { passive: true });
   window.addEventListener('load', updateTimelineScroll);
 
-  // Click handler for axis ticks (Desktop & Mobile)
   axisTicks.forEach((tick, tickIdx) => {
     tick.addEventListener('click', () => {
       const targetIndex = parseInt(tick.getAttribute('data-index') || String(tickIdx), 10);
@@ -4880,7 +3161,6 @@ import masterclassesData from '../data/masterclasses.json';
     });
   });
 
-  // Click handler for Era list items
   eraItems.forEach(era => {
     era.addEventListener('click', () => {
       const targetIndex = parseInt(era.getAttribute('data-target') || '0', 10);
@@ -4889,7 +3169,6 @@ import masterclassesData from '../data/masterclasses.json';
     });
   });
 
-  // Mouse Drag to Scroll on Timeline Track
   if (timelineViewport && timelineTrack) {
     timelineViewport.addEventListener('mousedown', (e) => {
       if (!isDesktop) return;
@@ -4916,7 +3195,6 @@ import masterclassesData from '../data/masterclasses.json';
       }
     });
 
-    // Horizontal wheel support inside timeline section
     timelineViewport.addEventListener('wheel', (e) => {
       if (!isDesktop) return;
       const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
@@ -4929,79 +3207,19 @@ import masterclassesData from '../data/masterclasses.json';
     }, { passive: true });
   }
 
-  // Aftermovie 2025 Performance Video Player Logic
+  // 12. Aftermovie Video Player Logic
+  const aftermoviePlayBtn = document.getElementById('aftermovie-play-btn');
+  const videoOverlay = document.getElementById('video-overlay');
   const aftermovieVideo = document.getElementById('aftermovie-video') as HTMLVideoElement;
-  const videoOverlay = document.getElementById('video-overlay') as HTMLElement;
 
-  if (aftermovieVideo && videoOverlay) {
-    videoOverlay.addEventListener('click', () => {
+  if (aftermoviePlayBtn && videoOverlay && aftermovieVideo) {
+    const startAftermovie = () => {
       videoOverlay.style.opacity = '0';
       videoOverlay.style.pointerEvents = 'none';
-      aftermovieVideo.setAttribute('controls', 'true');
+      aftermovieVideo.controls = true;
       aftermovieVideo.play();
-    });
-
-    aftermovieVideo.addEventListener('pause', () => {
-      if (aftermovieVideo.currentTime === 0 || aftermovieVideo.ended) {
-        aftermovieVideo.removeAttribute('controls');
-        videoOverlay.style.opacity = '1';
-        videoOverlay.style.pointerEvents = 'auto';
-      }
-    });
-
-    aftermovieVideo.addEventListener('ended', () => {
-      aftermovieVideo.removeAttribute('controls');
-      videoOverlay.style.opacity = '1';
-      videoOverlay.style.pointerEvents = 'auto';
-    });
-  }
-
-  // ====== HORIZONTAL PHOTO CAROUSEL NAVIGATION ======
-  const carouselWrapper = document.querySelector('.horizontal-carousel-wrapper');
-  const carouselPrevBtn = document.getElementById('carousel-prev-btn');
-  const carouselNextBtn = document.getElementById('carousel-next-btn');
-
-  if (carouselWrapper && carouselPrevBtn && carouselNextBtn) {
-    carouselPrevBtn.addEventListener('click', () => {
-      carouselWrapper.scrollBy({ left: -380, behavior: 'smooth' });
-    });
-
-    carouselNextBtn.addEventListener('click', () => {
-      carouselWrapper.scrollBy({ left: 380, behavior: 'smooth' });
-    });
-  }
-
-  // ====== HERO VIDEO TIMESTAMP LOOP (00:09 - 00:45) ======
-  const heroVideo = document.getElementById('hero-bg-video') as HTMLVideoElement;
-  if (heroVideo) {
-    const START_TIME = 9;
-    const END_TIME = 45;
-
-    // Set initial timestamp to 9 seconds
-    heroVideo.currentTime = START_TIME;
-
-    heroVideo.addEventListener('timeupdate', () => {
-      if (heroVideo.currentTime >= END_TIME || heroVideo.currentTime < START_TIME - 0.5) {
-        heroVideo.currentTime = START_TIME;
-      }
-    });
-
-    heroVideo.play().catch(() => {
-      // Autoplay fallback
-    });
-  }
-  // ====== HOMEPAGE 2.5-SECOND COIN-FLIP PRELOADER SCRIPT ======
-  const preloader = document.getElementById('hp-preloader');
-  if (preloader) {
-    document.body.style.overflow = 'hidden';
-
-    setTimeout(() => {
-      preloader.classList.add('fade-out');
-      document.body.style.overflow = '';
-    }, 2200);
-
-    setTimeout(() => {
-      preloader.style.display = 'none';
-    }, 2500);
+    };
+    aftermoviePlayBtn.addEventListener('click', startAftermovie);
+    videoOverlay.addEventListener('click', startAftermovie);
   }
 </script>
