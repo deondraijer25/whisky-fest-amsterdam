@@ -1501,27 +1501,81 @@ import Footer from '../components/Footer.astro';
     }
   }
 
+  /* TICKET ACTION BUTTONS & ROWS */
+  .ticket-action-buttons-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+    margin-top: 1.35rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .btn-ticket-action {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    padding: 0.65rem 1.25rem !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.55rem !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 3px 3px 0px var(--text-charcoal) !important;
+    line-height: 1.2 !important;
+    border: 2px solid var(--text-charcoal) !important;
+    height: auto !important;
+    white-space: nowrap !important;
+  }
+
+  .btn-ticket-download {
+    background-color: var(--brand-red, #E30613) !important;
+    color: #FFFFFF !important;
+  }
+
+  .btn-ticket-download:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 4px 4px 0px var(--text-charcoal) !important;
+    filter: brightness(1.1) !important;
+  }
+
+  .btn-ticket-share {
+    background-color: #FFFFFF !important;
+    color: var(--text-charcoal) !important;
+  }
+
+  .btn-ticket-share:hover {
+    background-color: var(--bg-parchment) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 4px 4px 0px var(--text-charcoal) !important;
+  }
+
   /* LUXURY VECTOR SHARE POPUP MENU */
   .ticket-share-wrapper {
-    position: relative;
-    display: inline-block;
+    position: relative !important;
+    display: inline-block !important;
   }
 
   .ticket-share-menu {
-    position: absolute;
-    bottom: calc(100% + 8px);
-    left: 0;
-    background-color: var(--bg-paper-card);
-    border: 2px solid var(--border-color-dark);
-    border-radius: 6px;
-    box-shadow: 0 12px 30px rgba(29, 28, 26, 0.22), 4px 4px 0px var(--text-charcoal);
-    padding: 0.45rem;
-    display: none;
-    flex-direction: column;
-    gap: 0.25rem;
-    z-index: 100;
-    min-width: 225px;
-    animation: popupFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: absolute !important;
+    bottom: calc(100% + 8px) !important;
+    left: 0 !important;
+    background-color: var(--bg-paper-card) !important;
+    border: 2px solid var(--border-color-dark) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 12px 30px rgba(29, 28, 26, 0.22), 4px 4px 0px var(--text-charcoal) !important;
+    padding: 0.45rem !important;
+    display: none !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    z-index: 100 !important;
+    min-width: 225px !important;
+    animation: popupFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   @keyframes popupFade {
@@ -1532,58 +1586,58 @@ import Footer from '../components/Footer.astro';
   .ticket-share-wrapper:hover .ticket-share-menu,
   .ticket-share-wrapper:focus-within .ticket-share-menu,
   .ticket-share-menu.active {
-    display: flex;
+    display: flex !important;
   }
 
   .share-option-link {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-charcoal);
-    text-decoration: none;
-    padding: 0.55rem 0.75rem;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: var(--text-charcoal) !important;
+    text-decoration: none !important;
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    text-align: left !important;
   }
 
   .share-option-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    background-color: rgba(29, 28, 26, 0.05);
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--text-charcoal);
-    transition: all 0.2s ease;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 4px !important;
+    background-color: rgba(29, 28, 26, 0.05) !important;
+    border: 1px solid var(--border-color) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    color: var(--text-charcoal) !important;
+    transition: all 0.2s ease !important;
   }
 
   .share-option-link:hover {
-    background-color: var(--bg-parchment);
-    color: var(--brand-red, #E30613);
-    transform: translateX(3px);
+    background-color: var(--bg-parchment) !important;
+    color: var(--brand-red, #E30613) !important;
+    transform: translateX(3px) !important;
   }
 
   .share-option-link:hover .share-option-icon {
-    background-color: var(--text-charcoal);
-    color: #FFF;
-    border-color: var(--text-charcoal);
+    background-color: var(--text-charcoal) !important;
+    color: #FFF !important;
+    border-color: var(--text-charcoal) !important;
   }
 
   .share-option-link.whatsapp-opt:hover .share-option-icon {
-    background-color: #25D366;
-    color: #FFF;
-    border-color: #25D366;
+    background-color: #25D366 !important;
+    color: #FFF !important;
+    border-color: #25D366 !important;
   }
 
 </style>
@@ -1755,9 +1809,7 @@ import Footer from '../components/Footer.astro';
             const displayCode = `#${cleanCode}`;
             
             // Clean public HTTPS URL that WhatsApp always recognizes as a blue clickable link
-            const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-              ? window.location.origin 
-              : 'https://whiskyfest.nl';
+            const baseUrl = window.location.origin;
             
             const ticketLink = `${baseUrl}/ticket?id=${cleanCode}&title=${encodeURIComponent(item.title)}&name=${encodeURIComponent(userName)}&time=${encodeURIComponent(displayTime)}`;
             
@@ -1855,8 +1907,8 @@ import Footer from '../components/Footer.astro';
 
                       <!-- Individual Ticket Actions: Download & Share -->
                       <div class="ticket-action-buttons-row">
-                        <button type="button" class="btn btn-gold btn-ticket-action" onclick="window.print()">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" class="btn-ticket-action btn-ticket-download" onclick="window.open('/ticket?id=${cleanCode}&title=${encodeURIComponent(item.title)}&name=${encodeURIComponent(userName)}&time=${encodeURIComponent(displayTime)}', '_blank')">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                             <polyline points="7 10 12 15 17 10"/>
                             <line x1="12" y1="15" x2="12" y2="3"/>
@@ -1865,8 +1917,8 @@ import Footer from '../components/Footer.astro';
                         </button>
 
                         <div class="ticket-share-wrapper">
-                          <button type="button" class="btn btn-outline btn-ticket-action btn-share-trigger">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <button type="button" class="btn-ticket-action btn-ticket-share btn-share-trigger">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                               <circle cx="18" cy="5" r="3"></circle>
                               <circle cx="6" cy="12" r="3"></circle>
                               <circle cx="18" cy="19" r="3"></circle>
