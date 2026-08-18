@@ -2123,6 +2123,20 @@ import masterclassesData from '../data/masterclasses.json';
   <script id="masterclasses-data" type="application/json" set:html={JSON.stringify(masterclassesData)}></script>
 
 <script>
+  // safe-preloader-dismiss: Guaranteed preloader fade-out
+  (function() {
+    const pl = document.getElementById('hp-preloader');
+    if (pl) {
+      setTimeout(() => {
+        pl.classList.add('fade-out');
+        document.body.style.overflow = '';
+      }, 1800);
+      setTimeout(() => {
+        pl.style.display = 'none';
+      }, 2300);
+    }
+  })();
+
   // ====================================================
   // PERSISTENT CART & MASTERCLASS MODAL ENHANCEMENTS
   // ====================================================
