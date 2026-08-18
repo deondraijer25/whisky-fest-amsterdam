@@ -823,3 +823,66 @@ strong {
   user-select: none !important;
   flex-shrink: 0 !important;
 }
+/* ====================================================
+   AMSTERDAM HERO RED GRADIENT & CONTRAST
+   ==================================================== */
+.tt-hero-section {
+  position: relative !important;
+  padding: 15.5rem 0 3.5rem !important;
+  background: linear-gradient(135deg, #1C0305 0%, #4D070D 35%, #7D0C15 65%, #2B0408 100%) !important;
+  color: #FFFFFF !important;
+  overflow: hidden !important;
+}
+
+.tt-hero-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.highlight-text {
+  background: rgba(227, 6, 19, 0.35) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #E30613 !important;
+  border-radius: 4px !important;
+  padding: 0 0.35rem !important;
+  box-shadow: 0 0 25px rgba(227, 6, 19, 0.45) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.tt-hero-subtitle {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.hero-video-blend-gradient {
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background: 
+    linear-gradient(
+      to right, 
+      #1C0305 0%, 
+      #1C0305 30%, 
+      rgba(28, 3, 5, 0.85) 45%, 
+      rgba(28, 3, 5, 0.3) 65%, 
+      transparent 85%
+    ),
+    linear-gradient(
+      to bottom, 
+      #1C0305 0%, 
+      rgba(28, 3, 5, 0.6) 12%, 
+      transparent 28%, 
+      transparent 78%, 
+      #1C0305 100%
+    ) !important;
+}
+
+.hero-video-tint-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background: radial-gradient(
+    circle at 70% 50%,
+    rgba(227, 6, 19, 0.12) 0%,
+    rgba(28, 3, 5, 0.45) 100%
+  ) !important;
+}
