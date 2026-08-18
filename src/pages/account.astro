@@ -1761,9 +1761,29 @@ import Footer from '../components/Footer.astro';
             
             const ticketLink = `${baseUrl}/ticket?id=${cleanCode}&title=${encodeURIComponent(item.title)}&name=${encodeURIComponent(userName)}&time=${encodeURIComponent(displayTime)}`;
             
-            const shareText = encodeURIComponent(`🎟️ *Whisky Fest E-Ticket*: ${item.title}\n\n👤 *Kaarthouder:* ${userName}\n⏰ *Tijdslot:* ${displayTime}\n🏷️ *Ticket Code:* ${displayCode}\n📍 *Locatie:* De Kromhouthal Amsterdam\n\n👉 *Bekijk en download jouw officiële E-ticket direct via deze link:*\n${ticketLink}`);
-            const mailSubject = encodeURIComponent(`Jouw E-ticket voor Whisky Fest Amsterdam: ${item.title}`);
-            const mailBody = encodeURIComponent(`Hallo,\n\nHierbij ontvang je jouw officiële E-ticket voor Whisky Fest Amsterdam 2026!\n\nTicket: ${item.title}\nTijdslot: ${displayTime}\nLocatie: De Kromhouthal Amsterdam\nKaarthouder: ${userName}\nTicket Code: ${displayCode}\n\nBekijk en download jouw digitale PDF ticket direct via onderstaande link:\n${ticketLink}\n\nTot ziens op het festival!`);
+            const shareText = encodeURIComponent(
+              `*${'Whisky Fest Amsterdam 2026'}*\n` +
+              `E-ticket: ${item.title}\n\n` +
+              `Kaarthouder: ${userName}\n` +
+              `Tijdslot: ${displayTime}\n` +
+              `Ticket Code: ${displayCode}\n` +
+              `Locatie: De Kromhouthal Amsterdam\n\n` +
+              `Bekijk en download je officiële E-ticket:\n` +
+              `${ticketLink}`
+            );
+            
+            const mailSubject = encodeURIComponent(`E-ticket voor Whisky Fest Amsterdam: ${item.title}`);
+            const mailBody = encodeURIComponent(
+              `Beste ${userName},\n\n` +
+              `Hierbij ontvang je jouw toegangsbewijs voor Whisky Fest Amsterdam 2026.\n\n` +
+              `Ticket: ${item.title}\n` +
+              `Tijdslot: ${displayTime}\n` +
+              `Ticket Code: ${displayCode}\n` +
+              `Locatie: De Kromhouthal Amsterdam\n\n` +
+              `Bekijk en download je digitale ticket direct via onderstaande link:\n` +
+              `${ticketLink}\n\n` +
+              `Graag tot ziens op het festival!`
+            );
 
             const ticketHTML = `
               <div class="ticket-envelope">
