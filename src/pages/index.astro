@@ -76,7 +76,7 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
             van Nederland.
           </h1>
           <p class="tt-hero-subtitle">
-            Beleef de magie van het meest toonaangevende whiskyfestival in De Kromhouthal aan het IJ in Amsterdam. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring.
+            Beleef de magie van het meest toonaangevende whiskyfestival in De Kromhouthal aan het IJ in Amsterdam. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring.
           </p>
           <div class="hero-actions" style="align-items: center;">
             <a href="#sessies" class="btn btn-gold">Bestel Tickets</a>
@@ -3075,8 +3075,9 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
 
   .tt-hero-section {
     position: relative;
-    padding: 15.5rem 0 3rem; /* Generous top clearance ensuring logo badge sits cleanly above title */
-    background-color: var(--bg-parchment);
+    padding: 15.5rem 0 3.5rem; /* Generous top clearance ensuring logo badge sits cleanly above title */
+    background: linear-gradient(135deg, #1C0305 0%, #4D070D 35%, #7D0C15 65%, #2B0408 100%);
+    color: #FFFFFF;
     overflow: hidden;
   }
 
@@ -3093,21 +3094,31 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--whisky-gold-dark);
+    color: #D5C28A;
     margin-bottom: 1rem;
-    border-bottom: 2px solid var(--whisky-gold);
+    border-bottom: 2px solid #E30613;
     padding-bottom: 0.5rem;
   }
   .tt-hero-title {
     font-size: 5.75rem; /* Massive, high-impact grand title */
-    color: var(--text-charcoal);
+    color: #FFFFFF;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
     line-height: 0.98;
     letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
   }
+  .highlight-text {
+    background: rgba(227, 6, 19, 0.35);
+    color: #FFFFFF;
+    border: 1.5px solid #E30613;
+    border-radius: 4px;
+    padding: 0 0.35rem;
+    box-shadow: 0 0 25px rgba(227, 6, 19, 0.45);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
   .tt-hero-subtitle {
     font-size: 1.05rem; /* Refined smaller subtitle font */
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.92);
     line-height: 1.6;
     margin-bottom: 2rem;
     max-width: 620px;
@@ -3124,14 +3135,14 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
     bottom: -10px;
     width: 380px;
     height: auto;
-    opacity: 0.08;
+    opacity: 0.06;
     pointer-events: none;
     z-index: 0;
   }
   .hero-barrel-art img {
     width: 100%;
     height: auto;
-    filter: sepia(0.5) contrast(0.9);
+    filter: invert(1) brightness(2);
   }
   .tt-hero-text > *:not(.hero-barrel-art) {
     position: relative;
@@ -3141,6 +3152,29 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
     display: flex;
     gap: 1.5rem;
   }
+  .tt-text-link {
+    color: #D5C28A !important;
+    border-bottom: 1px solid #D5C28A !important;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.25s ease;
+  }
+  .tt-text-link:hover {
+    color: #FFFFFF !important;
+    border-bottom-color: #FFFFFF !important;
+  }
+  .reviews-title {
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .review-item .stars {
+    color: #D5C28A;
+  }
+  .review-item .review-source {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
   /* --- FULL-BLEED SEAMLESS HERO VIDEO BANNER --- */
   .hero-video-full-right {
     position: absolute;
@@ -3160,7 +3194,7 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
     display: block;
   }
 
-  /* Multi-stop Parchment Blend & Vignette Overlay */
+  /* Multi-stop Amsterdam Red Blend & Vignette Overlay */
   .hero-video-blend-gradient {
     position: absolute;
     inset: 0;
@@ -3168,31 +3202,31 @@ import GlasswareSvg15 from '../assets/Logo/Logo wit svg/Middel 14.svg?raw';
     background: 
       linear-gradient(
         to right, 
-        var(--bg-parchment) 0%, 
-        var(--bg-parchment) 32%, 
-        rgba(245, 240, 230, 0.85) 48%, 
-        rgba(245, 240, 230, 0.3) 65%, 
+        #1C0305 0%, 
+        #1C0305 30%, 
+        rgba(28, 3, 5, 0.85) 45%, 
+        rgba(28, 3, 5, 0.3) 65%, 
         transparent 85%
       ),
       linear-gradient(
         to bottom, 
-        var(--bg-parchment) 0%, 
-        rgba(245, 240, 230, 0.6) 12%, 
+        #1C0305 0%, 
+        rgba(28, 3, 5, 0.6) 12%, 
         transparent 28%, 
         transparent 78%, 
-        var(--bg-parchment) 100%
+        #1C0305 100%
       );
   }
 
-  /* Subtle Warm Golden Tint Overlay */
+  /* Subtle Warm Red & Amber Tint Overlay */
   .hero-video-tint-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
     background: radial-gradient(
       circle at 70% 50%,
-      rgba(197, 139, 57, 0.06) 0%,
-      rgba(29, 28, 26, 0.22) 100%
+      rgba(227, 6, 19, 0.12) 0%,
+      rgba(28, 3, 5, 0.45) 100%
     );
   }
 
