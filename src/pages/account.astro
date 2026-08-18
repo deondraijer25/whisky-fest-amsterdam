@@ -1578,6 +1578,17 @@ import Footer from '../components/Footer.astro';
     animation: popupFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
+  /* Invisible hover bridge to keep menu open while moving cursor between button and popup */
+  .ticket-share-menu::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 16px !important;
+    background: transparent !important;
+  }
+
   @keyframes popupFade {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1645,6 +1656,27 @@ import Footer from '../components/Footer.astro';
 <script>
   // ====== MY ACCOUNT TABS & DYNAMIC DATA LOADING ======
   document.addEventListener('DOMContentLoaded', () => {
+    // toggle-share-menu-handler: Click to toggle share popup
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.btn-share-trigger');
+      const allMenus = document.querySelectorAll('.ticket-share-menu');
+      
+      if (trigger) {
+        e.stopPropagation();
+        const wrapper = trigger.closest('.ticket-share-wrapper');
+        const menu = wrapper ? wrapper.querySelector('.ticket-share-menu') : null;
+        
+        allMenus.forEach(m => {
+          if (m !== menu) m.classList.remove('active');
+        });
+        
+        if (menu) {
+          menu.classList.toggle('active');
+        }
+      } else if (!e.target.closest('.ticket-share-menu')) {
+        allMenus.forEach(m => m.classList.remove('active'));
+      }
+    });
     // 1. Tab Swapping Trigger Logic
     const tabTriggers = document.querySelectorAll('.portal-tab-trigger');
     const tabPanes = document.querySelectorAll('.portal-tab-pane');
