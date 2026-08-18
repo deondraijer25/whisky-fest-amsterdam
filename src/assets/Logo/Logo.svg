@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="wf_ams_logo" data-name="Whisky Fest Amsterdam Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.3 155.7">
+  <defs>
+    <style>
+      .wf-logo-text-top {
+        font-family: 'Bourbon-Rough', 'Bourbon', 'Rye', sans-serif;
+        font-size: 11.5px;
+        fill: #E30613;
+        letter-spacing: 0.12em;
+        font-weight: bold;
+      }
+      .wf-logo-text-whisky {
+        font-family: 'Bourbon-Rough', 'Bourbon', 'Rye', sans-serif;
+        font-size: 26px;
+        fill: #1E1C1A;
+        letter-spacing: 0.04em;
+      }
+      .wf-logo-text-fest {
+        font-family: 'Bourbon-Rough', 'Bourbon', 'Rye', sans-serif;
+        font-size: 19px;
+        fill: #E30613;
+        letter-spacing: 0.08em;
+      }
+      .wf-logo-text-est {
+        font-family: 'Bourbon-Rough', 'Bourbon', 'Rye', sans-serif;
+        font-size: 9.5px;
+        fill: #B57402;
+        letter-spacing: 0.14em;
+        font-weight: bold;
+      }
+      .wf-logo-crest-border {
+        fill: #1E1C1A;
+      }
+      .wf-logo-crest-gold {
+        fill: #D5C28A;
+      }
+      .wf-logo-crest-bg {
+        fill: #FAF7F2;
+      }
+    </style>
+  </defs>
+  <g id="wf_ams_layers">
+    <!-- Outer Oval Crest Shapes -->
+    <g id="wf_ams_background">
+      <ellipse class="wf-logo-crest-border" cx="58.65" cy="86.02" rx="54.44" ry="65.82"/>
+      <path class="wf-logo-crest-border" d="M58.65,155.7C26.31,155.7,0,124.44,0,86.02S26.31,16.33,58.65,16.33s58.65,31.26,58.65,69.68-26.31,69.69-58.65,69.69Z"/>
+      <ellipse class="wf-logo-crest-gold" cx="58.65" cy="86.02" rx="54.44" ry="65.82"/>
+      <ellipse class="wf-logo-crest-gold" cx="58.65" cy="86.02" rx="52.44" ry="63.82"/>
+      <path class="wf-logo-crest-bg" d="M58.65,148.27c-27.8,0-50.41-27.93-50.41-62.25S30.85,23.77,58.65,23.77s50.41,27.92,50.41,62.25-22.62,62.25-50.41,62.25Z"/>
+    </g>
+    
+    <!-- Pot Still / Dram Line Art on Top -->
+    <g id="wf_ams_still">
+      <path fill="#1E1C1A" d="M52.74,13.66l.56-3.81c-2.92-.31-5.98,2.66-7.62-.73-.77-1.6-1.69-2.84.06-3.94.84-.53,4.76-2.66,7.79-4.19,2.16-1.09,6.23-1.25,8.53-.58s2.53,4.69,2.68,6.79-.15,4.41-.01,6.56l.45,3.17c.36,1.72.26,3.81.65,5.45,1.48,6.17,8.62,7.48,7.93,14.66-.57,5.96-6.53,7.15-11.49,7.47-6.69.44-18.37.73-18.77-8.4-.25-5.71,5.7-7.63,7.46-11.95.86-2.1,1.35-4.73,1.46-6.98"/>
+      <path fill="#D5C28A" d="M59.13,2.43c2.29-1.11,2.95-.13,3.21,2.86.6,6.76-.12,15.72,3.02,21.49,1.63,2.99,6.37,7.05,2.97,11.01l-7.24.75c-.32-.21-1.9-3.88-1.96-4.38-.2-1.87,1.71-3,1.63-5.12-.06-1.33-1.62-3.52-1.62-3.92V2.43Z"/>
+      <path fill="#D5C28A" d="M57.85,2.02v23.04c-1.31.32-2.65.53-3.89-.26-.09-2.64,2.51-17.55,1.79-18.74-.97-1.62-6.58,3.09-8.35,2.29l-.02-1.98c3.68-.94,6.59-4.74,10.47-4.34Z"/>
+      <path fill="#D5C28A" d="M56.97,33.57c-2.11,3.6,1.46,6.4-4.44,5.04-4.06-.93-3.65-5.04-1.68-5.04h6.13Z"/>
+      <path fill="#D5C28A" d="M51.37,31.35c-3.06-3.08,4.53-7.03,6.21-3.34s-4.66,4.9-6.21,3.34Z"/>
+      <path fill="#D5C28A" d="M47.69,32.29c.32.93-.74,1.85-.74,2.48,0,.66,1.06,1.44.7,2.65-.52,1.76-4.05,0-.87-1.29-1.29-1.36-1.34-3.61.91-3.84Z"/>
+    </g>
+
+    <!-- Typography: Amsterdam Whisky Fest Est. 2004 -->
+    <g id="wf_ams_typography">
+      <!-- AMSTERDAM -->
+      <text class="wf-logo-text-top" x="58.65" y="64" text-anchor="middle">AMSTERDAM</text>
+      <!-- WHISKY -->
+      <text class="wf-logo-text-whisky" x="58.65" y="93" text-anchor="middle">WHISKY</text>
+      <!-- FEST -->
+      <text class="wf-logo-text-fest" x="58.65" y="116" text-anchor="middle">FEST</text>
+      <!-- EST. 2004 -->
+      <text class="wf-logo-text-est" x="58.65" y="136" text-anchor="middle">EST. 2004</text>
+    </g>
+  </g>
+</svg>
