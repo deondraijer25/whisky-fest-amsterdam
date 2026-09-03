@@ -8,7 +8,6 @@ export default defineConfig({
   site: 'https://www.amsterdamwhiskyfestival.nl',
   integrations: [sitemap()],
   server: {
-    port: 3002,
-    host: true
+    port: 4331
   }
 });

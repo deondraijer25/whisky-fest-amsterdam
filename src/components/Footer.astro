@@ -1,9 +1,9 @@
----
+﻿---
 // src/components/Footer.astro
 // 1-on-1 original vectors direct from folder: Middel 13, 14, 15
 import Middel13Svg from '../assets/Logo/Logo wit svg/Middel 13.svg?raw'; // Gent
 import Middel14Svg from '../assets/Logo/Logo wit svg/Middel 14.svg?raw'; // Amsterdam
-import Middel15Svg from '../assets/Logo/Logo wit svg/Middel 15.svg?raw'; // Den Haag
+import Middel15Svg from '../assets/Logo/Logo wit svg/Middel 15.svg?raw'; // Amsterdam
 
 interface Props {
   currentCity?: string;
@@ -12,12 +12,14 @@ interface Props {
 const { currentCity = 'amsterdam' } = Astro.props;
 ---
 
-<footer class="site-footer">
-  <!-- Ripped Paper Overlay -->
-  <div class="torn-edge-wrap" aria-hidden="true">
+<!-- Ripped Paper Overlay - Exact replica of ticket section -->
+<div class="footer-torn-divider" aria-hidden="true">
+  <div class="torn-edge-wrap">
     <img src="/torn-top.svg?v=2" alt="" class="torn-edge-img" />
   </div>
+</div>
 
+<footer class="site-footer">
   <div class="footer-inner">
 
     <!-- 1. TOP SECTION: 3 FREESTANDING WHITE LOGOS + CITY TEXT + BEZOEK EVENT BUTTON -->
@@ -48,25 +50,25 @@ const { currentCity = 'amsterdam' } = Astro.props;
         </a>
       </div>
 
-      <!-- LOGO 2: DEN HAAG (Middel 15.svg) -->
+      <!-- LOGO 2: Amsterdam (Middel 15.svg) -->
       <div class="freestanding-logo-item">
         <a 
-          href="https://whisky-fest-den-haag.vercel.app" 
+          href="https://whisky-fest-amsterdam.vercel.app" 
           class="freestanding-logo-link"
-          title="Bezoek International Whisky Festival Den Haag"
-          target={currentCity === 'denhaag' ? '_self' : '_blank'}
+          title="Bezoek Amsterdam Whisky Festival Amsterdam"
+          target={currentCity === 'amsterdam' ? '_self' : '_blank'}
           rel="noopener noreferrer"
-          aria-label="International Whisky Festival Den Haag"
+          aria-label="Amsterdam Whisky Festival Amsterdam"
         >
           <div class="freestanding-svg-wrapper">
             <Fragment set:html={Middel15Svg} />
           </div>
         </a>
-        <span class="logo-city-title">DEN HAAG</span>
+        <span class="logo-city-title">Amsterdam</span>
         <a 
-          href="https://whisky-fest-den-haag.vercel.app" 
+          href="https://whisky-fest-amsterdam.vercel.app" 
           class="btn-bezoek-event"
-          target={currentCity === 'denhaag' ? '_self' : '_blank'}
+          target={currentCity === 'amsterdam' ? '_self' : '_blank'}
           rel="noopener noreferrer"
         >
           Bezoek Event &rarr;
@@ -112,12 +114,12 @@ const { currentCity = 'amsterdam' } = Astro.props;
             </p>
             <form 
               class="newsletter-form" 
-              onsubmit="event.preventDefault(); const inp = this.querySelector('input'); const msg = this.parentElement.querySelector('.newsletter-success-msg'); if(inp && inp.value){ if(msg) { msg.style.display = 'block'; } alert('✓ Hartelijk dank! U bent succesvol ingeschreven voor de nieuwsbrief van Whisky Fest Amsterdam.'); inp.value = ''; }"
+              onsubmit="event.preventDefault(); const inp = this.querySelector('input'); const msg = this.parentElement.querySelector('.newsletter-success-msg'); if(inp && inp.value){ if(msg) { msg.style.display = 'block'; } alert('✓ Hartelijk dank! U bent succesvol ingeschreven voor de nieuwsbrief van Amsterdam Whisky Festival.'); inp.value = ''; }"
             >
               <input type="email" placeholder="Uw e-mailadres invoeren..." required class="newsletter-input" />
               <button type="submit" class="btn-newsletter-submit">Inschrijven</button>
             </form>
-            <div class="newsletter-success-msg" style="display: none; margin-top: 1rem; padding: 0.65rem 1rem; background: rgba(0, 100, 72, 0.2); border: 1px solid #4ade80; border-radius: 6px; color: #4ade80; font-weight: 700; font-size: 0.9rem;">
+            <div class="newsletter-success-msg" style="display: none; margin-top: 1rem; padding: 0.65rem 1rem; background: rgba(227, 6, 19, 0.2); border: 1px solid #4ade80; border-radius: 6px; color: #4ade80; font-weight: 700; font-size: 0.9rem;">
               ✓ Hartelijk dank! U bent succesvol ingeschreven voor onze officiële nieuwsbrief.
             </div>
           </div>
@@ -131,15 +133,15 @@ const { currentCity = 'amsterdam' } = Astro.props;
       <!-- COL 1: ORGANISATIE & INFO -->
       <div class="footer-col brand-col">
         <div class="footer-brand-badge">
-          <span class="badge-est">Est. 2004</span>
-          <h4 class="badge-name">Whisky Fest Amsterdam</h4>
+          <span class="badge-est">EST. 2002</span>
+          <h4 class="badge-name">Amsterdam Whisky Festival</h4>
           <span class="badge-city">Amsterdam</span>
         </div>
-        <p class="brand-pitch">Al sinds 2004 het meest toonaangevende en sfeervolle whisky evenement in de monumentale Kromhouthal aan het IJ in Amsterdam.</p>
+        <p class="brand-pitch">Al meer dan 26 jaar het meest toonaangevende en sfeervolle whisky evenement in de historische Zuiderkerk van Amsterdam.</p>
         <div class="contact-box">
-          <p class="contact-line"><strong>Locatie:</strong> De Kromhouthal Amsterdam</p>
-          <p class="contact-line"><strong>Adres:</strong> Gedempt Hamerkanaal 231, 1021 KP Amsterdam</p>
-          <p class="contact-line"><strong>E-mail:</strong> <a href="mailto:info@amsterdamwhiskyfestival.nl" class="footer-gold-link">info@amsterdamwhiskyfestival.nl</a></p>
+          <p class="contact-line"><strong>Locatie:</strong> Zuiderkerk Amsterdam</p>
+          <p class="contact-line"><strong>Adres:</strong> Rond de Zuiderkerk 12, 2513 AM Amsterdam</p>
+          <p class="contact-line"><strong>E-mail:</strong> <a href="mailto:info@whiskyfestival.nl" class="footer-gold-link">info@whiskyfestival.nl</a></p>
         </div>
       </div>
 
@@ -176,19 +178,19 @@ const { currentCity = 'amsterdam' } = Astro.props;
         <div class="footer-map-card">
           <div class="map-iframe-wrapper">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.0322259648937!2d4.921319776885375!3d52.38793094665798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6090a77519183%3A0x6b8f36c56cb3c4f7!2sDe%20Kromhouthal!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2452.880016462706!2d4.305591976865267!3d52.0773950691501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b73d9e9e1c31%3A0xc3f6be73bb9024f2!2sGrote%20Kerk%20Den%20Haag!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl" 
               width="100%" 
               height="160" 
               style="border:0; display:block; border-radius:6px;" 
               allowfullscreen="" 
               loading="lazy" 
               referrerpolicy="no-referrer-when-downgrade"
-              title="Locatie De Kromhouthal Amsterdam"
+              title="Locatie Zuiderkerk Amsterdam"
             ></iframe>
           </div>
           <div class="map-footer-action">
-            <span class="map-venue-label">De Kromhouthal Amsterdam</span>
-            <a href="https://maps.google.com/?q=De+Kromhouthal+Amsterdam" target="_blank" rel="noopener noreferrer" class="btn-map-route">
+            <span class="map-venue-label">Zuiderkerk Amsterdam</span>
+            <a href="https://maps.google.com/?q=Grote+Kerk+Den+Haag" target="_blank" rel="noopener noreferrer" class="btn-map-route">
               Open Routeplanner →
             </a>
           </div>
@@ -202,7 +204,7 @@ const { currentCity = 'amsterdam' } = Astro.props;
       <div class="footer-separator"></div>
       <div class="bottom-row">
         <p class="copyright">
-          &copy; {new Date().getFullYear()} Whisky Fest Amsterdam. Alle rechten voorbehouden.
+          &copy; {new Date().getFullYear()} Amsterdam Whisky Festival. Alle rechten voorbehouden.
         </p>
 
         <div class="safety-badges">
@@ -216,23 +218,19 @@ const { currentCity = 'amsterdam' } = Astro.props;
 </footer>
 
 <style>
-  /* Base Site Footer with City Theme Color */
-  .site-footer {
-    background-color: #7B0F15;
-    color: #FAF7F2;
+  /* Torn Paper Divider above Footer */
+  .footer-torn-divider {
+    line-height: 0;
     position: relative;
-    padding-top: 1rem;
-    margin-top: 0;
-    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+    z-index: 20;
+    pointer-events: none;
   }
 
-  /* Ripped Paper Overlay */
+  /* Ripped Paper Overlay - Exact downward drop-shadow & top clipping */
   .torn-edge-wrap {
     position: relative;
     z-index: 20;
     line-height: 0;
-    margin-top: -60px;
-    margin-bottom: -30px;
     filter: drop-shadow(0px 18px 18px rgba(0, 0, 0, 0.55));
     clip-path: inset(0 -50px -50px -50px);
     pointer-events: none;
@@ -242,6 +240,17 @@ const { currentCity = 'amsterdam' } = Astro.props;
     display: block;
     width: 100%;
     height: 60px;
+  }
+
+  /* Base Site Footer with City Theme Color - Slides 48px UNDER the torn paper */
+  .site-footer {
+    background-color: #E30613;
+    color: #FAF7F2;
+    position: relative;
+    z-index: 1;
+    margin-top: -48px;
+    padding-top: 3.5rem;
+    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
   }
 
   .footer-inner {
@@ -692,17 +701,50 @@ const { currentCity = 'amsterdam' } = Astro.props;
       padding-top: 1rem;
     }
     .footer-hero-logos-strip {
-      flex-direction: column;
-      gap: 2rem;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      align-items: start !important;
+      justify-items: center !important;
+      gap: 0.5rem !important;
+      margin-bottom: 2rem !important;
+      padding: 0.5rem 0 !important;
+    }
+    .freestanding-logo-item {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 0.35rem !important;
+      width: 100% !important;
+      max-width: 110px !important;
     }
     .freestanding-svg-wrapper {
-    width: 140px;
-    height: 190px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
+      width: 72px !important;
+      height: 95px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .freestanding-svg-wrapper :global(svg),
+    .freestanding-svg-wrapper svg {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 72px !important;
+      max-height: 95px !important;
+    }
+    .logo-city-title {
+      font-size: 0.82rem !important;
+      letter-spacing: 0.05em !important;
+      margin-top: 0.1rem !important;
+    }
+    .btn-bezoek-event {
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      padding: 0.22rem 0.5rem !important;
+      letter-spacing: 0.04em !important;
+      border-radius: 12px !important;
+      white-space: nowrap !important;
+    }
     .footer-grid {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -738,7 +780,7 @@ const { currentCity = 'amsterdam' } = Astro.props;
     font-weight: 700 !important;
   }
   .site-footer .footer-gold-link {
-    color: #D5C28A !important;
+    color: #C58B39 !important;
     font-weight: 700 !important;
     text-decoration: underline !important;
     text-underline-offset: 3px;
