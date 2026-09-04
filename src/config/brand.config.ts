@@ -85,7 +85,7 @@ export const BRAND: BrandConfig = {
     heroTitleLine3: 'van Amsterdam.',
     heroSubtitle: 'Beleef de magie van het meest toonaangevende whiskyfestival in de historische Zuiderkerk van Amsterdam. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring.',
     preloaderTitle: 'AMSTERDAM WHISKY FESTIVAL',
-    preloaderSubtitle: 'EST. 2002 • AMSTERDAM',
+    preloaderSubtitle: 'EST. 2025 • AMSTERDAM',
     announcementBar: 'Sluit je aan bij duizenden whiskyliefhebbers in Amsterdam – Bestel vandaag nog je tickets!',
     tramTitle: 'Amsterdamse Whiskytram',
     tramDesc: 'Rondrit door historisch Amsterdam in een klassieke tram inclusief deskundig geleide proeverij van 4 topdrams.',

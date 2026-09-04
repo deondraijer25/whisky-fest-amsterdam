@@ -32,7 +32,7 @@ const tickets = await getTickets('amsterdam');
         <div class="preloader-progress-track">
           <div class="preloader-progress-bar"></div>
         </div>
-        <p class="preloader-subtitle">EST. 2002 &bull; Amsterdam</p>
+        <p class="preloader-subtitle">EST. 2025 &bull; Amsterdam</p>
       </div>
     </div>
   </div>
@@ -4447,8 +4447,8 @@ const tickets = await getTickets('amsterdam');
   .timeline-scroll-section {
     position: relative;
     background-color: var(--bg-parchment);
-    /* On desktop, we want a taller section to map vertical scroll to horizontal scroll */
-    height: 300vh;
+    /* Calibrated height for smooth horizontal card scroll without dead scroll space */
+    height: 185vh;
   }
 
   .timeline-sticky-viewport {
