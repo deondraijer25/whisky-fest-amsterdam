@@ -3,24 +3,24 @@
    ---------------------------------------------------- */
 
 :root {
-  /* HSL Tailored Brand Palette (Logo-infused) */
+  /* HSL Tailored Brand Palette (Amsterdam Burgundy & Beige) */
   --bg-parchment: #FAF7F2;     /* Warm vintage cotton paper */
-  --bg-sand: #d8e7e2;          /* Light green from logo (#d8e7e2) */
+  --bg-sand: #FAF0EB;          /* Warm light beige tint */
   --bg-paper-card: #FCFAF7;    /* Pure thick cotton paper for cards */
   --text-charcoal: #1D1C1A;    /* Charred oak cask black */
-  --text-muted: #4c5752;       /* Soft dark sage for secondary text */
+  --text-muted: #554D48;       /* Soft dark charcoal for secondary text */
   
-  /* Whisky Gold & Cooper Tones */
-  --whisky-gold: #d5c28a;      /* Champagne gold from logo (#d5c28a) */
-  --whisky-gold-light: #e9dfb7;  /* Lighter gold tint for hovers */
-  --whisky-gold-dark: #E30613;   /* Brand dark green from logo (#E30613) */
-  --whisky-gold-trans: rgba(227, 6, 19, 0.08); /* Translucent dark green */
+  /* Amsterdam Burgundy & Beige Tones */
+  --whisky-gold: #caac8e;      /* Beige from brand (#caac8e) */
+  --whisky-gold-light: #e2d2c0;  /* Lighter beige tint for hovers */
+  --whisky-gold-dark: #8c0223;   /* Burgundy rood (#8c0223) */
+  --whisky-gold-trans: rgba(140, 2, 35, 0.08); /* Translucent burgundy */
   
   /* Accents & Borders */
-  --success-green: #E30613;    /* Brand dark green */
-  --success-green-light: #d8e7e2; /* Brand light green */
-  --border-color: #E8D5D5;     /* Soft sage border line */
-  --border-color-dark: #B91C1C; /* High contrast sage line */
+  --success-green: #8c0223;    /* Burgundy rood */
+  --success-green-light: #FAF0EB; /* Light beige accent */
+  --border-color: #E8D5D5;     /* Soft border line */
+  --border-color-dark: #8c0223; /* Burgundy dark border */
   
   /* Elevation & Shadows */
   --shadow-paper: 0 10px 35px rgba(29, 28, 26, 0.05), 0 2px 8px rgba(29, 28, 26, 0.02);
@@ -152,7 +152,7 @@ strong {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--whisky-gold-dark, #E30613);
+  color: var(--whisky-gold-dark, #8c0223);
   margin-bottom: 0.5rem;
   display: inline-block;
 }
@@ -236,7 +236,7 @@ strong {
 
 /* Warm Champagne Beige Button (Exact match with date-line highlight) */
 .btn-beige {
-  background-color: var(--whisky-gold-light, #E9DFB7);
+  background-color: var(--whisky-gold-light, #e2d2c0);
   color: var(--text-charcoal, #1D1C1A);
   border: 2px solid var(--text-charcoal, #1D1C1A);
   box-shadow: 4px 4px 0px rgba(29, 28, 26, 0.9);
@@ -244,7 +244,7 @@ strong {
   overflow: hidden;
 }
 .btn-beige:hover {
-  background-color: var(--whisky-gold, #D5C28A);
+  background-color: var(--whisky-gold, #caac8e);
   color: var(--text-charcoal, #1D1C1A);
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px rgba(29, 28, 26, 0.9);
@@ -401,7 +401,7 @@ strong {
   max-height: 280px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(227, 6, 19, 0.2) transparent;
+  scrollbar-color: rgba(140, 2, 35, 0.2) transparent;
 }
 .cart-items-list::-webkit-scrollbar {
   width: 4px;
@@ -410,7 +410,7 @@ strong {
   background: transparent;
 }
 .cart-items-list::-webkit-scrollbar-thumb {
-  background-color: rgba(227, 6, 19, 0.2);
+  background-color: rgba(140, 2, 35, 0.2);
   border-radius: 2px;
 }
 .cart-item-row {
@@ -445,8 +445,8 @@ strong {
 .cart-stepper {
   display: inline-flex;
   align-items: center;
-  background: rgba(227, 6, 19, 0.08);
-  border: 1px solid rgba(227, 6, 19, 0.22);
+  background: rgba(140, 2, 35, 0.08);
+  border: 1px solid rgba(140, 2, 35, 0.22);
   border-radius: 4px;
   padding: 1px;
   gap: 2px;
@@ -461,7 +461,7 @@ strong {
   background: transparent;
   border: none;
   border-radius: 3px;
-  color: var(--brand-green, #E30613);
+  color: var(--brand-green, #8c0223);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 800;
@@ -472,12 +472,12 @@ strong {
   user-select: none;
 }
 .sidebar-qty-btn:hover {
-  background: rgba(227, 6, 19, 0.22);
-  color: #B91C1C;
+  background: rgba(140, 2, 35, 0.22);
+  color: #70011c;
 }
 .sidebar-qty-btn.sidebar-qty-minus:hover {
-  background: rgba(227, 6, 19, 0.14);
-  color: var(--brand-red, #E30613);
+  background: rgba(140, 2, 35, 0.14);
+  color: var(--brand-red, #8c0223);
 }
 .sidebar-qty-btn:active {
   transform: scale(0.92);
@@ -486,7 +486,7 @@ strong {
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 0.82rem;
-  color: var(--brand-green, #E30613);
+  color: var(--brand-green, #8c0223);
   padding: 0 4px;
   min-width: 18px;
   text-align: center;
@@ -501,7 +501,7 @@ strong {
 .cart-item-price { 
   font-weight: 700; 
   font-size: 0.95rem; 
-  color: var(--brand-green, #E30613); 
+  color: var(--brand-green, #8c0223); 
   font-family: var(--font-sans); 
   white-space: nowrap; 
   text-align: right;
@@ -544,7 +544,7 @@ strong {
 }
 .addon-card:has(input:checked) {
   border-color: var(--success-green);
-  background-color: rgba(227, 6, 19, 0.06);
+  background-color: rgba(140, 2, 35, 0.06);
 }
 .addon-card input[type="checkbox"] {
   margin-top: 3px;
@@ -894,7 +894,7 @@ strong {
   color: #FFFFFF !important;
 }
 .site-footer .footer-gold-link {
-  color: #C58B39 !important;
+  color: #caac8e !important;
 }
 
 /* ====================================================
@@ -985,7 +985,7 @@ strong {
 .tt-hero-section {
   position: relative !important;
   padding: 15.5rem 0 3.5rem !important;
-  background: linear-gradient(135deg, #180505 0%, #7F1D1D 35%, #991B1B 65%, #180505 100%) !important;
+  background: linear-gradient(135deg, #180505 0%, #5a0116 35%, #8c0223 65%, #180505 100%) !important;
   color: #FFFFFF !important;
   overflow: hidden !important;
 }
@@ -1091,7 +1091,7 @@ strong {
     width: 100% !important;
     max-height: 88vh !important;
     background-color: #FAF7F2 !important;
-    border-top: 3px solid #E30613 !important;
+    border-top: 3px solid #8c0223 !important;
     border-radius: 20px 20px 0 0 !important;
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.45) !important;
     transform: translateY(100%) !important;
@@ -1234,7 +1234,7 @@ strong {
   }
   .sheet-filter-select:focus {
     outline: none !important;
-    border-color: #E30613 !important;
+    border-color: #8c0223 !important;
   }
   .sheet-cart-list,
   .sheet-addons-list {
@@ -1367,7 +1367,7 @@ strong {
   .sheet-cart-card-price {
     font-size: 0.98rem !important;
     font-weight: 800 !important;
-    color: #E30613 !important;
+    color: #8c0223 !important;
     margin-top: 0.25rem !important;
     font-family: var(--font-sans) !important;
   }
@@ -1382,7 +1382,7 @@ strong {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: #E30613 !important;
+    background: #8c0223 !important;
     border-radius: 6px !important;
     padding: 2px !important;
     height: 34px !important;
@@ -1395,7 +1395,7 @@ strong {
     background: #FFFFFF !important;
     border: none !important;
     border-radius: 4px !important;
-    color: #E30613 !important;
+    color: #8c0223 !important;
     font-size: 15px !important;
     font-weight: 800 !important;
     display: flex !important;
@@ -1449,8 +1449,8 @@ strong {
     letter-spacing: 0.08em !important;
     padding: 0.12rem 0.4rem !important;
     border-radius: 3px !important;
-    background: rgba(227, 6, 19, 0.1) !important;
-    color: #E30613 !important;
+    background: rgba(140, 2, 35, 0.1) !important;
+    color: #8c0223 !important;
   }
   .sheet-addon-title {
     font-family: var(--font-sans, sans-serif) !important;
@@ -1475,7 +1475,7 @@ strong {
     flex-shrink: 0 !important;
   }
   .sheet-addon-price {
-    color: #E30613 !important;
+    color: #8c0223 !important;
     font-size: 1rem !important;
     font-family: var(--font-sans, sans-serif) !important;
     font-weight: 800 !important;
@@ -1499,8 +1499,8 @@ strong {
     font-size: 0.78rem !important;
     font-weight: 800 !important;
     font-family: var(--font-sans) !important;
-    border: 1.5px solid #E30613 !important;
-    color: #E30613 !important;
+    border: 1.5px solid #8c0223 !important;
+    color: #8c0223 !important;
     background: #FAF7F2 !important;
     cursor: pointer !important;
     border-radius: 6px !important;
@@ -1508,7 +1508,7 @@ strong {
     white-space: nowrap !important;
   }
   .sheet-addon-add-btn:active {
-    background: #E30613 !important;
+    background: #8c0223 !important;
     color: #FFFFFF !important;
   }
 }
@@ -1592,7 +1592,7 @@ strong {
   font-family: var(--font-sans, system-ui, sans-serif);
   font-size: 1.25rem;
   font-weight: 800;
-  color: #E30613;
+  color: #8c0223;
   line-height: 1.1;
 }
 
@@ -1606,7 +1606,7 @@ strong {
   border-radius: 4px;
   border: 2px solid #171614;
   box-shadow: 2px 2px 0px #171614;
-  background-color: #C58B39;
+  background-color: #caac8e;
   color: #171614;
   cursor: pointer;
   display: inline-flex;

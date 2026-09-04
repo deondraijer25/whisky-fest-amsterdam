@@ -64,19 +64,19 @@ export const BRAND: BrandConfig = {
   localPort: 4331,
 
   colors: {
-    primary: '#E30613',         // Amsterdam Flag Red
-    primaryHover: '#B91C1C',
-    accent: '#D5C28A',          // Warm Gold
-    accentLight: '#E9DFB7',
+    primary: '#8c0223',         // Amsterdam Flag Red
+    primaryHover: '#70011c',
+    accent: '#caac8e',          // Warm Gold
+    accentLight: '#e2d2c0',
     bgParchment: '#FAF7F2',     // Warm paper
     bgSand: '#FAF0F0',          // Soft warm tint
     bgPaperCard: '#FCFAF7',
     textCharcoal: '#1E1C1A',    // Anthracite black
     textMuted: '#4B4642',
     border: '#E8D5D5',
-    borderDark: '#B91C1C',
-    heroGradient: 'linear-gradient(135deg, #180505 0%, #7F1D1D 35%, #991B1B 65%, #180505 100%)',
-    heroTintRadial: 'radial-gradient(circle at 70% 50%, rgba(227, 6, 19, 0.15) 0%, rgba(24, 5, 5, 0.5) 100%)'
+    borderDark: '#70011c',
+    heroGradient: 'linear-gradient(135deg, #180505 0%, #5a0116 35%, #8c0223 65%, #180505 100%)',
+    heroTintRadial: 'radial-gradient(circle at 70% 50%, rgba(140, 2, 35, 0.15) 0%, rgba(24, 5, 5, 0.5) 100%)'
   },
 
   copy: {
