@@ -136,8 +136,8 @@ import Footer from '../components/Footer.astro';
                 <!-- 1. Header Row -->
                 <div class="ticket-header-row">
                   <div class="ticket-title-block">
-                    <h2 class="ticket-session-title">VIP Sessie - Vrijdag</h2>
-                    <p class="ticket-schedule-text">Vrijdag 13 november 2026 &bull; 13:00 – 17:00 UUR</p>
+                    <h2 class="ticket-session-title">Entree Zaterdagmiddag</h2>
+                    <p class="ticket-schedule-text">Zaterdag 16 januari 2027 &bull; 13:00 – 17:00 UUR</p>
                   </div>
                   <div class="ticket-badges-block">
                     <span class="ticket-status-tag">
@@ -2634,14 +2634,7 @@ import Footer from '../components/Footer.astro';
             );
 
             // Natural schedule string
-            let formattedSchedule = "Vrijdag 13 november 2026 • " + displayTime;
-            if (titleLower.includes("zaterdag")) {
-              formattedSchedule = "Zaterdag 14 november 2026 • " + displayTime;
-            } else if (titleLower.includes("zondag")) {
-              formattedSchedule = "Zondag 15 november 2026 • " + displayTime;
-            } else if (item.category === 'masterclass') {
-              formattedSchedule = "Zaterdag 14 november 2026 • " + displayTime;
-            }
+            let formattedSchedule = "Zaterdag 16 januari 2027 • " + displayTime;
 
             const ticketHTML = `
               <div class="ticket-envelope">
@@ -2695,7 +2688,7 @@ import Footer from '../components/Footer.astro';
                       </div>
                       <div class="meta-col">
                         <span class="meta-col-label">Locatie</span>
-                        <strong class="meta-col-val">${item.category === 'masterclass' ? 'Nutshuis, Amsterdam' : 'Zuiderkerk, Amsterdam'}</strong>
+                        <strong class="meta-col-val">Zuiderkerk, Amsterdam</strong>
                       </div>
                       <div class="meta-col">
                         <span class="meta-col-label">Ticket Code</span>

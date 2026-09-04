@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/standhouders.astro
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -138,11 +138,10 @@ const exhibitors = await getStandhouders('amsterdam');
                 <text x="15" y="30" font-family="var(--font-sans)" font-size="13" font-weight="800" fill="var(--text-charcoal)">Garderobe en uitgang</text>
               </g>
 
-              <!-- Bottom-Left: Nutshuis (Clean text label block) -->
-              <g class="map-annotation-zone">
-                <text x="15" y="425" font-family="var(--font-sans)" font-size="13" font-weight="900" fill="var(--text-charcoal)">Nutshuis</text>
-                <text x="15" y="440" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="var(--text-charcoal)">ALLE masterclasses</text>
-                <text x="15" y="453" font-family="var(--font-sans)" font-size="9.5" font-weight="600" fill="var(--text-muted)">m.u.v. de Toren-tastings</text>
+              <!-- Bottom-Left: Masterclass Zaal (Clean text label block) -->
+              <g class="map-annotation-zone" id="map-room-masterclass">
+                <text x="15" y="425" font-family="var(--font-sans)" font-size="13" font-weight="900" fill="var(--text-charcoal)">Masterclasses</text>
+                <text x="15" y="440" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="var(--text-charcoal)">Zuiderkerk Zaal</text>
               </g>
 
               <!-- ============================================== -->
