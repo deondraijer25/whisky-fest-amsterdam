@@ -246,8 +246,8 @@ const tickets = await getTickets('amsterdam');
         margin-top: 0.5rem !important;
         margin-bottom: 2rem !important;
         padding: 1.15rem !important;
-        background: rgba(0, 50, 36, 0.75) !important;
-        border: 1.5px solid rgba(197, 139, 57, 0.4) !important;
+        background: rgba(90, 1, 22, 0.75) !important;
+        border: 1.5px solid rgba(202, 172, 142, 0.4) !important;
         border-radius: 8px !important;
         box-sizing: border-box !important;
         width: 100% !important;
@@ -583,7 +583,7 @@ const tickets = await getTickets('amsterdam');
       }
       .sheet-day-notice {
         padding: 0.5rem 1.25rem !important;
-        background: rgba(197, 139, 57, 0.12) !important;
+        background: rgba(202, 172, 142, 0.12) !important;
         border-bottom: 1px dashed rgba(140, 110, 70, 0.35) !important;
         font-family: var(--font-sans) !important;
         font-size: 0.8rem !important;
@@ -998,10 +998,8 @@ const tickets = await getTickets('amsterdam');
             <div class="filter-row">
               <span class="filter-label">Dag:</span>
               <div class="filter-buttons" id="day-filter-buttons">
-                <button type="button" class="filter-tab-btn active" data-filter-day="all">Alle Dagen</button>
-                <button type="button" class="filter-tab-btn" data-filter-day="vrijdag">Vrijdag 13 Nov</button>
-                <button type="button" class="filter-tab-btn" data-filter-day="zaterdag">Zaterdag 14 Nov</button>
-                <button type="button" class="filter-tab-btn" data-filter-day="zondag">Zondag 15 Nov</button>
+                <button type="button" class="filter-tab-btn active" data-filter-day="all">Alle Tickets</button>
+                <button type="button" class="filter-tab-btn" data-filter-day="zaterdag">Zaterdag 16 Jan 2027</button>
               </div>
             </div>
             <div class="filter-row" style="margin-top: 0.5rem;">
@@ -1009,21 +1007,16 @@ const tickets = await getTickets('amsterdam');
               <div class="filter-buttons" id="cat-filter-buttons">
                 <button type="button" class="filter-tab-btn active" data-filter-cat="all">Alles</button>
                 <button type="button" class="filter-tab-btn" data-filter-cat="entree">Sessie Entree</button>
-                <button type="button" class="filter-tab-btn" data-filter-cat="warehouse">Warehouse Tastings</button>
                 <button type="button" class="filter-tab-btn" data-filter-cat="masterclass">Masterclasses</button>
-                <button type="button" class="filter-tab-btn" data-filter-cat="tram">Whiskytram</button>
-                <button type="button" class="filter-tab-btn" data-filter-cat="trail">Whiskytrail</button>
-                <button type="button" class="filter-tab-btn" data-filter-cat="vatenmaken">Workshops</button>
-                <button type="button" class="filter-tab-btn" data-filter-cat="botteling">Botteling</button>
+                <button type="button" class="filter-tab-btn" data-filter-cat="botteling">Festival Botteling</button>
               </div>
             </div>
             <div class="filter-row" id="time-filter-row" style="margin-top: 0.5rem; display: flex;">
               <span class="filter-label">Tijd:</span>
               <div class="filter-buttons" id="time-filter-buttons">
                 <button type="button" class="filter-tab-btn active" data-filter-time="all">Alles</button>
-                <button type="button" class="filter-tab-btn" data-filter-time="ochtend">Ochtend (tot 13u)</button>
-                <button type="button" class="filter-tab-btn" data-filter-time="middag">Middag (13u - 18u)</button>
-                <button type="button" class="filter-tab-btn" data-filter-time="avond">Avond (vanaf 18u)</button>
+                <button type="button" class="filter-tab-btn" data-filter-time="middag">Middagsessie (13:00 – 17:00)</button>
+                <button type="button" class="filter-tab-btn" data-filter-time="avond">Avondsessie (19:00 – 23:00)</button>
               </div>
             </div>
           </div>
@@ -1035,25 +1028,17 @@ const tickets = await getTickets('amsterdam');
               <button type="button" class="custom-dd-btn" aria-haspopup="listbox" aria-expanded="false">
                 <span class="custom-dd-label-group">
                   <span class="custom-dd-prefix">1. Dag:</span>
-                  <span class="custom-dd-selected-text" id="dd-day-text">Alle Dagen</span>
+                  <span class="custom-dd-selected-text" id="dd-day-text">Alle Tickets (Zaterdag 16 Jan)</span>
                 </span>
                 <svg class="custom-dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="custom-dd-menu" role="listbox">
                 <div class="custom-dd-item active" data-value="all" role="option">
-                  <span>Alle Festivaldagen (Vr, Za, Zo)</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="vrijdag" role="option">
-                  <span>Oktober 2026</span>
+                  <span>Alle Tickets (Zaterdag 16 Jan)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="zaterdag" role="option">
-                  <span>Oktober 2026</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="zondag" role="option">
-                  <span>Oktober 2026</span>
+                  <span>Zaterdag 16 Jan 2027</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
               </div>
@@ -1064,41 +1049,25 @@ const tickets = await getTickets('amsterdam');
               <button type="button" class="custom-dd-btn" aria-haspopup="listbox" aria-expanded="false">
                 <span class="custom-dd-label-group">
                   <span class="custom-dd-prefix">2. Type:</span>
-                  <span class="custom-dd-selected-text" id="dd-cat-text">Alle Tickets & Masterclasses</span>
+                  <span class="custom-dd-selected-text" id="dd-cat-text">Alle Tickets & Extras</span>
                 </span>
                 <svg class="custom-dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="custom-dd-menu" role="listbox">
                 <div class="custom-dd-item active" data-value="all" role="option">
-                  <span>Alle Types (Entree, Masterclasses, etc.)</span>
+                  <span>Alle Types (Entree, Masterclasses, Botteling)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="entree" role="option">
                   <span>Sessie Entree</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
-                <div class="custom-dd-item" data-value="warehouse" role="option">
-                  <span>Warehouse Tastings</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
                 <div class="custom-dd-item" data-value="masterclass" role="option">
-                  <span>Masterclasses</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="tram" role="option">
-                  <span>Whiskytram</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="trail" role="option">
-                  <span>Whiskytrail</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="vatenmaken" role="option">
-                  <span>Workshops</span>
+                  <span>Masterclasses (Zuiderkerk)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="botteling" role="option">
-                  <span>Botteling</span>
+                  <span>Festival Botteling</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
               </div>
@@ -1109,25 +1078,21 @@ const tickets = await getTickets('amsterdam');
               <button type="button" class="custom-dd-btn" aria-haspopup="listbox" aria-expanded="false">
                 <span class="custom-dd-label-group">
                   <span class="custom-dd-prefix">3. Tijd:</span>
-                  <span class="custom-dd-selected-text" id="dd-time-text">Alle Tijdsloten</span>
+                  <span class="custom-dd-selected-text" id="dd-time-text">Alle Sessies</span>
                 </span>
                 <svg class="custom-dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="custom-dd-menu" role="listbox">
                 <div class="custom-dd-item active" data-value="all" role="option">
-                  <span>Alle Tijdsloten (Ochtend, Middag, Avond)</span>
-                  <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </div>
-                <div class="custom-dd-item" data-value="ochtend" role="option">
-                  <span>Ochtend (tot 13:00 uur)</span>
+                  <span>Alle Sessies (Middag & Avond)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="middag" role="option">
-                  <span>Middag (13:00 – 18:00 uur)</span>
+                  <span>Middagsessie (13:00 – 17:00 uur)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="avond" role="option">
-                  <span>Avond (vanaf 18:00 uur)</span>
+                  <span>Avondsessie (19:00 – 23:00 uur)</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
               </div>
@@ -1279,7 +1244,7 @@ const tickets = await getTickets('amsterdam');
 
   /* Timetable Type Filter Buttons */
   .timetable-type-filter {
-    background: rgba(197, 139, 57, 0.08);
+    background: rgba(202, 172, 142, 0.08);
     padding: 0.35rem 0.75rem;
     border-radius: 30px;
     border: 1px solid rgba(140, 110, 70, 0.25);
@@ -2860,7 +2825,7 @@ const tickets = await getTickets('amsterdam');
       </div>
 
       <!-- Day filter notice banner -->
-      <div id="upsell-day-notice" style="display: none; padding: 0.55rem 1.75rem; background: rgba(197, 139, 57, 0.14); border-bottom: 1px dashed rgba(140, 110, 70, 0.35); font-family: var(--font-sans); font-size: 0.82rem; color: #7A551E; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+      <div id="upsell-day-notice" style="display: none; padding: 0.55rem 1.75rem; background: rgba(202, 172, 142, 0.14); border-bottom: 1px dashed rgba(140, 110, 70, 0.35); font-family: var(--font-sans); font-size: 0.82rem; color: #7A551E; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
         <span id="upsell-day-notice-text">Getoond voor uw festivaldag: <strong>Vrijdag</strong></span>
         <button type="button" id="upsell-toggle-days-btn" style="background: none; border: none; color: #8c0223; font-family: var(--font-sans); font-weight: 800; cursor: pointer; text-decoration: underline; font-size: 0.8rem; padding: 0;">
           Toon alle festivaldagen
@@ -3003,7 +2968,7 @@ const tickets = await getTickets('amsterdam');
     width: 110px;
     height: 18px;
     border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(197, 139, 57, 0.55) 0%, transparent 75%);
+    background: radial-gradient(ellipse at center, rgba(202, 172, 142, 0.55) 0%, transparent 75%);
     animation: coinShadowPulse 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
 
@@ -3618,7 +3583,7 @@ const tickets = await getTickets('amsterdam');
   }
   .filter-tab-btn:hover {
     border-color: #caac8e;
-    background-color: rgba(213, 194, 138, 0.1);
+    background-color: rgba(202, 172, 142, 0.1);
   }
   .filter-tab-btn.active {
     background-color: #caac8e;
@@ -3810,7 +3775,7 @@ const tickets = await getTickets('amsterdam');
     color: #FFF;
     font-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(197, 139, 57, 0.4);
+    box-shadow: 0 10px 20px rgba(202, 172, 142, 0.4);
     transition: transform 0.2s;
   }
   .play-button:hover {
@@ -4450,7 +4415,7 @@ const tickets = await getTickets('amsterdam');
   .form-group { margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
   .form-label { font-family: var(--font-sans); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-charcoal); }
   .form-control { background-color: var(--bg-parchment); border: 1px solid var(--border-color-dark); padding: 0.6rem 0.85rem; border-radius: 6px; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-charcoal); transition: all 0.3s; }
-  .form-control:focus { outline: none; border-color: var(--whisky-gold-dark); box-shadow: 0 0 8px rgba(197, 139, 57, 0.15); }
+  .form-control:focus { outline: none; border-color: var(--whisky-gold-dark); box-shadow: 0 0 8px rgba(202, 172, 142, 0.15); }
   .payment-method-section { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); }
   .payment-method-title { display: block; font-family: var(--font-sans); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-charcoal); margin-bottom: 0.5rem; }
   .payment-grids { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
@@ -4635,7 +4600,7 @@ const tickets = await getTickets('amsterdam');
 
   .timeline-card.active {
     border-color: var(--whisky-gold);
-    box-shadow: 0 15px 40px rgba(197, 139, 57, 0.1), var(--shadow-paper);
+    box-shadow: 0 15px 40px rgba(202, 172, 142, 0.1), var(--shadow-paper);
   }
 
   /* Special Highlighted Card for Jubilee */
@@ -4646,7 +4611,7 @@ const tickets = await getTickets('amsterdam');
   }
 
   .timeline-card.highlighted-jubilee:hover {
-    box-shadow: 0 25px 55px rgba(197, 139, 57, 0.25), 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 55px rgba(202, 172, 142, 0.25), 0 10px 30px rgba(0,0,0,0.5);
   }
 
   .timeline-card.highlighted-jubilee .card-title {
