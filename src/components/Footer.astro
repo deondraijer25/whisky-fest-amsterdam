@@ -1,9 +1,9 @@
-﻿---
+---
 // src/components/Footer.astro
-// 1-on-1 original vectors direct from folder: Middel 13, 14, 15
-import Middel13Svg from '../assets/Logo/Logo wit svg/Middel 13.svg?raw'; // Gent
-import Middel14Svg from '../assets/Logo/Logo wit svg/Middel 14.svg?raw'; // Amsterdam
-import Middel15Svg from '../assets/Logo/Logo wit svg/Middel 15.svg?raw'; // Amsterdam
+// 3 City vectors: Amsterdam, Den Haag, Gent
+import LogoWitAmsterdam from '../assets/LogosAll/logo-wit-amsterdam.svg?raw';
+import LogoWitDenHaag from '../assets/LogosAll/logo-wit-denhaag.svg?raw';
+import LogoWitGent from '../assets/LogosAll/logo-wit-gent.svg?raw';
 
 interface Props {
   currentCity?: string;
@@ -25,7 +25,7 @@ const { currentCity = 'amsterdam' } = Astro.props;
     <!-- 1. TOP SECTION: 3 FREESTANDING WHITE LOGOS + CITY TEXT + BEZOEK EVENT BUTTON -->
     <div class="footer-hero-logos-strip">
       
-      <!-- LOGO 1: AMSTERDAM (Middel 14.svg) -->
+      <!-- LOGO 1: AMSTERDAM -->
       <div class="freestanding-logo-item">
         <a 
           href="https://whisky-fest-amsterdam.vercel.app" 
@@ -36,7 +36,7 @@ const { currentCity = 'amsterdam' } = Astro.props;
           aria-label="Whisky Fest Amsterdam"
         >
           <div class="freestanding-svg-wrapper">
-            <Fragment set:html={Middel14Svg} />
+            <Fragment set:html={LogoWitAmsterdam} />
           </div>
         </a>
         <span class="logo-city-title">AMSTERDAM</span>
@@ -50,32 +50,32 @@ const { currentCity = 'amsterdam' } = Astro.props;
         </a>
       </div>
 
-      <!-- LOGO 2: Amsterdam (Middel 15.svg) -->
+      <!-- LOGO 2: DEN HAAG -->
       <div class="freestanding-logo-item">
         <a 
-          href="https://whisky-fest-amsterdam.vercel.app" 
+          href="https://whisky-fest.vercel.app" 
           class="freestanding-logo-link"
-          title="Bezoek Amsterdam Whisky Festival Amsterdam"
-          target={currentCity === 'amsterdam' ? '_self' : '_blank'}
+          title="Bezoek International Whisky Festival Den Haag"
+          target={currentCity === 'denhaag' ? '_self' : '_blank'}
           rel="noopener noreferrer"
-          aria-label="Amsterdam Whisky Festival Amsterdam"
+          aria-label="International Whisky Festival Den Haag"
         >
           <div class="freestanding-svg-wrapper">
-            <Fragment set:html={Middel15Svg} />
+            <Fragment set:html={LogoWitDenHaag} />
           </div>
         </a>
-        <span class="logo-city-title">Amsterdam</span>
+        <span class="logo-city-title">DEN HAAG</span>
         <a 
-          href="https://whisky-fest-amsterdam.vercel.app" 
+          href="https://whisky-fest.vercel.app" 
           class="btn-bezoek-event"
-          target={currentCity === 'amsterdam' ? '_self' : '_blank'}
+          target={currentCity === 'denhaag' ? '_self' : '_blank'}
           rel="noopener noreferrer"
         >
           Bezoek Event &rarr;
         </a>
       </div>
 
-      <!-- LOGO 3: GENT (Middel 13.svg) -->
+      <!-- LOGO 3: GENT -->
       <div class="freestanding-logo-item">
         <a 
           href="https://whisky-fest-gent.vercel.app" 
@@ -86,7 +86,7 @@ const { currentCity = 'amsterdam' } = Astro.props;
           aria-label="Gents Whisky Festival"
         >
           <div class="freestanding-svg-wrapper">
-            <Fragment set:html={Middel13Svg} />
+            <Fragment set:html={LogoWitGent} />
           </div>
         </a>
         <span class="logo-city-title">GENT</span>
