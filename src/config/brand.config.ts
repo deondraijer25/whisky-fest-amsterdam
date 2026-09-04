@@ -57,9 +57,9 @@ export const BRAND: BrandConfig = {
   venue: 'Zuiderkerk Amsterdam',
   venueShort: 'Zuiderkerk',
   foundingYear: 2002,
-  edition: 'Editie 2026',
-  datesText: 'Oktober 2026',
-  datesShort: 'Okt 2026',
+  edition: 'Editie 2027',
+  datesText: 'Zaterdag 16 januari 2027',
+  datesShort: '16 Jan 2027',
   domain: 'https://whisky-fest-amsterdam.vercel.app',
   localPort: 4331,
 
