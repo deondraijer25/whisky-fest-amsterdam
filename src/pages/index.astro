@@ -13,7 +13,7 @@ const tickets = await getTickets('amsterdam');
 
 <Layout 
   title="Home - Premium Vintage-Modern Ontwerp" 
-  description="Bezoek het meest sfeervolle whiskyfestival van Amsterdam in de Zuiderkerk op zaterdag 16 januari 2027. Bestel hier direct uw kaarten."
+  description="Bezoek het meest sfeervolle whiskyfestival van Amsterdam in De Hallen op zaterdag 16 januari 2027. Bestel hier direct uw kaarten."
 >
   <!-- 0. HOMEPAGE 2.5-SECOND COIN-FLIP PRELOADER -->
   <div id="hp-preloader" class="hp-preloader-overlay">
@@ -849,11 +849,11 @@ const tickets = await getTickets('amsterdam');
           <div class="hero-date-line">
             <span class="date-text">Zaterdag 16 Januari 2027</span>
             <span class="date-sep">◆</span>
-            <span class="loc-text">Zuiderkerk Amsterdam</span>
+            <span class="loc-text">De Hallen Amsterdam</span>
           </div>
 
           <p class="tt-hero-subtitle">
-            Van rokerige Islay malts tot intieme masterclasses in de Zuiderkerk. Op zaterdag 16 januari verandert Amsterdam in het bruisende hart van whiskyliefhebbers voor een onvergetelijke festivaleditie.
+            Van rokerige Islay malts tot intieme masterclasses in De Hallen. Op zaterdag 16 januari verandert Amsterdam in het bruisende hart van whiskyliefhebbers voor een onvergetelijke festivaleditie.
           </p>
           <div class="hero-actions" style="align-items: center;">
             <a href="#sessies" class="btn btn-beige">Bestel Tickets</a>
@@ -1056,7 +1056,7 @@ const tickets = await getTickets('amsterdam');
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="masterclass" role="option">
-                  <span>Masterclasses (Zuiderkerk)</span>
+                  <span>Masterclasses</span>
                   <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8c0223" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <div class="custom-dd-item" data-value="botteling" role="option">
@@ -1109,6 +1109,7 @@ const tickets = await getTickets('amsterdam');
                   status={ticket.status}
                   statusText={ticket.statusText}
                   isSoldOut={ticket.isSoldOut}
+                  bookingDisabled={ticket.bookingDisabled}
                   extraMeta={ticket.extra}
                   included={ticket.category === 'entree' ? (
                     ticket.title.toLowerCase().includes('vip') 
@@ -1651,13 +1652,13 @@ const tickets = await getTickets('amsterdam');
         <h2>Een Onvergetelijke Whiskybeleving in het Hart van Amsterdam</h2>
         <div class="vintage-line"></div>
         <p style="font-size: 1.15rem; color: var(--text-charcoal); opacity: 0.8; margin-bottom: 2rem; line-height: 1.6;">
-          Van de eeuwenoude gewelven in de historische Zuiderkerk en intieme masterclasses tot een rijdende proeverij in de Amsterdamse Whiskytram. Ontdek wat het Amsterdam Whisky Festival al 25 jaar zo uniek maakt.
+          De prachtige locatie van De Hallen met 20-25 standhouders. Geniet van honderden whisk(e)y’s en intieme masterclasses.
         </p>
         <a href="#sessies" class="btn btn-gold" style="font-size: 0.95rem; padding: 0.9rem 2.25rem;">Kies uw Sessie &amp; Tickets</a>
       </div>
     </section>
 
-        <!-- 6. PRAKTISCHE INFORMATIE SECTIES (4 PIJLERS) -->
+    <!-- 6. PRAKTISCHE INFORMATIE SECTIES (3 PIJLERS VOOR AMSTERDAM) -->
     <section id="ervaring" class="split-features-section">
       <div class="section-container">
         
@@ -1666,18 +1667,18 @@ const tickets = await getTickets('amsterdam');
           <div class="split-text">
             <span class="tt-tag">Toegang &amp; Sessies</span>
             <h3 class="tt-split-title">Sessietickets: Wat zit er Inbegrepen?</h3>
-            <p class="tt-split-desc">Het festival is opgedeeld in overzichtelijke dagdelen (Vrijdag VIP, Vrijdagavond, Zaterdagmiddag, Zaterdagavond en Zondagmiddag) om een ontspannen proefervaring te garanderen. Bij elk sessieticket ontvangt u bij binnenkomst alles wat u nodig heeft voor een complete festivaldag.</p>
+            <p class="tt-split-desc">Het festival is opgedeeld in overzichtelijke dagdelen (Zaterdagmiddag en Zaterdagavond) om een ontspannen proefervaring te garanderen. Bij elk sessieticket ontvangt u bij binnenkomst alles wat u nodig heeft voor een complete festivaldag.</p>
             <ul class="tt-feature-list">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Inclusief officieel Glencairn proefglas &amp; handige nekhouder</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Inclusief festivalboekje met alle 45+ stands &amp; proefnotities</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Toegang tot honderden gratis proeverijen in de Zuiderkerk</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Inclusief officieel Glencairn proefglas</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Inclusief festivalboekje met alle 20+ stands &amp; proefnotities</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Toegang tot honderden whisk(e)y’s in De Hallen Amsterdam</li>
             </ul>
             <a href="#sessies" class="tt-text-link" style="margin-top: 0.5rem; display: inline-block;">Bekijk alle sessies &amp; tickets &rarr;</a>
           </div>
           <div class="split-visual tilt-slight-right">
             <div class="visual-placeholder vintage-frame">
               <div class="vintage-frame-inner text-center" style="padding: 0; background: var(--bg-paper-card); overflow: hidden;">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-211.jpg" alt="Sessietickets Zuiderkerk Amsterdam" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-4.jpg" alt="Sessietickets De Hallen Amsterdam" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
               </div>
             </div>
           </div>
@@ -1687,63 +1688,39 @@ const tickets = await getTickets('amsterdam');
         <div class="split-layout reverse">
           <div class="split-text">
             <span class="tt-tag">Proeven &amp; Betalen</span>
-            <h3 class="tt-split-title">Het Drams-Systeem: Honderden Gratis Proeverijen</h3>
-            <p class="tt-split-desc">Bij vrijwel alle standhouders op de beursvloer proeft u standaard en premium expressies kosteloos in uw festivalglas. Voor zéér oude, zeldzame of gelimiteerde single casks vragen importeurs een kleine bijdrage in 'drams' (ons festivalgeld: 1 dram = 1 euro). Drams koopt u eenvoudig bij de kassa's en zijn na afloop inwisselbaar.</p>
+            <h3 class="tt-split-title">Het Drams-Systeem: Honderden te proeven Whisk(e)y’s</h3>
+            <p class="tt-split-desc">Bij vrijwel alle standhouders op de beursvloer proeft u standaard één of meerdere whisk(e)y’s gratis. Voor oudere, zeldzame of gelimiteerde whisk(e)y’s vragen importeurs een kleine bijdrage in 'drams' (ons festivalgeld: 1 dram = 1 euro). Drams koopt u eenvoudig bij de kassa's en zijn na afloop inwisselbaar.</p>
             <ul class="tt-feature-list">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Honderden kwaliteitswhisky's van bekende merken gratis te ontdekken</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Exclusieve single casks proeven voor enkele drammunten</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Drammunten zijn na afloop aan de kassa inwisselbaar</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Honderden kwaliteitswhisky's van bekende merken te ontdekken</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Exclusieve single casks proeven voor enkele drams</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Drams zijn na afloop aan de kassa inwisselbaar</li>
             </ul>
             <a href="#sessies" class="tt-text-link" style="margin-top: 0.5rem; display: inline-block;">Bestel uw tickets direct online &rarr;</a>
           </div>
           <div class="split-visual tilt-slight-left">
             <div class="visual-placeholder vintage-frame">
               <div class="vintage-frame-inner text-center" style="padding: 0; background: var(--bg-paper-card); overflow: hidden;">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-158.jpg" alt="Het Drams Systeem Proeverij" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-174.jpg" alt="Het Drams Systeem Proeverij" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Pijler 3: Masterclasses & De Whiskytram -->
+        <!-- Pijler 3: Masterclasses & Beleving -->
         <div class="split-layout">
           <div class="split-text">
             <span class="tt-tag">Verdieping &amp; Beleving</span>
-            <h3 class="tt-split-title">Masterclasses &amp; De Amsterdamse Whiskytram</h3>
-            <p class="tt-split-desc">Wilt u uw kennis verdiepen of genieten van een rijdende proeverij? Volg een intieme masterclass in de Zuiderkerk onder leiding van een Brand Ambassador, of stap in de historische Amsterdamse museumtram voor een sfeervolle rit door de historische binnenstad met bijzondere drams.</p>
+            <h3 class="tt-split-title">Masterclasses &amp; Tastings</h3>
+            <p class="tt-split-desc">Wilt u uw kennis verdiepen? Volg een intieme masterclass in een aparte ruimte met alle geheimen van dat specifieke merk of geniet van de speciale festival botteling.</p>
             <ul class="tt-feature-list">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Masterclasses in de Zuiderkerk: 4 tot 6 zeldzame single malts</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Whiskytram: 3 drams on-the-go met toelichting van een whiskykenner</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Eenvoudig bij te boeken bij uw sessie-entreeticket</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Masterclasses: 4 tot 6 whisky’s – worden later bekend gemaakt</li>
             </ul>
-            <a href="/programma" class="tt-text-link" style="margin-top: 0.5rem; display: inline-block;">Bekijk het masterclass &amp; tram programma &rarr;</a>
+            <a href="/programma" class="tt-text-link" style="margin-top: 0.5rem; display: inline-block;">Bekijk het masterclass programma &rarr;</a>
           </div>
           <div class="split-visual tilt-slight-right">
             <div class="visual-placeholder vintage-frame">
               <div class="vintage-frame-inner text-center" style="padding: 0; background: var(--bg-paper-card); overflow: hidden;">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-190.jpg" alt="Masterclasses en Whiskytram" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pijler 4: Whisky Gidsen & Begeleide Trails -->
-        <div class="split-layout reverse">
-          <div class="split-text">
-            <span class="tt-tag">Persoonlijke Begeleiding</span>
-            <h3 class="tt-split-title">Whisky Gidsen &amp; Begeleide Trails</h3>
-            <p class="tt-split-desc">Wilt u gericht kennismaken met specifieke regio's of zoekt u persoonlijke begeleiding over de beursvloer? Onze gecertificeerde whiskygidsen nemen u in kleine groepjes mee langs geselecteerde stands en delen de fascinerende verhalen achter de distilleerderijen.</p>
-            <ul class="tt-feature-list">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Persoonlijke rondleidingen in kleine, intieme groepen</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Thematische trails: o.a. 'Beginners', 'Rokerige Islay' en 'Cask Finishes'</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--whisky-gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:-2px; margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Directe ontmoetingen met de importeurs en meesterstokers</li>
-            </ul>
-            <a href="/programma?tab=gidsen" class="tt-text-link" style="margin-top: 0.5rem; display: inline-block;">Ontdek onze whiskygidsen &amp; trails &rarr;</a>
-          </div>
-          <div class="split-visual tilt-slight-left">
-            <div class="visual-placeholder vintage-frame">
-              <div class="vintage-frame-inner text-center" style="padding: 0; background: var(--bg-paper-card); overflow: hidden;">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-255.jpg" alt="Whisky Gidsen en Begeleide Trails" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-114.jpg" alt="Masterclasses en Tastings De Hallen" style="width: 100%; height: 320px; object-fit: cover; display: block;" />
               </div>
             </div>
           </div>
@@ -1762,7 +1739,7 @@ const tickets = await getTickets('amsterdam');
           <h2 class="section-title">Het Festival in Beeld</h2>
           <div class="vintage-line" style="margin: 0.5rem auto 1rem;"></div>
           <p class="section-subtitle" style="margin: 0 auto; max-width: 680px;">
-            Een sfeerimpressie van 25 jaar Amsterdam Whisky Festival Amsterdam in de adembenemende Zuiderkerk.
+            Een sfeerimpressie van het Amsterdam Whisky Festival in de sfeervolle locatie van De Hallen.
           </p>
         </div>
 
@@ -1777,104 +1754,104 @@ const tickets = await getTickets('amsterdam');
             <!-- Set A -->
             <div class="marquee-photo-card rotate-neg-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-211.jpg" alt="Zuiderkerk Sfeer" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-105.jpg" alt="Sfeervol De Hallen Amsterdam" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-132.jpg" alt="Exclusieve Drams &amp; Glazen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-114.jpg" alt="Whisky Fest Amsterdam Proefglas" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-190.jpg" alt="Masterclass in de Zuiderkerk" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-27.jpg" alt="Cane & Grain Slijterij Stand" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-61.jpg" alt="Inschenken van een Dram" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-167.jpg" alt="Brand Ambassador Proeverij" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-255.jpg" alt="Bezoekers Genieten Samen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-71.jpg" alt="Genieten aan de Proeftafels" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-223.jpg" alt="Brand Ambassador Uitleg" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-174.jpg" alt="Drams Selectie en Flessen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-13.jpg" alt="Gezelligheid bij de Stands" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-44.jpg" alt="Bezoekers bij de Entree" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-8.jpg" alt="Gotische Gewelven" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-88.jpg" alt="Exclusieve Single Malts" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-207.jpg" alt="Proeven aan de Bar" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-147.jpg" alt="Terras aan het Water bij De Hallen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-158.jpg" alt="Drams Selectie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-182.jpg" alt="Whisky Master &amp; Presentatie" loading="lazy" />
               </div>
             </div>
 
             <!-- Set B (Duplicate for seamless infinite scroll) -->
             <div class="marquee-photo-card rotate-neg-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-211.jpg" alt="Zuiderkerk Sfeer" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-105.jpg" alt="Sfeervol De Hallen Amsterdam" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-132.jpg" alt="Exclusieve Drams &amp; Glazen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-114.jpg" alt="Whisky Fest Amsterdam Proefglas" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-190.jpg" alt="Masterclass in de Zuiderkerk" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-27.jpg" alt="Cane & Grain Slijterij Stand" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-61.jpg" alt="Inschenken van een Dram" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-167.jpg" alt="Brand Ambassador Proeverij" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-255.jpg" alt="Bezoekers Genieten Samen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-71.jpg" alt="Genieten aan de Proeftafels" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-223.jpg" alt="Brand Ambassador Uitleg" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-174.jpg" alt="Drams Selectie en Flessen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-13.jpg" alt="Gezelligheid bij de Stands" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-44.jpg" alt="Bezoekers bij de Entree" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-8.jpg" alt="Gotische Gewelven" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-88.jpg" alt="Exclusieve Single Malts" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-207.jpg" alt="Proeven aan de Bar" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-147.jpg" alt="Terras aan het Water bij De Hallen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-158.jpg" alt="Drams Selectie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-182.jpg" alt="Whisky Master &amp; Presentatie" loading="lazy" />
               </div>
             </div>
           </div>
@@ -1886,104 +1863,104 @@ const tickets = await getTickets('amsterdam');
             <!-- Set A -->
             <div class="marquee-photo-card rotate-pos-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-230.jpg" alt="Schotse Traditie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-196.jpg" alt="Festival Slijterij &amp; Flessen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-131.jpg" alt="Proeftafels &amp; Stands" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-107.jpg" alt="Beursvloer Drukte en Sfeer" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-193.jpg" alt="Intieme Proeverij" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-108.jpg" alt="Glencairn Tastings" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-28.jpg" alt="Proefnotities Maken" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-113.jpg" alt="Whisky Proefsessie" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-248.jpg" alt="Beursvloer Beleving" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-116.jpg" alt="Inschenken van een Dram" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-196.jpg" alt="Festivalslijterij" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-125.jpg" alt="Vrienden Proeven Samen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-79.jpg" alt="Glencairn Proefglas" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-127.jpg" alt="Gezelligheid aan de Bar" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-182.jpg" alt="Brand Presentatie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-137.jpg" alt="Intieme Sfeer De Hallen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-265.jpg" alt="Vrienden Proeven Samen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-141.jpg" alt="Standhouder Verhalen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-46.jpg" alt="Vintage Single Malts" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-161.jpg" alt="Bijzondere Festival Bottelingen" loading="lazy" />
               </div>
             </div>
 
             <!-- Set B (Duplicate for seamless infinite scroll) -->
             <div class="marquee-photo-card rotate-pos-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-230.jpg" alt="Schotse Traditie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-196.jpg" alt="Festival Slijterij &amp; Flessen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-131.jpg" alt="Proeftafels &amp; Stands" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-107.jpg" alt="Beursvloer Drukte en Sfeer" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-193.jpg" alt="Intieme Proeverij" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-108.jpg" alt="Glencairn Tastings" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-28.jpg" alt="Proefnotities Maken" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-113.jpg" alt="Whisky Proefsessie" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-248.jpg" alt="Beursvloer Beleving" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-116.jpg" alt="Inschenken van een Dram" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-196.jpg" alt="Festivalslijterij" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-125.jpg" alt="Vrienden Proeven Samen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-79.jpg" alt="Glencairn Proefglas" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-127.jpg" alt="Gezelligheid aan de Bar" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-182.jpg" alt="Brand Presentatie" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-137.jpg" alt="Intieme Sfeer De Hallen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-pos-1" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-265.jpg" alt="Vrienden Proeven Samen" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-141.jpg" alt="Standhouder Verhalen" loading="lazy" />
               </div>
             </div>
             <div class="marquee-photo-card rotate-neg-2" aria-hidden="true">
               <div class="photo-mask-frame">
-                <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-46.jpg" alt="Vintage Single Malts" loading="lazy" />
+                <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-161.jpg" alt="Bijzondere Festival Bottelingen" loading="lazy" />
               </div>
             </div>
           </div>
@@ -2079,7 +2056,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Naamwijziging & Leiden</h3>
                 <p class="card-desc">De naam Malt verdwijnt omdat er steeds meer andere whisky’s worden gepresenteerd. Verhuizing naar Pieterskerk in Leiden.</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-8.jpg" alt="Pieterskerk Leiden" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-20.jpg" alt="Pieterskerk Leiden" loading="lazy" />
                 </div>
               </div>
 
@@ -2105,7 +2082,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Vaksessie Slijters & Horeca</h3>
                 <p class="card-desc">Introductie van een vaksessie voor slijters en horeca op zondag voorafgaand aan openstelling publiek. (doen we een aantal jaren, maar belangstelling te klein, dus wordt weer opgeheven)</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-223.jpg" alt="Vaksessie" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-39.jpg" alt="Vaksessie" loading="lazy" />
                 </div>
               </div>
 
@@ -2118,7 +2095,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Whisky Awards</h3>
                 <p class="card-desc">Introductie Whisky Awards</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-132.jpg" alt="Whisky Awards" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-46.jpg" alt="Whisky Awards" loading="lazy" />
                 </div>
               </div>
 
@@ -2129,7 +2106,7 @@ const tickets = await getTickets('amsterdam');
                   <span class="card-num">08</span>
                 </div>
                 <h3 class="card-title">Terug in Amsterdam & Whisky Tram</h3>
-                <p class="card-desc">Terug naar de Zuiderkerk in Amsterdam (hier zitten we nog steeds). Introductie: Whisky Tram (Dram in de Tram).</p>
+                <p class="card-desc">Terug naar de Zuiderkerk in Amsterdam. Introductie: Whisky Tram (Dram in de Tram).</p>
                 <div class="card-img-frame">
                   <img src="/timeline_2018_tram.png" alt="Whisky Tram" loading="lazy" />
                 </div>
@@ -2144,7 +2121,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Introductie Slijterij</h3>
                 <p class="card-desc">Introductie Slijterij</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-196.jpg" alt="Introductie Slijterij" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-54.jpg" alt="Introductie Slijterij" loading="lazy" />
                 </div>
               </div>
 
@@ -2157,7 +2134,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Tasting For Women Only</h3>
                 <p class="card-desc">Eerste Whisky Tasting For Women Only</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-265.jpg" alt="Tasting For Women Only" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-58.jpg" alt="Tasting For Women Only" loading="lazy" />
                 </div>
               </div>
 
@@ -2170,7 +2147,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Geannuleerd wegens Covid</h3>
                 <p class="card-desc">Geannuleerd wegens Covid</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-79.jpg" alt="Geannuleerd wegens Covid" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-62.jpg" alt="Geannuleerd wegens Covid" loading="lazy" />
                 </div>
               </div>
 
@@ -2183,7 +2160,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Geannuleerd wegens Covid</h3>
                 <p class="card-desc">Geannuleerd wegens Covid</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/InternationalWhiskyFestival-MilouvanderWillPhotography-46.jpg" alt="Geannuleerd wegens Covid" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-74.jpg" alt="Geannuleerd wegens Covid" loading="lazy" />
                 </div>
               </div>
 
@@ -2196,7 +2173,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Toren-tasting</h3>
                 <p class="card-desc">Introductie van de Toren-tasting: Tasting in de Haagsche Toren. Eerst een rondleiding, dram op de top en dan afdalen voor een bijzondere tasting.</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-211.jpg" alt="Toren-tasting" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-77.jpg" alt="Toren-tasting" loading="lazy" />
                 </div>
               </div>
 
@@ -2209,7 +2186,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Buitenterrein</h3>
                 <p class="card-desc">Introductie van het buitenterrein met foodtruck en lucht-ruimte.</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-13.jpg" alt="Buitenterrein" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-78.jpg" alt="Buitenterrein" loading="lazy" />
                 </div>
               </div>
 
@@ -2222,7 +2199,7 @@ const tickets = await getTickets('amsterdam');
                 <h3 class="card-title">Amsterdam & Vatenmaken</h3>
                 <p class="card-desc">Oprichting WhiskyFest Amsterdam. Introductie van de Vatenmaken workshop op het buitenterrein. Mini-tasting en mini-workshop over hoe je vaten maakt, maar ook wat de invloed van het hout op de whisky is. Echt informatief over het whisky maakproces.</p>
                 <div class="card-img-frame">
-                  <img src="/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-230.jpg" alt="Amsterdam & Vatenmaken" loading="lazy" />
+                  <img src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-83.jpg" alt="Amsterdam & Vatenmaken" loading="lazy" />
                 </div>
               </div>
 
@@ -2319,33 +2296,27 @@ const tickets = await getTickets('amsterdam');
         <div class="split-visual tilt-slight-right">
           <div class="video-thumbnail-card vintage-frame">
             <div class="vintage-frame-inner" style="background: var(--text-charcoal); padding: 0; position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 16/9;">
-              <video 
-                id="aftermovie-video"
-                src="/Video/hero_loop.mp4"
-                poster="/aftermovie_poster.jpg"
-                preload="none"
-                playsinline
+              <img 
+                src="/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-105.jpg" 
+                alt="Sfeerimpressie Amsterdam Whisky Festival De Hallen" 
+                loading="lazy"
                 style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px;"
-              ></video>
-              <div id="video-overlay" class="video-overlay-cover text-center" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28, 25, 23, 0.25) 0%, rgba(28, 25, 23, 0.65) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; z-index: 10;">
-                <div class="play-button" id="aftermovie-play-btn">▶</div>
-                <p style="color: #FFF; font-family: var(--font-sans); letter-spacing:0.12em; margin-top:1.25rem; text-transform:uppercase; font-size:0.85rem; font-weight:bold; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Bekijk Official Aftermovie 2025</p>
-              </div>
+              />
             </div>
           </div>
         </div>
 
         <div class="split-text">
           <span class="tt-tag">Wat bezoekers zeggen</span>
-          <h3 class="testimonial-quote">"Dit festival is echt van een ander niveau. De locatie is adembenemend en het aanbod aan unieke masterclasses is enorm."</h3>
-          <p class="testimonial-author">— Jeroen van den Berg, Bezoeker sinds 2012</p>
+          <h3 class="testimonial-quote">"Dit festival is echt van een ander niveau. De sfeer in De Hallen is geweldig en het aanbod aan unieke whisky's en masterclasses is fantastisch."</h3>
+          <p class="testimonial-author">— Jeroen van den Berg, Whiskyliefhebber</p>
           <div class="review-stars">★★★★★</div>
         </div>
 
       </div>
     </section>
 
-        <!-- 10. VEELGESTELDE VRAGEN (FAQ ACCORDION) -->
+    <!-- 10. VEELGESTELDE VRAGEN (FAQ ACCORDION) -->
     <section id="faq" class="faq-accordion-section">
       <div class="section-container">
         
@@ -2365,17 +2336,17 @@ const tickets = await getTickets('amsterdam');
               <span class="faq-icon-cross">+</span>
             </summary>
             <div class="faq-answer">
-              <p>Bij ieder sessie-entreeticket is inbegrepen: toegang tot de beursvloer in de Zuiderkerk, uw officiële Glencairn proefglas, een handige nekhouder voor uw glas, het festivalboekje met plattegrond en standinformatie, en onbeperkt gratis water bij de waterpunten.</p>
+              <p>Bij ieder sessie-entreeticket is inbegrepen: toegang tot de beursvloer in De Hallen, uw officiële Glencairn proefglas, het festivalboekje met plattegrond en standinformatie, onbeperkt gratis water bij de waterpunten en gratis stokbroodjes om smaak te neutraliseren.</p>
             </div>
           </details>
 
           <details class="faq-item" name="whisky-faq">
             <summary class="faq-summary">
-              <span class="faq-q-text">Kan ik een masterclass of whiskytram boeken zonder entreeticket?</span>
+              <span class="faq-q-text">Kan ik een masterclass boeken zonder entreeticket?</span>
               <span class="faq-icon-cross">+</span>
             </summary>
             <div class="faq-answer">
-              <p>Voor masterclasses in de Zuiderkerk, warehouse tastings en specials heeft u altijd een geldig entreeticket nodig voor de bijbehorende sessie (middag- of avondsessie).</p>
+              <p>Nee, een masterclass is enkel te bezoeken in combinatie met een entreeticket voor de juiste sessie.</p>
             </div>
           </details>
 
@@ -2385,17 +2356,17 @@ const tickets = await getTickets('amsterdam');
               <span class="faq-icon-cross">+</span>
             </summary>
             <div class="faq-answer">
-              <p>Bij vrijwel alle standhouders kunt u honderden standaard en premium expressies kosteloos proeven. Voor zeer zeldzame, oude of gelimiteerde single casks vragen standhouders 1 of enkele drammunten (verkrijgbaar bij de festival infostands en kassa's).</p>
+              <p>Bij vrijwel alle standhouders kunt u standaard één of enkele whisk(e)y’s gratis proeven. Voor zeldzame, oudere of gelimiteerde single casks vragen standhouders 1 of enkele drams (verkrijgbaar bij de festival infostands en kassa's). Drams kunnen met contant geld worden aangekocht én met de pin, bij de informatie-stand.</p>
             </div>
           </details>
 
           <details class="faq-item" name="whisky-faq">
             <summary class="faq-summary">
-              <span class="faq-q-text">Hoe bereik ik de Zuiderkerk met het openbaar vervoer?</span>
+              <span class="faq-q-text">Hoe bereik ik De Hallen met het openbaar vervoer?</span>
               <span class="faq-icon-cross">+</span>
             </summary>
             <div class="faq-answer">
-              <p>De Zuiderkerk bevindt zich in het hart van Amsterdam aan het Rond 16. Vanaf Amsterdam Centraal of Amsterdam HS reist u in enkele minuten met tram 2, 3, 4 of 6 (Halte Zuiderkerk). Te voet is het circa 12 minuten wandelen vanaf het station.</p>
+              <p>De Hallen bevindt zich aan de Hannie Dankbaarpassage 47 in Amsterdam Oud-West. Vanaf Amsterdam Centraal reist u in circa 15 minuten met tram 17 (uitstappen bij halte Ten Katemarkt) of tram 7 (halte Bilderdijkstraat). Vanaf de halte loopt u in 2 minuten De Hallen binnen.</p>
             </div>
           </details>
 
@@ -2421,11 +2392,11 @@ const tickets = await getTickets('amsterdam');
 
           <details class="faq-item" name="whisky-faq">
             <summary class="faq-summary">
-              <span class="faq-q-text">Is er catering en eten aanwezig in de kerk?</span>
+              <span class="faq-q-text">Is er catering aanwezig op het festival?</span>
               <span class="faq-icon-cross">+</span>
             </summary>
             <div class="faq-answer">
-              <p>Jazeker, er is een selectie van ambachtelijke foodstands aanwezig met o.a. Schotse haggis, verse oesters, kwaliteitskazen, charcuterie en warme gerechten om een goede bodem te leggen tijdens de proeverijen.</p>
+              <p>Jazeker, er is een selectie van ambachtelijke foodstands aanwezig met o.a. broodjes, warme snacks, worsten en warme gerechten om een goede bodem te leggen voor het proeven. U kunt natuurlijk ook genieten van de food hallen die op loopafstand zitten.</p>
             </div>
           </details>
 
@@ -2447,7 +2418,7 @@ const tickets = await getTickets('amsterdam');
             <h4 class="fcc-title">Staat uw vraag er niet tussen?</h4>
             <p class="fcc-desc">Onze festivalorganisatie helpt u graag verder met vragen over uw boeking of programma.</p>
           </div>
-          <a href="mailto:info@whiskyfestival.nl" class="btn btn-gold fcc-btn">Contact opnemen</a>
+          <a href="mailto:info@whiskyfest.nl" class="btn btn-gold fcc-btn">Contact opnemen</a>
         </div>
 
       </div>
@@ -2578,31 +2549,6 @@ const tickets = await getTickets('amsterdam');
                 </div>
                 <span id="promo-status-msg" style="display: none; font-size: 0.75rem; margin-top: 4px; font-weight: 600;"></span>
               </div>
-
-              <div class="payment-method-section" style="margin-top: 0.5rem; padding-top: 0.5rem;">
-                <span class="payment-method-title">Betaalmethode</span>
-                <div class="payment-grids">
-                  <label class="pay-method-card active">
-                    <input type="radio" name="payment-method" value="ideal" checked />
-                    <span class="pay-logo">iDEAL</span>
-                  </label>
-                  <label class="pay-method-card">
-                    <input type="radio" name="payment-method" value="bancontact" />
-                    <span class="pay-logo">Bancontact</span>
-                  </label>
-                </div>
-
-                <div class="form-group bank-select-group" id="bank-group" style="margin-bottom: 0;">
-                  <label for="bank-select" class="form-label">Selecteer uw bank</label>
-                  <select id="bank-select" class="form-control">
-                    <option value="rabobank">Rabobank</option>
-                    <option value="ing">ING</option>
-                    <option value="abnamro">ABN AMRO</option>
-                    <option value="sns">SNS Bank</option>
-                    <option value="bunq">bunq</option>
-                  </select>
-                </div>
-              </div>
             </div>
 
             <!-- Right Column: Summary & Submit -->
@@ -2670,7 +2616,7 @@ const tickets = await getTickets('amsterdam');
             <div class="ticket-summary-box">
               <div class="summary-item">
                 <span>Reserveringsnummer:</span>
-                <strong>#WF-2026-98741</strong>
+                <strong id="receipt-res-number">#WF-2026-98741</strong>
               </div>
               <div class="summary-item">
                 <span>E-mailadres:</span>
@@ -2683,7 +2629,7 @@ const tickets = await getTickets('amsterdam');
               </div>
             </div>
             <p class="ticket-delivery-notice">
-              De officiële E-tickets zijn naar uw e-mailadres verzonden. Neem uw geprinte ticket of mobiele barcode mee naar de ingang van de Zuiderkerk.
+              De officiële E-tickets zijn naar uw e-mailadres verzonden. Neem uw geprinte ticket of mobiele barcode mee naar de ingang van De Hallen Amsterdam.
             </p>
  
             <!-- Mijn Account Banner -->
@@ -2810,7 +2756,7 @@ const tickets = await getTickets('amsterdam');
         <div>
           <span style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #caac8e; display: block; margin-bottom: 0.3rem;">FESTIVAL ADD-ONS &amp; SPECIALS</span>
           <h3 style="font-family: var(--font-sans, sans-serif); font-size: 1.45rem; font-weight: 800; color: var(--text-charcoal, #1E1C1A); margin: 0; line-height: 1.2; letter-spacing: -0.01em;">Maak uw Festivalbeleving Compleet</h3>
-          <p style="font-family: var(--font-sans); font-size: 0.88rem; color: var(--text-muted, #665C54); margin: 0.35rem 0 0; line-height: 1.4;">Voeg optioneel nog een exclusieve Masterclass, Whiskytram, Trail of Workshop toe:</p>
+          <p style="font-family: var(--font-sans); font-size: 0.88rem; color: var(--text-muted, #665C54); margin: 0.35rem 0 0; line-height: 1.4;">Voeg optioneel nog een exclusieve Masterclass of Festival Botteling toe:</p>
         </div>
         <button type="button" id="addon-upsell-close" style="background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(140, 110, 70, 0.4); color: var(--text-charcoal); cursor: pointer; padding: 0.4rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" aria-label="Sluiten">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="18" x2="18" y2="18"></line></svg>
@@ -2828,11 +2774,7 @@ const tickets = await getTickets('amsterdam');
       <!-- Category Filter Pills inside Modal -->
       <div class="upsell-modal-filters" style="display: flex; gap: 0.4rem; padding: 0.75rem 1.75rem; background: var(--bg-parchment, #F3ECE0); border-bottom: 1px solid rgba(140, 110, 70, 0.2); overflow-x: auto; flex-wrap: wrap;">
         <button type="button" class="upsell-filter-btn active" data-upsell-cat="all" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid #8c0223; background: #8c0223; color: #FFFFFF; cursor: pointer; transition: all 0.2s;">Alles</button>
-        <button type="button" class="upsell-filter-btn" data-upsell-cat="warehouse" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Warehouse</button>
         <button type="button" class="upsell-filter-btn" data-upsell-cat="masterclass" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Masterclasses</button>
-        <button type="button" class="upsell-filter-btn" data-upsell-cat="tram" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Whiskytram</button>
-        <button type="button" class="upsell-filter-btn" data-upsell-cat="trail" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Whiskytrail</button>
-        <button type="button" class="upsell-filter-btn" data-upsell-cat="vatenmaken" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Workshops</button>
         <button type="button" class="upsell-filter-btn" data-upsell-cat="botteling" style="padding: 0.35rem 0.85rem; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; border-radius: 20px; border: 1px solid rgba(140, 110, 70, 0.3); background: transparent; color: var(--text-charcoal); cursor: pointer; transition: all 0.2s;">Botteling</button>
       </div>
 
@@ -5828,24 +5770,8 @@ const tickets = await getTickets('amsterdam');
     });
   }
 
-  const payCards = document.querySelectorAll(".pay-method-card");
-  const bankGroup = document.getElementById("bank-group");
-  payCards.forEach(card => {
-    const radio = card.querySelector('input[type="radio"]') as HTMLInputElement;
-    card.addEventListener("click", () => {
-      payCards.forEach(c => c.classList.remove("active"));
-      card.classList.add("active");
-      if (radio) {
-        radio.checked = true;
-        if (bankGroup) {
-          bankGroup.style.display = radio.value === "ideal" ? "flex" : "none";
-        }
-      }
-    });
-  });
-
   if (mockPaymentForm) {
-    mockPaymentForm.addEventListener("submit", (e) => {
+    mockPaymentForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const emailInput = document.getElementById("cust-email") as HTMLInputElement;
       const email = emailInput ? emailInput.value : "deondraijer@gmail.com";
@@ -5856,6 +5782,80 @@ const tickets = await getTickets('amsterdam');
       
       if (modalStep1) modalStep1.style.display = "none";
       if (modalStep2) modalStep2.style.display = "block";
+
+      let orderList: string[] = [];
+      let itemsOrdered: any[] = [];
+      let resPrefix = "WF";
+
+      if (activePromoCode.startsWith("WS-") || activePromoCode === "IWS") {
+        resPrefix = "WS";
+      }
+
+      Object.keys(cart).forEach(id => {
+        const item = cart[id];
+        if (item && item.qty > 0) {
+          let itemDisplayTitle = item.title;
+          if (item.category === "tram" && item.timeslot) {
+            itemDisplayTitle = `${item.title} (${item.timeslot.split(' - ')[1] || item.timeslot})`;
+          } else if (item.category === "botteling" && item.delivery) {
+            const method = item.delivery === "shipping" ? "Verzenden" : "Ophalen";
+            itemDisplayTitle = `${item.title} [${method}]`;
+          }
+          
+          orderList.push(`${itemDisplayTitle} (${item.qty}x)`);
+          itemsOrdered.push({
+            id: id,
+            title: item.title,
+            qty: item.qty,
+            price: item.price,
+            category: item.category,
+            timeslot: item.timeslot || "",
+            delivery: item.delivery || ""
+          });
+        }
+      });
+
+      // Real Whiskytix Backend Call (End-to-End Loop)
+      try {
+        const response = await fetch("https://whiskytix-r1qq.vercel.app/api/checkout/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            festivalId: "amsterdam",
+            customerName: name,
+            customerEmail: email,
+            customerPhone: phone,
+            items: itemsOrdered,
+            discountCents: Math.round(promoDiscount * 100),
+            returnUrl: window.location.origin + window.location.pathname
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.checkoutUrl) {
+            // Save pending order info to localStorage
+            const pendingOrderData = {
+              name: name,
+              email: email,
+              phone: phone,
+              items: itemsOrdered,
+              isMember: resPrefix === "WS",
+              resNumber: data.orderNumber || `#${resPrefix}-2026-PENDING`,
+              discountApplied: promoDiscount,
+              totalPrice: recalcModalTotal()
+            };
+            localStorage.setItem('wf_last_order', JSON.stringify(pendingOrderData));
+            
+            // Redirect to Mollie checkout or local Mollie sandbox simulator!
+            const targetUrl = data.checkoutUrl.startsWith('/') ? `https://whiskytix-r1qq.vercel.app${data.checkoutUrl}` : data.checkoutUrl;
+            window.location.href = targetUrl;
+            return;
+          }
+        }
+      } catch (backendErr) {
+        console.warn("Whiskytix backend connectie overgeslagen (fallback geactiveerd):", backendErr);
+      }
       
       setTimeout(() => {
         try {
@@ -6259,7 +6259,7 @@ const tickets = await getTickets('amsterdam');
     "subtitle": "Basis Nosing & Tasting voor Beginners",
     "price": "€ 7,50",
     "duration": "40 minuten",
-    "location": "Zuiderkerk - Masterclass Zaal",
+    "location": "De Hallen - Masterclass Zaal",
     "ambassador": {
       "name": "Valentijn Klop",
       "title": "Certified Whisky Educator & Sommelier",
@@ -6277,7 +6277,7 @@ const tickets = await getTickets('amsterdam');
     "subtitle": "Exclusieve Sherry Cask Single Malts",
     "price": "€ 77,50",
     "duration": "60 minuten",
-    "location": "Zuiderkerk Amsterdam",
+    "location": "De Hallen Amsterdam",
     "ambassador": {
       "name": "Gerard Spaans",
       "title": "Master of Malt & Senior Brand Ambassador",
@@ -6290,7 +6290,7 @@ const tickets = await getTickets('amsterdam');
       "The Macallan Rare Cask Release 2025/2026",
       "Secret Distillery Cask Sample (Exclusive)"
     ],
-    "description": "Een ongeëvenaarde proeverij van 's werelds meest begeerde distilleerderij in de historische Zuiderkerk."
+    "description": "Een ongeëvenaarde proeverij van 's werelds meest begeerde distilleerderij in De Hallen Amsterdam."
   },
   {
     "id": "session-mc-highland-park",
@@ -6298,7 +6298,7 @@ const tickets = await getTickets('amsterdam');
     "subtitle": "Heidehoning & Subtiele Turf",
     "price": "€ 22,50",
     "duration": "45 minuten",
-    "location": "Zuiderkerk - Masterclass Zaal",
+    "location": "De Hallen - Masterclass Zaal",
     "ambassador": {
       "name": "Martin Markvardsen",
       "title": "Global Brand Ambassador Highland Park",
@@ -6318,7 +6318,7 @@ const tickets = await getTickets('amsterdam');
     "subtitle": "Speyside Icons & Ambachtelijk Kuiperijwerk",
     "price": "€ 25,00",
     "duration": "45 minuten",
-    "location": "Zuiderkerk - Masterclass Zaal",
+    "location": "De Hallen - Masterclass Zaal",
     "ambassador": {
       "name": "Tony van Rooijen",
       "title": "William Grant & Sons Ambassador",
@@ -6447,7 +6447,7 @@ const tickets = await getTickets('amsterdam');
               <strong style="font-size: 0.95rem; color: #171614; line-height: 1.25;">${item.title}</strong>
             </div>
             <span style="font-size: 0.8rem; color: #665C54; display: block;">
-              ${item.date ? item.date + ' • ' : ''}${item.time ? item.time + ' • ' : ''}${item.location || 'Zuiderkerk Amsterdam'}
+              ${item.date ? item.date + ' • ' : ''}${item.time ? item.time + ' • ' : ''}${item.location || 'De Hallen Amsterdam'}
             </span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0;">
@@ -6456,6 +6456,8 @@ const tickets = await getTickets('amsterdam');
             </strong>
             ${isSoldOut ? `
               <span style="font-size: 0.75rem; font-weight: 800; color: #70011c; padding: 0.45rem 0.75rem; background: rgba(112, 1, 28, 0.1); border-radius: 4px; border: 1px dashed #70011c;">UITVERKOCHT</span>
+            ` : item.bookingDisabled ? `
+              <span style="font-size: 0.75rem; font-weight: 800; color: #8A6831; padding: 0.45rem 0.75rem; background: rgba(140, 110, 70, 0.12); border-radius: 4px; border: 1px dashed #caac8e; text-transform: uppercase;">Binnenkort bekend</span>
             ` : isAdded ? `
               <div class="upsell-stepper" style="display: inline-flex; align-items: center; background: rgba(140, 2, 35, 0.08); border: 1.5px solid #8c0223; border-radius: 6px; padding: 2px; gap: 2px; user-select: none;">
                 <button 
@@ -6779,7 +6781,7 @@ const tickets = await getTickets('amsterdam');
               <strong style="font-size: 0.94rem; color: #171614; line-height: 1.25;">${item.title}</strong>
             </div>
             <span style="font-size: 0.78rem; color: #665C54; display: block;">
-              ${item.date ? item.date + ' • ' : ''}${item.time ? item.time + ' • ' : ''}${item.location || 'Zuiderkerk'}
+              ${item.date ? item.date + ' • ' : ''}${item.time ? item.time + ' • ' : ''}${item.location || 'De Hallen Amsterdam'}
             </span>
           </div>
           <div style="display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 0.35rem; flex-shrink: 0;">
@@ -7130,7 +7132,7 @@ const tickets = await getTickets('amsterdam');
     let tag = 'FESTIVAL ONDERDEEL';
     let title = domTitle;
     let subtitle = item ? `${item.date} • ${item.time}` : 'Exclusieve festivalbeleving';
-    let location = (item && item.location) || 'Zuiderkerk Amsterdam';
+    let location = (item && item.location) || 'De Hallen Amsterdam';
     let duration = '45 minuten';
     let description = (item && item.extra) || 'Ervaar een uniek festivalonderdeel tijdens het Amsterdam Whisky Festival Amsterdam.';
     let ambName = 'Amsterdam Whisky Festival';
@@ -7147,7 +7149,7 @@ const tickets = await getTickets('amsterdam');
       tag = 'VIP FESTIVAL SESSIE';
       title = item?.title || 'VIP Sessie - Vrijdagmiddag';
       subtitle = `${item?.date || 'Oktober 2026'} • ${item?.time || '13:00 – 17:00 uur'}`;
-      location = 'Zuiderkerk Amsterdam';
+      location = 'De Hallen Amsterdam';
       duration = '4 uur exclusieve festivaltoegang';
       descHeading = 'Over het VIP Arrangement';
       description = 'De ultieme festivalbeleving voor de echte whiskyliefhebber. Geniet van 4 uur lang ongestoord proeven, vroege toegang vóór de reguliere opening, toegang tot exclusieve VIP masterclasses en verwennerij met luxe hapjes.';
@@ -7158,7 +7160,7 @@ const tickets = await getTickets('amsterdam');
       lineup = [
         '12 gratis festival proefdrams (t.w.v. € 12,00)',
         'Officieel Glencairn festival proefglas',
-        'Toegang tot alle exclusieve VIP Masterclasses in de kerk',
+        'Toegang tot alle exclusieve VIP Masterclasses',
         'Luxe hapjes-vouchers (worsten- & bitterballenplateau)',
         'Officieel festivalboekje met beursplattegrond en alle standhouders'
       ];
@@ -7166,13 +7168,13 @@ const tickets = await getTickets('amsterdam');
       tag = 'REGULIERE FESTIVAL SESSIE';
       title = item?.title || 'Reguliere Festival Entree';
       subtitle = `${item?.date || 'Festivaldag 2026'} • ${item?.time || '4 uur toegang'}`;
-      location = 'Zuiderkerk Amsterdam';
+      location = 'De Hallen Amsterdam';
       duration = '4 uur festivaltoegang';
       descHeading = 'Over deze Festivalsessie';
-      description = 'Beleef de magie van het meest toonaangevende whiskyfestival van Nederland in de historische Zuiderkerk van Amsterdam. Ontdek meer dan 40 standhouders en honderden verschillende Schotse single malts, wereldwhisky’s en Nederlandse distilleerderijen.';
+      description = 'Beleef de magie van het meest toonaangevende whiskyfestival van Nederland in De Hallen van Amsterdam. Ontdek meer dan 20-25 standhouders en honderden verschillende Schotse single malts, wereldwhisky’s en Nederlandse distilleerderijen.';
       ambName = 'Amsterdam Whisky Festival Team';
       ambTitle = 'Festival Host';
-      ambBio = 'Het officiële festivalteam staat klaar om u te verwelkomen in de historische ambiance van de Zuiderkerk.';
+      ambBio = 'Het officiële festivalteam staat klaar om u te verwelkomen in de unieke ambiance van De Hallen Amsterdam.';
       lineupHeading = 'Wat is inbegrepen bij uw entree:';
       lineup = [
         'Officieel Glencairn festival proefglas',
@@ -7182,8 +7184,8 @@ const tickets = await getTickets('amsterdam');
       ];
     } else if (domCategory === 'warehouse') {
       tag = 'WAREHOUSE TASTING';
-      subtitle = `${item?.date || ''} • Kapel (Zuiderkerk)`;
-      location = 'Kapel (Zuiderkerk Amsterdam)';
+      subtitle = `${item?.date || ''} • De Hallen`;
+      location = 'De Hallen Amsterdam';
       duration = '30 minuten';
       descHeading = 'Over deze Warehouse Tasting';
       description = `Exclusieve Warehouse Tasting: ${item?.title || ''}. Proef unieke vatmonsters rechtstreeks uit de opslag onder deskundige toelichting.`;
@@ -7247,7 +7249,7 @@ const tickets = await getTickets('amsterdam');
     } else if (domCategory === 'botteling') {
       tag = 'FESTIVAL BOTTELING';
       subtitle = 'Gelimiteerde Cask Strength Single Cask';
-      location = 'Ophalen op het festival of thuisbezorgd';
+      location = 'Alleen afhalen op het festival';
       duration = 'Festival Cask Exclusive';
       descHeading = 'Over deze Festival Botteling';
       description = `Officiële exclusieve botteling voor het Amsterdam Whisky Festival 2027. ${item?.title || ''}`;
@@ -7262,7 +7264,7 @@ const tickets = await getTickets('amsterdam');
     } else if (domCategory === 'masterclass') {
       tag = 'SPECIAL MASTERCLASS';
       subtitle = `${item?.date || ''} • ${item?.time || ''}`;
-      location = item?.location || 'Zuiderkerk (Masterclass Zaal)';
+      location = item?.location || 'De Hallen (Masterclass Zaal)';
       duration = '45 minuten';
       descHeading = 'Over deze Masterclass';
       description = `Exclusieve masterclass: ${item?.title || ''}. ${item?.extra ? 'Extra toelichting: ' + item.extra : ''}`;
@@ -7393,5 +7395,105 @@ const tickets = await getTickets('amsterdam');
       document.body.style.overflow = '';
     });
   }
+
+  // 11. Handle Payment Return & Show Native Success Modal
+  (async function handleOrderReturn() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderNumber = urlParams.get('orderNumber') || urlParams.get('order') || urlParams.get('order_success');
+    const paymentStatus = urlParams.get('status');
+
+    if (!orderNumber) return;
+
+    // Reset shopping cart upon confirmed order
+    Object.keys(cart).forEach(id => {
+      if (cart[id]) cart[id].qty = 0;
+      const qEl = document.getElementById(`qty-${id}`);
+      if (qEl) qEl.textContent = "0";
+      const card = document.querySelector(`.ticket-stub[data-ticket-id="${id}"]`);
+      if (card) {
+        const qtyVal = card.querySelector('.qty-val');
+        if (qtyVal) qtyVal.textContent = "0";
+        card.classList.remove('selected');
+      }
+    });
+    localStorage.removeItem("whiskyfest_cart");
+    updateShop();
+
+    // Clean URL query parameters smoothly without reloading
+    const cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState({}, document.title, cleanUrl);
+
+    // Try fetching live order details from Whiskytix backend
+    let orderData: any = null;
+    try {
+      const res = await fetch(`https://whiskytix-r1qq.vercel.app/api/checkout/order/${encodeURIComponent(orderNumber)}`);
+      if (res.ok) {
+        const json = await res.json();
+        if (json.order) orderData = json.order;
+      }
+    } catch (err) {
+      console.warn("Kon order niet direct ophalen van backend, gebruik localStorage fallback:", err);
+    }
+
+    if (!orderData) {
+      try {
+        const saved = localStorage.getItem('wf_last_order');
+        if (saved) orderData = JSON.parse(saved);
+      } catch (e) {}
+    }
+
+    // Populate Native Success Modal
+    const successResNumEl = document.getElementById("receipt-res-number") || document.querySelector("#modal-step-3 .ticket-summary-box strong");
+    if (successResNumEl) {
+      successResNumEl.textContent = orderNumber;
+    }
+
+    const emailDisplay = (orderData && (orderData.customerEmail || orderData.email)) || "uw e-mailadres";
+    if (receiptSentEmail) {
+      receiptSentEmail.textContent = emailDisplay;
+    }
+
+    if (receiptTicketsList) {
+      receiptTicketsList.innerHTML = "";
+
+      const itemsToRender = (orderData && orderData.items) || [];
+      if (itemsToRender.length > 0) {
+        itemsToRender.forEach((item: any) => {
+          let spec = "";
+          const qty = item.quantity || item.qty || 1;
+          const price = item.unitPriceCents ? (item.unitPriceCents / 100) : (item.price || 0);
+
+          if (item.category === "entree") {
+            spec = "Inclusief proefglas & festivalgids";
+          } else if (item.category === "tram") {
+            spec = item.timeslot ? `Afvaart: ${item.timeslot}` : "Historische rondvaart Amsterdam";
+          } else if (item.category === "masterclass") {
+            spec = item.timeslot ? `Tijdslot: ${item.timeslot}` : "Exclusieve proeverij";
+          } else if (item.category === "botteling") {
+            spec = item.delivery === "shipping" ? "Verzending per post (+ €12,50)" : "Afhalen bij Infodesk (Stand O)";
+          }
+
+          const row = document.createElement("div");
+          row.className = "receipt-ticket-row";
+          row.setAttribute("style", "display: flex !important; justify-content: space-between !important; align-items: center !important; gap: 0.75rem !important; padding: 0.55rem 0.75rem !important; background: #FFFFFF !important; border: 1px solid rgba(140, 110, 70, 0.2) !important; border-radius: 6px !important; margin-bottom: 0.4rem !important;");
+          row.innerHTML = `
+            <div style="display: flex !important; flex-direction: column !important; gap: 0.15rem !important; flex: 1 !important; min-width: 0 !important; text-align: left !important;">
+              <span style="font-weight: 700 !important; color: #171614 !important; font-size: 0.84rem !important; line-height: 1.25 !important; display: block !important;">${qty} &times; ${item.title}</span>
+              ${spec ? `<span style="font-size: 0.74rem !important; color: #665C54 !important; line-height: 1.2 !important; display: block !important;">${spec}</span>` : ''}
+            </div>
+            <span style="font-weight: 800 !important; color: #8c0223 !important; font-size: 0.92rem !important; font-family: var(--font-sans, sans-serif) !important; white-space: nowrap !important; text-align: right !important; margin-left: auto !important;">&euro;${(price * qty).toFixed(2).replace('.', ',')}</span>
+          `;
+          receiptTicketsList.appendChild(row);
+        });
+      }
+    }
+
+    // Display the success modal popup
+    if (modalOverlay) modalOverlay.style.display = "flex";
+    if (modalStep1) modalStep1.style.display = "none";
+    if (modalStep2) modalStep2.style.display = "none";
+    if (modalStep3) modalStep3.style.display = "block";
+    document.body.style.overflow = "hidden";
+  })();
 
   </script>

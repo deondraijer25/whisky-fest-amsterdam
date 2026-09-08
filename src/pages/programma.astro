@@ -73,89 +73,9 @@ export interface TrailMatrixSession {
   rows: TrailMatrixRow[];
 }
 
-export const MATRIX_SESSIONS: TrailMatrixSession[] = [
-  {
-    id: 'trail-sat-afternoon',
-    title: 'Zaterdagmiddag',
-    dayLabel: 'Zaterdag 16 Jan',
-    timeLabel: '13:00 - 17:00 uur',
-    rows: [
-      {
-        time: '14:00 - 14:30',
-        slots: {
-          Ernst: { ticketId: 'ams-trail-sat-afternoon-ernst' },
-          Marlie: { ticketId: 'ams-trail-sat-afternoon-marly' },
-          Sebastiaan: { ticketId: 'ams-trail-sat-afternoon-sebastiaan' }
-        }
-      },
-      {
-        time: '14:30 - 15:00',
-        slots: {
-          Stanley: { ticketId: 'ams-trail-sat-afternoon-stanley' },
-          Klaas: { ticketId: 'ams-trail-sat-afternoon-klaas' }
-        }
-      },
-      {
-        time: '15:00 - 15:30',
-        slots: {
-          Ernst: { ticketId: 'ams-trail-sat-afternoon-ernst-2' },
-          Marlie: { ticketId: 'ams-trail-sat-afternoon-marly-2' },
-          Sebastiaan: { ticketId: 'ams-trail-sat-afternoon-sebastiaan-2' }
-        }
-      },
-      {
-        time: '15:30 - 16:00',
-        slots: {
-          Stanley: { ticketId: 'ams-trail-sat-afternoon-stanley-2' },
-          Klaas: { ticketId: 'ams-trail-sat-afternoon-klaas-2' }
-        }
-      }
-    ]
-  },
-  {
-    id: 'trail-sat-evening',
-    title: 'Zaterdagavond',
-    dayLabel: 'Zaterdag 16 Jan',
-    timeLabel: '19:00 - 23:00 uur',
-    rows: [
-      {
-        time: '20:00 - 20:30',
-        slots: {
-          Klaas: { ticketId: 'ams-trail-sat-evening-klaas' },
-          Stanley: { ticketId: 'ams-trail-sat-evening-stanley' }
-        }
-      },
-      {
-        time: '20:30 - 21:00',
-        slots: {
-          Ernst: { ticketId: 'ams-trail-sat-evening-ernst' },
-          Marlie: { ticketId: 'ams-trail-sat-evening-marly' },
-          Sebastiaan: { ticketId: 'ams-trail-sat-evening-sebastiaan' }
-        }
-      },
-      {
-        time: '21:00 - 21:30',
-        slots: {
-          Klaas: { ticketId: 'ams-trail-sat-evening-klaas-2' },
-          Stanley: { ticketId: 'ams-trail-sat-evening-stanley-2' }
-        }
-      },
-      {
-        time: '21:30 - 22:00',
-        slots: {
-          Ernst: { ticketId: 'ams-trail-sat-evening-ernst-2' },
-          Marlie: { ticketId: 'ams-trail-sat-evening-marly-2' },
-          Sebastiaan: { ticketId: 'ams-trail-sat-evening-sebastiaan-2' }
-        }
-      }
-    ]
-  }
-];
+export const MATRIX_SESSIONS: TrailMatrixSession[] = [];
 
-export const SESSION_TO_MATRIX: Record<string, TrailMatrixSession | undefined> = {
-  'zaterdag-middag': MATRIX_SESSIONS[0],
-  'zaterdag-avond': MATRIX_SESSIONS[1]
-};
+export const SESSION_TO_MATRIX: Record<string, TrailMatrixSession | undefined> = {};
 
 export const SESSION_TRAIL_MAP = SESSION_TO_MATRIX;
 
@@ -169,46 +89,54 @@ const SESSIONS: SessionData[] = [
       {
         id: 'ams-masterclass-slot-1',
         time: '12:00 – 12:45',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Middag Sessie 1',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Intieme masterclass van 45 minuten onder leiding van een internationale whisky ambassador in de Zuiderkerk.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-2',
         time: '13:15 – 14:00',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Middag Sessie 2',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Diepgaande proeverij met zeldzame expressies en deskundige toelichting over het rijpingsproces.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-3',
         time: '14:30 – 15:15',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Middag Sessie 3',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Exclusieve expressies en vatmonsters van toonaangevende internationale distilleerders.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-4',
         time: '15:45 – 16:30',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Middag Sessie 4',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Afsluitende middagproeverij met bijzondere single casks en cask-strength drams.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       }
     ]
   },
@@ -216,51 +144,59 @@ const SESSIONS: SessionData[] = [
     id: 'zaterdag-avond',
     name: 'Zaterdagavond',
     dayLabel: 'Zaterdag 16 Jan 2027',
-    timeLabel: '19:00 - 23:00 uur',
+    timeLabel: '18:30 - 22:30 uur',
     items: [
       {
         id: 'ams-masterclass-slot-5',
         time: '18:00 – 18:45',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Avond Sessie 1',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Avondsessie masterclass vóór opening van de beursvloer met unieke cask selection drams.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-6',
         time: '19:15 – 20:00',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Avond Sessie 2',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Diepgaande avondproeverij met zeldzame vaten en distilleerderijverhalen.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-7',
         time: '20:30 – 21:15',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Avond Sessie 3',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'Exclusieve premium vaten en bijzondere distillaten onder leiding van de meesterstoker.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       },
       {
         id: 'ams-masterclass-slot-8',
         time: '21:45 – 22:30',
-        location: 'Zuiderkerk • Masterclass Zaal',
+        location: 'De Hallen • Masterclass Zaal',
         title: 'Masterclass Avond Sessie 4',
         category: 'masterclass',
         categoryLabel: 'Masterclass',
-        host: 'Brand Ambassador (Distillery Specialist)',
-        description: 'De feestelijke afsluitende masterclass van het Amsterdam Whisky Festival.',
-        price: 25.00
+        host: 'Binnenkort bekend',
+        description: 'Programma en line-up worden binnenkort bekendgemaakt.',
+        price: 25.00,
+        statusText: 'Binnenkort bekend',
+        bookingDisabled: true
       }
     ]
   }
@@ -295,7 +231,7 @@ function formatSpeaker(host: string) {
 
 <Layout 
   title="Programma & Tijdschema 2027 - Whisky Fest Amsterdam" 
-  description="Volledig tijdschema van alle masterclasses, tramritten en tastings tijdens Whisky Fest Amsterdam."
+  description="Volledig tijdschema van alle masterclasses en tastings tijdens Whisky Fest Amsterdam."
 >
   <Header />
 
@@ -316,7 +252,7 @@ function formatSpeaker(host: string) {
         </h1>
         <div class="hero-gold-line"></div>
         <p class="hero-lead-paragraph">
-          Stel uw persoonlijke festivalbezoek samen. Stel uw persoonlijke festivalbezoek samen. Bekijk alle masterclasses in de Zuiderkerk, tastings en rondleidingen op zaterdag 16 januari 2027.
+          Stel uw persoonlijke festivalbezoek samen. Bekijk alle masterclasses en tastings in De Hallen Amsterdam op zaterdag 16 januari 2027.
         </p>
       </div>
     </header>
@@ -346,16 +282,6 @@ function formatSpeaker(host: string) {
           <span class="btn-card-day">Exclusief</span>
           <span class="btn-card-name">Festival Bottelingen</span>
           <span class="btn-card-time">Afhalen Slijterij</span>
-        </button>
-
-        <button 
-          type="button" 
-          class="session-btn-card btn-gidsen-special"
-          data-target-tab="gidsen"
-        >
-          <span class="btn-card-day">Rondleiding</span>
-          <span class="btn-card-name">Whisky Gidsen</span>
-          <span class="btn-card-time">Planning &amp; Trails</span>
         </button>
       </nav>
 
@@ -433,108 +359,36 @@ function formatSpeaker(host: string) {
                         data-host={item.host}
                         data-desc={item.description}
                         data-price={`€ ${item.price.toFixed(2).replace('.', ',')}`}
+                        data-booking-disabled={item.bookingDisabled ? 'true' : 'false'}
                       >
                         Details
                       </button>
-                      <button 
-                        type="button" 
-                        class="btn btn-gold btn-table-buy"
-                        data-ticket-id={item.id}
-                        data-title={item.title}
-                      >
-                        + Bestel
-                      </button>
+                      {item.bookingDisabled ? (
+                        <span class="badge-coming-soon">Binnenkort</span>
+                      ) : (
+                        <button 
+                          type="button" 
+                          class="btn btn-gold btn-table-buy"
+                          data-ticket-id={item.id}
+                          data-title={item.title}
+                        >
+                          + Bestel
+                        </button>
+                      )}
                     </div>
                   </div>
                 </article>
               ))}
             </div>
 
-            <!-- DIRECT IN-PANE TRAIL MATRIX (Als er trails zijn in deze sessie) -->
-            {SESSION_TRAIL_MAP[s.id] && (
-              <div class="session-trail-matrix-box">
-                <div class="stmb-header">
-                  <div class="stmb-title-box">
-                    <span class="stmb-kicker">30 MIN RONDLEIDING &bull; € 5,00 INCL. 5 PROEFDRAMS</span>
-                    <h3 class="stmb-title">Whisky Gidsen Planning &bull; {s.name}</h3>
-                  </div>
-                  <span class="stmb-badge">Start bij Infostand Zuiderkerk</span>
-                </div>
-
-                <div class="matrix-table-container">
-                  <table class="whisky-matrix-table">
-                    <thead>
-                      <tr>
-                        <th class="col-time-head">Tijdslot</th>
-                        {GUIDE_COLUMNS.map((g) => (
-                          <th class="col-guide-head">
-                            <div class="gh-box">
-                              <strong class="gh-name">{g.name}</strong>
-                              <span class="gh-spec">{g.specialty}</span>
-                            </div>
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {SESSION_TRAIL_MAP[s.id]!.rows.map((row) => (
-                        <tr>
-                          <td class="td-time-cell">
-                            <span class="matrix-time-val">{row.time}</span>
-                            <span class="matrix-time-sub">Start Infostand</span>
-                          </td>
-                          {GUIDE_COLUMNS.map((g) => {
-                            const slot = row.slots[g.key];
-                            return (
-                              <td class={`td-guide-cell ${slot ? 'cell-active' : 'cell-empty'}`}>
-                                {slot ? (() => {
-                                  const slotInfo = getSlotTicketInfo(slot.ticketId, g.key, row.time, s.id);
-                                  return (
-                                    <div class="slot-book-cell">
-                                      {slotInfo.isSoldOut ? (
-                                        <span class="avail-indicator sold-out">Volgeboekt (0 plekken)</span>
-                                        <button 
-                                          type="button" 
-                                          class="btn-matrix-action sold-out"
-                                          disabled
-                                        >
-                                          Uitverkocht
-                                        </button>
-                                      ) : (
-                                        <span class="avail-indicator">{slotInfo.freeSpots} {slotInfo.freeSpots === 1 ? 'plek' : 'plekken'} vrij</span>
-                                        <button 
-                                          type="button" 
-                                          class="btn-matrix-action"
-                                          data-ticket-id={slotInfo.ticketId}
-                                          data-title={`Whisky Trail (Gids ${g.name} - ${row.time} uur)`}
-                                        >
-                                          + Boek € {slotInfo.price},-
-                                        </button>
-                                      )}
-                                    </div>
-                                  );
-                                })() : (
-                                  <span class="dash-empty">—</span>
-                                )}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
-
-          </section>
+            </section>
         ))}
 
         <!-- 6: Bottelingen Pane -->
         <section class="session-agenda-pane" id="pane-bottelingen">
           <div class="pane-header-bar">
-            <h2 class="pane-title">Exclusieve Festival Bottelingen 2026</h2>
-            <span class="pane-badge-time">Afhalen bij Festivalslijterij (Zuiderkerk)</span>
+            <h2 class="pane-title">Exclusieve Festival Bottelingen 2027</h2>
+            <span class="pane-badge-time">Afhalen bij Festivalslijterij (De Hallen)</span>
           </div>
 
           <div class="pane-rows-list">
@@ -568,7 +422,7 @@ function formatSpeaker(host: string) {
                       type="button" 
                       class="btn-trigger-details"
                       data-title={b.title}
-                      data-loc="Festivalslijterij (Zuiderkerk)"
+                      data-loc="Festivalslijterij (De Hallen)"
                       data-time="Tijdens festival afhalen"
                       data-host={b.spec}
                       data-desc={b.description}
@@ -591,112 +445,7 @@ function formatSpeaker(host: string) {
           </div>
         </section>
 
-        <!-- 7: Whisky Gidsen Planning Matrix Pane -->
-        <section class="session-agenda-pane" id="pane-gidsen">
-          
-          <div class="pane-header-bar">
-            <div class="phb-left">
-              <h2 class="pane-title">Whisky Gidsen &amp; Trail Planning</h2>
-              <p class="phb-subtitle">Persoonlijke rondleiding van 30 min langs bijzondere stands in de Zuiderkerk &bull; <strong>€ 5,00 inclusief 5 gratis proefdrams</strong></p>
-            </div>
-            <span class="pane-badge-time">Kies een Sessie Hieronder</span>
-          </div>
-
-          <!-- Sessie Schakelaar voor Trails -->
-          <div class="trail-inner-session-strip">
-            {MATRIX_SESSIONS.map((ms, idx) => (
-              <button 
-                type="button" 
-                class={`trail-inner-btn ${idx === 0 ? 'active' : ''}`}
-                data-target-trail-matrix={ms.id}
-              >
-                <span class="tib-day">{ms.dayLabel}</span>
-                <span class="tib-name">{ms.title}</span>
-                <span class="tib-time">{ms.timeLabel}</span>
-              </button>
-            ))}
-          </div>
-
-          <!-- De 4 Matrix Tabellen -->
-          <div class="trail-matrix-panes-wrap">
-            {MATRIX_SESSIONS.map((ms, idx) => (
-              <div 
-                class={`trail-matrix-subpane ${idx === 0 ? 'active' : ''}`}
-                id={`tmatrix-${ms.id}`}
-              >
-                <div class="matrix-table-container">
-                  <table class="whisky-matrix-table">
-                    <thead>
-                      <tr>
-                        <th class="col-time-head">Tijdslot</th>
-                        {GUIDE_COLUMNS.map((g) => (
-                          <th class="col-guide-head">
-                            <div class="gh-box">
-                              <strong class="gh-name">{g.name}</strong>
-                              <span class="gh-spec">{g.specialty}</span>
-                            </div>
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {ms.rows.map((row) => (
-                        <tr>
-                          <!-- Time Cell -->
-                          <td class="td-time-cell">
-                            <span class="matrix-time-val">{row.time}</span>
-                            <span class="matrix-time-sub">Start Infostand</span>
-                          </td>
-
-                          <!-- Guide Cells (1 oogopslag) -->
-                          {GUIDE_COLUMNS.map((g) => {
-                            const slot = row.slots[g.key];
-                            return (
-                              <td class={`td-guide-cell ${slot ? 'cell-active' : 'cell-empty'}`}>
-                                {slot ? (() => {
-                                  const slotInfo = getSlotTicketInfo(slot.ticketId, g.key, row.time, ms.id);
-                                  return (
-                                    <div class="slot-book-cell">
-                                      {slotInfo.isSoldOut ? (
-                                        <span class="avail-indicator sold-out">Volgeboekt (0 plekken)</span>
-                                        <button 
-                                          type="button" 
-                                          class="btn-matrix-action sold-out"
-                                          disabled
-                                        >
-                                          Uitverkocht
-                                        </button>
-                                      ) : (
-                                        <span class="avail-indicator">{slotInfo.freeSpots} {slotInfo.freeSpots === 1 ? 'plek' : 'plekken'} vrij</span>
-                                        <button 
-                                          type="button" 
-                                          class="btn-matrix-action"
-                                          data-ticket-id={slotInfo.ticketId}
-                                          data-title={`Whisky Trail (Gids ${g.name} - ${row.time} uur)`}
-                                        >
-                                          + Boek € {slotInfo.price},-
-                                        </button>
-                                      )}
-                                    </div>
-                                  );
-                                })() : (
-                                  <span class="dash-empty">—</span>
-                                )}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </section>
-
-      </div>
+        </div>
 
     </div>
 
@@ -713,7 +462,7 @@ function formatSpeaker(host: string) {
         <span class="modal-kicker-tag">Activiteit Details</span>
         <h2 id="m-title" class="m-heading-text">Titel</h2>
         <div class="m-meta-line">
-          <span id="m-loc">Zuiderkerk</span> &bull; <span id="m-time">14:00 uur</span>
+          <span id="m-loc">De Hallen</span> &bull; <span id="m-time">14:00 uur</span>
         </div>
 
         <p id="m-desc" class="m-desc-paragraph"></p>
@@ -726,6 +475,7 @@ function formatSpeaker(host: string) {
         <div class="m-footer-actions">
           <strong id="m-price" class="m-price-bold">€ 0,00</strong>
           <button type="button" id="m-buy" class="btn btn-gold modal-submit-btn">+ Voeg toe aan bestelling</button>
+          <span id="m-coming-soon" class="badge-coming-soon" style="display: none;">Binnenkort beschikbaar</span>
         </div>
       </div>
     </div>
@@ -763,7 +513,7 @@ function formatSpeaker(host: string) {
   .hero-photo-layer {
     position: absolute;
     inset: 0;
-    background-image: url('/Afbeeldingen/2025/IWF2025-MilouvanderWillPhotography-265.jpg');
+    background-image: url('/Afbeeldingen/Fotos/WFA2026-MilouvanderWillPhotography-105.jpg');
     background-size: cover;
     background-position: center 35%;
     opacity: 0.45;
@@ -1678,6 +1428,23 @@ function formatSpeaker(host: string) {
     cursor: pointer;
   }
 
+  .badge-coming-soon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.85rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    border: 1.5px dashed #caac8e;
+    background: rgba(202, 172, 142, 0.15);
+    color: #8A6831;
+    white-space: nowrap;
+  }
+
   /* Toast */
   .spacious-toast {
     position: fixed;
@@ -2142,7 +1909,7 @@ function formatSpeaker(host: string) {
 
       e.preventDefault();
       const title = btn.getAttribute('data-title') || '';
-      const loc = btn.getAttribute('data-loc') || 'Zuiderkerk';
+      const loc = btn.getAttribute('data-loc') || 'De Hallen';
       const time = btn.getAttribute('data-time') || '';
       const host = btn.getAttribute('data-host') || '';
       const desc = btn.getAttribute('data-desc') || '';
@@ -2166,6 +1933,19 @@ function formatSpeaker(host: string) {
       if (descEl) descEl.textContent = desc;
       if (hostEl) hostEl.textContent = host ? `Spreker: ${host}` : 'Officiële Masterclass';
       if (priceEl) priceEl.textContent = price || '€ 20,00';
+
+      const isBookingDisabled = btn.getAttribute('data-booking-disabled') === 'true';
+      const mBuyBtn = document.getElementById('m-buy');
+      const mComingSoon = document.getElementById('m-coming-soon');
+      if (mBuyBtn && mComingSoon) {
+        if (isBookingDisabled) {
+          mBuyBtn.style.display = 'none';
+          mComingSoon.style.display = 'inline-flex';
+        } else {
+          mBuyBtn.style.display = 'inline-flex';
+          mComingSoon.style.display = 'none';
+        }
+      }
 
       if (modal) {
         modal.style.display = 'flex';

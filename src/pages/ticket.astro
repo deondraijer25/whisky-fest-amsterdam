@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
       
       <!-- Top Action Buttons (Under each other on mobile, side-by-side on desktop) -->
       <div class="ticket-top-actions-bar">
-        <button type="button" class="btn btn-gold btn-ticket-action" onclick="window.print()">
+        <button type="button" class="btn btn-gold btn-ticket-action" id="btn-download-pdf-ticket">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -65,7 +65,7 @@ import Layout from '../layouts/Layout.astro';
               <div class="ticket-stub-org">
                 <span class="org-established">EST. 2025</span>
                 <span class="org-name" id="tv-org">Amsterdam Whisky Festival</span>
-                <span class="org-location" id="tv-loc">Zuiderkerk, Amsterdam</span>
+                <span class="org-location" id="tv-loc">De Hallen, Amsterdam</span>
               </div>
             </div>
 
@@ -455,11 +455,14 @@ import Layout from '../layouts/Layout.astro';
   if (tvTicketCode) tvTicketCode.textContent = code;
 
   const titleLower = title.toLowerCase();
-  if (titleLower.includes('vrijdag')) {
-    if (tvDay) tvDay.textContent = '13';
-  } else if (titleLower.includes('zondag')) {
-    if (tvDay) tvDay.textContent = '15';
-  } else {
-    if (tvDay) tvDay.textContent = '14';
+  tvDay && (tvDay.textContent = '16');
+
+  const pdfDownloadUrl = `https://whiskytix-r1qq.vercel.app/api/tickets/${encodeURIComponent(code.replace(/^#/, ''))}/pdf?city=amsterdam&name=${encodeURIComponent(name)}&title=${encodeURIComponent(title)}&time=${encodeURIComponent(time)}`;
+
+  const dlBtn = document.getElementById('btn-download-pdf-ticket');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', () => {
+      window.open(pdfDownloadUrl, '_blank');
+    });
   }
 </script>

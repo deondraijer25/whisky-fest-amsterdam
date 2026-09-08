@@ -155,7 +155,7 @@ import Footer from '../components/Footer.astro';
                   </div>
                   <div class="meta-col">
                     <span class="meta-col-label">Locatie</span>
-                    <strong class="meta-col-val">Zuiderkerk, Amsterdam</strong>
+                    <strong class="meta-col-val">De Hallen, Amsterdam</strong>
                   </div>
                   <div class="meta-col">
                     <span class="meta-col-label">Ticket Code</span>
@@ -165,7 +165,7 @@ import Footer from '../components/Footer.astro';
 
                 <!-- 3. Bottom Row: Action Buttons -->
                 <div class="ticket-actions-row">
-                  <button type="button" class="btn-ticket-download-gold" onclick="window.open('/ticket?id=WF-2026-84387-1&title=VIP%20Sessie%20-%20Vrijdag&name=Deon%20Draijer&time=13:00%20-%2017:00%20UUR', '_blank')">
+                  <button type="button" class="btn-ticket-download-gold" onclick="window.open('https://whiskytix-r1qq.vercel.app/api/tickets/WF-2026-84387-1/pdf?city=amsterdam&name=Deon%20Draijer&title=VIP%20Sessie%20-%20Vrijdag&time=13:00%20-%2017:00%20UUR&orderNumber=WF-2026-84387', '_blank')">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     <span>Download E-Ticket (PDF)</span>
                   </button>
@@ -176,10 +176,10 @@ import Footer from '../components/Footer.astro';
                       <span>Deel Ticket</span>
                     </button>
                     <div class="ticket-share-menu">
-                      <a href="https://api.whatsapp.com/send?text=*Whisky%20Fest%20Den%20Haag%202026*%0AE-ticket%3A%20VIP%20Sessie%20-%20Vrijdag%0A%0AKaarthouder%3A%20Deon%20Draijer%0ATijdslot%3A%2013%3A00%20-%2017%3A00%20UUR%0ATicket%20Code%3A%20%23WF-2026-84387-1%0ALocatie%3A%20Grote%20Kerk%2C%20Den%20Haag" target="_blank" rel="noopener noreferrer" class="share-option-link">
+                      <a href="https://api.whatsapp.com/send?text=*Amsterdam%20Whisky%20Festival%202027*%0AE-ticket%3A%20VIP%20Sessie%20-%20Vrijdag%0A%0AKaarthouder%3A%20Deon%20Draijer%0ATijdslot%3A%2013%3A00%20-%2017%3A00%20UUR%0ATicket%20Code%3A%20%23WF-2026-84387-1%0ALocatie%3A%20De%20Hallen%2C%20Amsterdam" target="_blank" rel="noopener noreferrer" class="share-option-link">
                         <span>Deel via WhatsApp</span>
                       </a>
-                      <a href="mailto:?subject=E-ticket%20voor%20Whisky%20Fest%20Den%20Haag%3A%20VIP%20Sessie%20-%20Vrijdag" class="share-option-link">
+                      <a href="mailto:?subject=E-ticket%20voor%20Amsterdam%20Whisky%20Festival%3A%20VIP%20Sessie%20-%20Vrijdag" class="share-option-link">
                         <span>Deel via E-mail</span>
                       </a>
                       <button type="button" class="share-option-link" onclick="navigator.clipboard.writeText(window.location.origin + '/ticket?id=WF-2026-84387-1&title=VIP%20Sessie%20-%20Vrijdag&name=Deon%20Draijer&time=13:00%20-%2017:00%20UUR'); alert('✓ Directe ticket link gekopieerd!');">
@@ -211,7 +211,7 @@ import Footer from '../components/Footer.astro';
                   Print Alle E-Tickets (PDF)
                 </button>
                 <p class="action-note-text">
-                  Tip: U kunt uw e-ticket ook digitaal op uw smartphone laten scannen bij de ingang van Zuiderkerk, Amsterdam.
+                  Tip: U kunt uw e-ticket ook digitaal op uw smartphone laten scannen bij de ingang van De Hallen Amsterdam.
                 </p>
               </div>
             </div>
@@ -223,16 +223,16 @@ import Footer from '../components/Footer.astro';
               <h3 class="card-inner-title">Locatie & Info</h3>
               <div class="vintage-line" style="margin: 0;"></div>
               <p class="sidebar-card-text">
-                <strong>Zuiderkerk, Amsterdam</strong><br/>
-                Rond de Zuiderkerk 12,<br/>
-                2513 AM Amsterdam
+                <strong>De Hallen Amsterdam</strong><br/>
+                Hannie Dankbaarpassage 47,<br/>
+                1053 RT Amsterdam
               </p>
 
               <div class="sidebar-links-group">
                 <a href="/standhouders" class="btn btn-outline btn-sidebar-action" style="text-align: center; text-decoration: none; border-color: var(--whisky-gold-dark); color: var(--whisky-gold-dark);">
                   Bekijk Standhouders & Plattegrond
                 </a>
-                <a href="https://maps.google.com/?q=Grote+Kerk+Den+Haag" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sidebar-action" style="text-align: center; text-decoration: none;">
+                <a href="https://maps.google.com/?q=De+Hallen+Amsterdam" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sidebar-action" style="text-align: center; text-decoration: none;">
                   Open Routeplanner
                 </a>
               </div>
@@ -342,7 +342,7 @@ import Footer from '../components/Footer.astro';
 
             <div class="receipt-billing-note" style="border-top: 1px dotted var(--border-color-dark); padding-top: 1.25rem;">
               <p class="sidebar-card-subtext">
-                Heeft u vragen over uw factuur of wilt u uw bestelling annuleren? Neem direct contact op via <a href="mailto:info@whiskyfestival.nl" class="text-gold" style="font-weight: 700;">info@whiskyfestival.nl</a>.
+                Heeft u vragen over uw factuur of wilt u uw bestelling annuleren? Neem direct contact op via <a href="mailto:info@whiskyfest.nl" class="text-gold" style="font-weight: 700;">info@whiskyfest.nl</a>.
               </p>
             </div>
           </div>
@@ -354,12 +354,12 @@ import Footer from '../components/Footer.astro';
     <div class="portal-tab-pane" id="tab-info" style="display: none;">
       <div class="event-info-wrapper">
         
-        <!-- HERO CARD: OFFICIAL INTERACTIVE Zuiderkerk FLOOR PLAN (1-ON-1 MATCH WITH STANDHOUDERS) -->
+        <!-- HERO CARD: OFFICIAL INTERACTIVE DE HALLEN FLOOR PLAN (1-ON-1 MATCH WITH STANDHOUDERS) -->
         <div class="sidebar-card event-hero-card">
           <div class="card-padded">
             <div class="event-hero-header">
               <div>
-                <h3 class="card-inner-title">Interactieve Plattegrond Zuiderkerk, Amsterdam</h3>
+                <h3 class="card-inner-title">Interactieve Plattegrond De Hallen, Amsterdam</h3>
                 <p class="sidebar-card-subtext" style="margin-top: 4px;">
                   Klik op een standnummer om direct de gegevens en merken van de standhouder te bekijken.
                 </p>
@@ -696,21 +696,21 @@ import Footer from '../components/Footer.astro';
                   <div class="rule-item">
                     <h5>◆ Openbaar Vervoer (OV)</h5>
                     <p class="sidebar-card-subtext">
-                      Vanaf Station Amsterdam Centraal of Station Hollands Spoor neemt u tram 2, 3, 4 of 6 naar halte <strong>Grote Markt</strong> of <strong>Spui</strong> (3 min. lopen naar de Zuiderkerk).
+                      Tram 17 en 7 stoppen vlakbij (halte Ten Katestraat of Bilderdijkstraat). Vanaf Station Amsterdam Centraal bent u er binnen 15 minuten.
                     </p>
                   </div>
 
                   <div class="rule-item">
                     <h5>◆ Parkeren</h5>
                     <p class="sidebar-card-subtext">
-                      • <strong>Parkeergarage Torengarage</strong> (Geest 1) — op 2 minuten loopafstand.<br/>
-                      • <strong>Parkeergarage Lutherse Burgwal</strong> (Lutherse Burgwal 25) — 4 min. lopen.
+                      • <strong>Parkeergarage De Hallen</strong> — direct onder het complex (beperkt aantal plaatsen).<br/>
+                      • <strong>Q-Park Europarking</strong> — ca. 10 minuten loopafstand.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <a href="https://maps.google.com/?q=Grote+Kerk+Den+Haag" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sidebar-action" style="text-align: center; text-decoration: none; border-color: var(--whisky-gold-dark); color: var(--whisky-gold-dark); margin-top: 1rem;">
+              <a href="https://maps.google.com/?q=De+Hallen+Amsterdam" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sidebar-action" style="text-align: center; text-decoration: none; border-color: var(--whisky-gold-dark); color: var(--whisky-gold-dark); margin-top: 1rem;">
                 Open in Google Maps
               </a>
             </div>
@@ -741,7 +741,7 @@ import Footer from '../components/Footer.astro';
                   <div class="rule-item">
                     <h5>◆ Horeca & Garderobe</h5>
                     <p class="sidebar-card-subtext">
-                      Warme snacks bij het Food Court aan het IJ. Gratis bewaakte garderobe bij de hoofdingang.
+                      Foodhallen en diverse horecagelegenheden bevinden zich direct in en rondom het complex. Gratis bewaakte garderobe bij de ingang.
                     </p>
                   </div>
                 </div>
@@ -760,18 +760,15 @@ import Footer from '../components/Footer.astro';
                   <div class="program-booklet-column">
                     <h4 class="booklet-chapter-title">I. Sessietijden</h4>
                     <ul class="booklet-list">
-                      <li><strong>Vrijdag VIP:</strong> 13:00 - 17:00 (Inloop 12:30).</li>
-                      <li><strong>Vrijdag Avond:</strong> 19:00 - 23:00 (Inloop 18:30).</li>
                       <li><strong>Zaterdag Middag:</strong> 13:00 - 17:00 (Inloop 12:30).</li>
-                      <li><strong>Zaterdag Avond:</strong> 19:00 - 23:00 (Inloop 18:30).</li>
-                      <li><strong>Zondag Middag:</strong> 13:00 - 17:00 (Inloop 12:30).</li>
+                      <li><strong>Zaterdag Avond:</strong> 18:30 - 22:30 (Inloop 18:00).</li>
                     </ul>
                   </div>
 
                   <div class="program-booklet-column" style="margin-top: 0.75rem;">
                     <h4 class="booklet-chapter-title">II. Proefglas & Toegang</h4>
                     <p class="sidebar-card-subtext" style="margin-top: 0.4rem;">
-                      Officiële proefglas inbegrepen bij de entree. Gebruik de spoelstations op de beursvloer. De Zuiderkerk is rolstoeltoegankelijk. 18+ legitimatie verplicht.
+                      Officiële proefglas inbegrepen bij de entree. Gebruik de spoelstations op de beursvloer. De Hallen is volledig rolstoeltoegankelijk. 18+ legitimatie verplicht.
                     </p>
                   </div>
                 </div>
@@ -2610,12 +2607,12 @@ import Footer from '../components/Footer.astro';
             const ticketLink = `${baseUrl}/ticket?id=${cleanCode}&title=${encodeURIComponent(item.title)}&name=${encodeURIComponent(userName)}&time=${encodeURIComponent(displayTime)}`;
             
             const shareText = encodeURIComponent(
-              `*${'Amsterdam Whisky Festival 2026'}*\n` +
+              `*${'Amsterdam Whisky Festival 2027'}*\n` +
               `E-ticket: ${item.title}\n\n` +
               `Kaarthouder: ${userName}\n` +
               `Tijdslot: ${displayTime}\n` +
               `Ticket Code: ${displayCode}\n` +
-              `Locatie: Zuiderkerk, Amsterdam\n\n` +
+              `Locatie: De Hallen, Amsterdam\n\n` +
               `Bekijk en download je officiële E-ticket:\n` +
               `${ticketLink}`
             );
@@ -2623,11 +2620,11 @@ import Footer from '../components/Footer.astro';
             const mailSubject = encodeURIComponent(`E-ticket voor Amsterdam Whisky Festival: ${item.title}`);
             const mailBody = encodeURIComponent(
               `Beste ${userName},\n\n` +
-              `Hierbij ontvang je jouw toegangsbewijs voor Amsterdam Whisky Festival 2026.\n\n` +
+              `Hierbij ontvang je jouw toegangsbewijs voor Amsterdam Whisky Festival 2027.\n\n` +
               `Ticket: ${item.title}\n` +
               `Tijdslot: ${displayTime}\n` +
               `Ticket Code: ${displayCode}\n` +
-              `Locatie: Zuiderkerk, Amsterdam\n\n` +
+              `Locatie: De Hallen, Amsterdam\n\n` +
               `Bekijk en download je digitale ticket direct via onderstaande link:\n` +
               `${ticketLink}\n\n` +
               `Graag tot ziens op het festival!`
@@ -2688,7 +2685,7 @@ import Footer from '../components/Footer.astro';
                       </div>
                       <div class="meta-col">
                         <span class="meta-col-label">Locatie</span>
-                        <strong class="meta-col-val">Zuiderkerk, Amsterdam</strong>
+                        <strong class="meta-col-val">De Hallen, Amsterdam</strong>
                       </div>
                       <div class="meta-col">
                         <span class="meta-col-label">Ticket Code</span>
@@ -2698,7 +2695,7 @@ import Footer from '../components/Footer.astro';
 
                     <!-- 3. Bottom Row: Action Buttons -->
                     <div class="ticket-actions-row">
-                      <button type="button" class="btn-ticket-download-gold" onclick="window.open('/ticket?id=${cleanCode}&title=${encodeURIComponent(item.title)}&name=${encodeURIComponent(userName)}&time=${encodeURIComponent(displayTime)}', '_blank')">
+                      <button type="button" class="btn-ticket-download-gold" onclick="window.open('https://whiskytix-r1qq.vercel.app/api/tickets/${encodeURIComponent(cleanCode)}/pdf?city=amsterdam&name=${encodeURIComponent(userName)}&title=${encodeURIComponent(item.title)}&time=${encodeURIComponent(displayTime)}&orderNumber=${encodeURIComponent(orderData.resNumber || '')}', '_blank')">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         <span>Download E-Ticket (PDF)</span>
                       </button>

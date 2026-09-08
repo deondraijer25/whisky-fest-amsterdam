@@ -10,7 +10,7 @@ const exhibitors = await getStandhouders('amsterdam');
 
 <Layout 
   title="Interactieve Plattegrond & Standhouders" 
-  description="Navigeer door de Zuiderkerk Amsterdam met onze interactieve plattegrond. Zoek direct waar uw favoriete whiskymerken en standhouders zich bevinden op het Amsterdam Whisky Festival."
+  description="Navigeer door de De Hallen Amsterdam met onze interactieve plattegrond. Zoek direct waar uw favoriete whiskymerken en standhouders zich bevinden op het Amsterdam Whisky Festival."
 >
   <!-- Navigation Header -->
   <Header />
@@ -21,7 +21,7 @@ const exhibitors = await getStandhouders('amsterdam');
       <span class="page-tag">Festival Gids 2026</span>
       <h1 class="page-title">Plattegrond & Stands</h1>
       <div class="vintage-line"></div>
-      <p class="page-subtitle">Verken de Zuiderkerk, zoek uw favoriete merken en zie direct welke standhouder zich waar bevindt.</p>
+      <p class="page-subtitle">Verken De Hallen, zoek uw favoriete merken en zie direct welke standhouder zich waar bevindt.</p>
     </div>
 
     <!-- Horizontal Search & Filters Bar -->
@@ -57,7 +57,7 @@ const exhibitors = await getStandhouders('amsterdam');
       <div class="map-visual-container vintage-frame">
         <div class="vintage-frame-inner map-scroll-area">
           <div class="map-toolbar">
-            <span class="toolbar-title">Plattegrond Zuiderkerk Amsterdam</span>
+            <span class="toolbar-title">Plattegrond De Hallen Amsterdam</span>
             <div class="zoom-controls">
               <button type="button" class="zoom-btn" id="zoom-in" title="Inzoomen">＋</button>
               <button type="button" class="zoom-btn" id="zoom-out" title="Uitzoomen">－</button>
@@ -66,7 +66,7 @@ const exhibitors = await getStandhouders('amsterdam');
           </div>
           
           <div class="svg-zoom-wrapper" id="svg-zoom-target">
-            <!-- Dynamic Vector SVG Map of Zuiderkerk -->
+            <!-- Dynamic Vector SVG Map of De Hallen -->
             <svg viewBox="0 0 980 500" class="church-svg-map" id="church-map">
               <defs>
                 <pattern id="pillar-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -141,7 +141,7 @@ const exhibitors = await getStandhouders('amsterdam');
               <!-- Bottom-Left: Masterclass Zaal (Clean text label block) -->
               <g class="map-annotation-zone" id="map-room-masterclass">
                 <text x="15" y="425" font-family="var(--font-sans)" font-size="13" font-weight="900" fill="var(--text-charcoal)">Masterclasses</text>
-                <text x="15" y="440" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="var(--text-charcoal)">Zuiderkerk Zaal</text>
+                <text x="15" y="440" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="var(--text-charcoal)">De Hallen Zaal</text>
               </g>
 
               <!-- ============================================== -->

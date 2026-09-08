@@ -54,8 +54,8 @@ export const BRAND: BrandConfig = {
   shortName: 'Whisky Fest Amsterdam',
   city: 'Amsterdam',
   country: 'Nederland',
-  venue: 'Zuiderkerk Amsterdam',
-  venueShort: 'Zuiderkerk',
+  venue: 'De Hallen Amsterdam',
+  venueShort: 'De Hallen',
   foundingYear: 2002,
   edition: 'Editie 2027',
   datesText: 'Zaterdag 16 januari 2027',
@@ -83,14 +83,14 @@ export const BRAND: BrandConfig = {
     heroTitleLine1: 'Het meest geliefde',
     heroTitleLine2: 'whisky festival',
     heroTitleLine3: 'van Amsterdam.',
-    heroSubtitle: 'Beleef de magie van het meest toonaangevende whiskyfestival in de historische Zuiderkerk van Amsterdam. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring.',
+    heroSubtitle: 'Beleef de magie van het meest toonaangevende whiskyfestival in De Hallen in Amsterdam. Of u nu een beginnend proever bent of een doorgewinterde kenner, wij bieden een onvergetelijke ervaring.',
     preloaderTitle: 'AMSTERDAM WHISKY FESTIVAL',
     preloaderSubtitle: 'EST. 2025 • AMSTERDAM',
     announcementBar: 'Sluit je aan bij duizenden whiskyliefhebbers in Amsterdam – Bestel vandaag nog je tickets!',
-    tramTitle: 'Amsterdamse Whiskytram',
-    tramDesc: 'Rondrit door historisch Amsterdam in een klassieke tram inclusief deskundig geleide proeverij van 4 topdrams.',
-    floorplanTitle: 'Plattegrond Zuiderkerk Amsterdam',
-    metaTitle: 'Amsterdam Whisky Festival | Zuiderkerk',
-    metaDescription: 'Bezoek het meest sfeervolle en bekende whiskyfestival van Amsterdam in de Zuiderkerk. Bestel nu direct uw entreekaarten.'
+    tramTitle: 'Masterclasses & Tastings',
+    tramDesc: 'Geniet van een intieme masterclass of exclusieve proeverij met deskundige toelichting en bijzondere drams.',
+    floorplanTitle: 'Plattegrond De Hallen Amsterdam',
+    metaTitle: 'Amsterdam Whisky Festival | De Hallen Amsterdam',
+    metaDescription: 'Bezoek het meest sfeervolle en bekende whiskyfestival van Amsterdam in De Hallen. Bestel nu direct uw entreekaarten.'
   }
 };

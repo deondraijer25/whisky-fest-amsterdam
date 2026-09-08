@@ -17,6 +17,7 @@ interface Props {
   bookingType?: string;
   daypart?: 'ochtend' | 'middag' | 'avond' | 'all';
   isSoldOut?: boolean;
+  bookingDisabled?: boolean;
 }
 
 const { 
@@ -35,7 +36,8 @@ const {
   location,
   bookingType,
   daypart = 'all',
-  isSoldOut = false
+  isSoldOut = false,
+  bookingDisabled = false
 } = Astro.props;
 
 const soldOut = isSoldOut || status === 'sold-out';
@@ -58,7 +60,7 @@ if (date.toLowerCase().includes('vrijdag') && (date.includes('13') || date.toLow
 const accessText = 
   category === 'entree' ? '1 PERSOON' :
   category === 'botteling' ? '1 FLES (70CL)' :
-  (location || (extraMeta ? extraMeta.toUpperCase() : 'Zuiderkerk'));
+  (location || (extraMeta ? extraMeta.toUpperCase() : 'De Hallen'));
 
 // Clean time format
 const cleanTime = time.toLowerCase().includes('uur') ? time : (time + ' uur');
@@ -162,6 +164,10 @@ const titleSizeClass =
     {soldOut ? (
       <div class="sold-out-box">
         <span class="sold-out-text">UITVERKOCHT</span>
+      </div>
+    ) : bookingDisabled ? (
+      <div class="coming-soon-box">
+        <span class="coming-soon-text">BINNENKORT</span>
       </div>
     ) : (
       <div class="qty-selector">
@@ -492,6 +498,30 @@ const titleSizeClass =
     color: #A82828 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.08em !important;
+  }
+
+  /* Coming Soon Box */
+  .coming-soon-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1.5px dashed rgba(202, 172, 142, 0.7) !important;
+    background-color: rgba(202, 172, 142, 0.12) !important;
+    border-radius: 6px !important;
+    padding: 0.35rem 0.5rem !important;
+    width: 105px !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+  }
+
+  .coming-soon-text {
+    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif) !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    color: #8A6831 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
   }
 
   /* Quantity Stepper (Clean Soft Cream Stepper) */
