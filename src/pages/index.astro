@@ -4995,7 +4995,12 @@ const tickets = await getTickets('amsterdam');
 
   // 4. Cart & Shop State
   const cart: Record<string, { title: string; price: number; qty: number; category: string; timeslot?: string; delivery?: string; guide?: string }> = {};
-  const serviceFee = 4.50;
+  function getServiceFee(qty: number): number {
+    if (qty <= 0) return 0;
+    if (qty === 1) return 1.75;
+    if (qty <= 5) return 3.50;
+    return 4.50;
+  }
   const cartItemsContainer = document.getElementById("cart-items");
   const subtotalEl = document.getElementById("receipt-subtotal");
   const feeEl = document.getElementById("receipt-fee");
@@ -5021,7 +5026,7 @@ const tickets = await getTickets('amsterdam');
     });
 
     const activeShipping = shippingActive ? 12.50 : 0;
-    const activeFee = totalItems > 0 ? serviceFee : 0;
+    const activeFee = getServiceFee(totalItems);
     const finalTotal = subtotal + activeFee + activeShipping;
 
     if (cartItemsContainer) {
@@ -5623,7 +5628,7 @@ const tickets = await getTickets('amsterdam');
     });
 
     const activeShipping = shippingActive ? 12.50 : 0;
-    const activeFee = totalItems > 0 ? serviceFee : 0;
+    const activeFee = getServiceFee(totalItems);
     const totalBeforeDiscount = subtotal + activeFee + activeShipping;
     const finalTotal = Math.max(0, totalBeforeDiscount - promoDiscount);
 
@@ -6422,7 +6427,7 @@ const tickets = await getTickets('amsterdam');
       }
     });
     const activeShipping = shippingActive ? 12.50 : 0;
-    const activeFee = totalItems > 0 ? serviceFee : 0;
+    const activeFee = getServiceFee(totalItems);
     const finalTotal = subtotal + activeFee + activeShipping;
     if (upsellModalProceed) {
       upsellModalProceed.innerHTML = `Naar Afrekenen (€ ${finalTotal.toFixed(2).replace('.', ',')}) &rarr;`;
@@ -6689,7 +6694,7 @@ const tickets = await getTickets('amsterdam');
       `;
     }).join('');
 
-    const fee = totalQty > 0 ? serviceFee : 0;
+    const fee = getServiceFee(totalQty);
     const shipping = shippingActive ? 12.50 : 0;
     const finalTotal = subtotal + fee + shipping;
 
@@ -6754,7 +6759,7 @@ const tickets = await getTickets('amsterdam');
         if (it.category === "botteling" && it.delivery === "shipping") shippingActive = true;
       }
     });
-    const fee = totalItems > 0 ? serviceFee : 0;
+    const fee = getServiceFee(totalItems);
     const shipping = shippingActive ? 12.50 : 0;
     const grandTotal = subtotal + fee + shipping;
 
