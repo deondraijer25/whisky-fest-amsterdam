@@ -1,5 +1,6 @@
 ---
 // src/pages/standhouders.astro
+// Interactieve Plattegrond & Standhouders voor Amsterdam Whisky Festival (De Hallen Studio 2)
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -10,7 +11,7 @@ const exhibitors = await getStandhouders('amsterdam');
 
 <Layout 
   title="Interactieve Plattegrond & Standhouders" 
-  description="Navigeer door de De Hallen Amsterdam met onze interactieve plattegrond. Zoek direct waar uw favoriete whiskymerken en standhouders zich bevinden op het Amsterdam Whisky Festival."
+  description="Navigeer door De Hallen Studio 2 met onze interactieve plattegrond. Zoek direct waar uw favoriete whiskymerken en standhouders zich bevinden op het Amsterdam Whisky Festival."
 >
   <!-- Navigation Header -->
   <Header />
@@ -18,10 +19,10 @@ const exhibitors = await getStandhouders('amsterdam');
   <main class="standhouders-page-wrapper">
     <!-- Page Header -->
     <div class="page-title-section animate-fade-in">
-      <span class="page-tag">Festival Gids 2026</span>
-      <h1 class="page-title">Plattegrond & Stands</h1>
+      <span class="page-tag">Festival Gids 2027</span>
+      <h1 class="page-title">Plattegrond &amp; Stands</h1>
       <div class="vintage-line"></div>
-      <p class="page-subtitle">Verken De Hallen, zoek uw favoriete merken en zie direct welke standhouder zich waar bevindt.</p>
+      <p class="page-subtitle">Verken De Hallen Studio 2, zoek uw favoriete merken en zie direct welke standhouder zich waar bevindt.</p>
     </div>
 
     <!-- Horizontal Search & Filters Bar -->
@@ -29,7 +30,7 @@ const exhibitors = await getStandhouders('amsterdam');
       <div class="vintage-frame-inner horizontal-bar-inner">
         
         <div class="search-input-wrapper">
-          <input type="text" id="exhibitor-search" class="form-control" placeholder="Zoek op standhouder of merk..." />
+          <input type="text" id="exhibitor-search" class="form-control" placeholder="Zoek op standhouder, merk of zaal..." />
           <span class="search-icon-inside">
             <svg class="search-icon-svg" viewBox="0 0 24 24" width="16" height="16" stroke="var(--text-charcoal)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -44,7 +45,7 @@ const exhibitors = await getStandhouders('amsterdam');
           <button type="button" class="filter-tab" data-filter="dutch">Nederlands</button>
           <button type="button" class="filter-tab" data-filter="independent">Onafhankelijk</button>
           <button type="button" class="filter-tab" data-filter="world">Wereld</button>
-          <button type="button" class="filter-tab" data-filter="catering">Food & Catering</button>
+          <button type="button" class="filter-tab" data-filter="catering">Food &amp; Catering</button>
         </div>
 
       </div>
@@ -53,11 +54,14 @@ const exhibitors = await getStandhouders('amsterdam');
     <!-- Interactive Map & Detail Layout -->
     <div class="map-detail-layout animate-fade-in" style="animation-delay: 0.15s;">
       
-      <!-- LEFT COLUMN: The Interactive Floor Plan Map -->
+      <!-- LEFT COLUMN: The Digital Vector Floor Plan Map of Studio 2 -->
       <div class="map-visual-container vintage-frame">
         <div class="vintage-frame-inner map-scroll-area">
           <div class="map-toolbar">
-            <span class="toolbar-title">Plattegrond De Hallen Amsterdam</span>
+            <div class="toolbar-info">
+              <span class="toolbar-title">Studio 2 &bull; De Hallen Amsterdam</span>
+              <span class="toolbar-sub">19 Stands &bull; Centraal Proefeiland &bull; Looproute Foyer</span>
+            </div>
             <div class="zoom-controls">
               <button type="button" class="zoom-btn" id="zoom-in" title="Inzoomen">＋</button>
               <button type="button" class="zoom-btn" id="zoom-out" title="Uitzoomen">－</button>
@@ -66,362 +70,286 @@ const exhibitors = await getStandhouders('amsterdam');
           </div>
           
           <div class="svg-zoom-wrapper" id="svg-zoom-target">
-            <!-- Dynamic Vector SVG Map of De Hallen -->
-            <svg viewBox="0 0 980 500" class="church-svg-map" id="church-map">
+            <!-- 100% PURE DIGITAL VECTOR SVG MAP OF DE HALLEN STUDIO 2 -->
+            <svg viewBox="0 0 980 540" class="studio2-svg-map" id="studio2-map">
               <defs>
                 <pattern id="pillar-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <circle cx="5" cy="5" r="3" fill="var(--border-color)" />
+                  <circle cx="5" cy="5" r="3" fill="#D5CCA9" />
+                </pattern>
+                
+                <pattern id="floor-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(140, 2, 35, 0.03)" stroke-width="1" />
                 </pattern>
               </defs>
-              
-              <!-- Subtle blueprint lines / grid background -->
-              <rect width="980" height="500" fill="transparent" />
-              
-              <!-- Church Outer Walls Silhouette (gothic outline) -->
-              <path d="M 140 150 
-                       L 140 80 Q 140 70 150 70 L 640 70 L 640 20 Q 640 10 650 10 L 760 10 Q 770 10 770 20 L 770 70 L 820 70 
-                       L 860 90 L 900 130 L 920 180 L 930 250 L 920 320 L 900 370 L 860 410 L 820 430 L 770 430 L 770 480 Q 770 490 760 490 L 650 490 Q 640 490 640 480 L 640 430 L 250 430 L 250 480 Q 250 490 240 490 L 150 490 Q 140 490 140 480 L 140 430 L 140 350
-                       L 90 350 L 50 310 L 30 250 L 50 190 L 90 150 Z" 
-                    fill="var(--bg-sand)" stroke="var(--border-color-dark)" stroke-width="2" stroke-linejoin="round" class="church-outline" />
 
-              <!-- Interior Architecture Zones -->
-              <!-- Hoogkoor (High Choir) Area -->
-              <rect x="670" y="150" width="180" height="200" fill="#EBE4D5" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4 4" />
-              <text x="760" y="255" class="map-zone-label">Hoogkoor</text>
+              <!-- Blueprint grid / transparent canvas -->
+              <rect width="980" height="540" fill="transparent" />
+
+              <!-- ============================================== -->
+              <!-- EXTERIOR & CORRIDOR CONNECTIONS -->
+              <!-- ============================================== -->
+              <!-- Walking corridor from Foyer / Entrance (Left) -->
+              <rect x="25" y="315" width="135" height="70" fill="#F4EFEA" stroke="var(--text-charcoal)" stroke-width="2" />
+              <rect x="25" y="315" width="135" height="70" fill="url(#floor-grid)" />
               
-              <!-- Kooromgang (Ambulatory) Arch Guide -->
-              <path d="M 670 80 A 170 170 0 0 1 890 250 A 170 170 0 0 1 670 420" fill="none" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="6 6" />
+              <!-- Directional flow arrows in corridor -->
+              <path d="M 45 350 L 135 350 M 125 343 L 135 350 L 125 357" stroke="#8c0223" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <text x="88" y="338" font-family="var(--font-sans)" font-size="10" font-weight="800" fill="#8c0223" text-anchor="middle">VANAF FOYER</text>
+              <text x="88" y="372" font-family="var(--font-sans)" font-size="9" font-weight="700" fill="var(--text-muted)" text-anchor="middle">Studio 1 &amp; Keuken</text>
 
-              <!-- Structural Pillars (Gothic columns) -->
-              <g class="pillars">
-                <!-- Row Top -->
-                <circle cx="200" cy="140" r="10" class="pillar" />
-                <circle cx="280" cy="140" r="10" class="pillar" />
-                <circle cx="360" cy="140" r="10" class="pillar" />
-                <circle cx="440" cy="140" r="10" class="pillar" />
-                <circle cx="520" cy="140" r="10" class="pillar" />
-                <circle cx="600" cy="140" r="10" class="pillar" />
-                
-                <!-- Row Bottom -->
-                <circle cx="200" cy="360" r="10" class="pillar" />
-                <circle cx="280" cy="360" r="10" class="pillar" />
-                <circle cx="360" cy="360" r="10" class="pillar" />
-                <circle cx="440" cy="360" r="10" class="pillar" />
-                <circle cx="520" cy="360" r="10" class="pillar" />
-                <circle cx="600" cy="360" r="10" class="pillar" />
+              <!-- North Passage / Emergency connection (Top) -->
+              <rect x="490" y="28" width="80" height="42" fill="#F4EFEA" stroke="var(--text-charcoal)" stroke-width="1.8" stroke-dasharray="4 3" />
+              <text x="530" y="46" font-family="var(--font-sans)" font-size="9" font-weight="800" fill="var(--text-muted)" text-anchor="middle">NOODUITGANG</text>
+              <text x="530" y="58" font-family="var(--font-sans)" font-size="8.5" font-weight="700" fill="#8c0223" text-anchor="middle">Passage &nearr;</text>
 
-                <!-- Choir pillars -->
-                <circle cx="670" cy="150" r="8" class="pillar" />
-                <circle cx="720" cy="115" r="8" class="pillar" />
-                <circle cx="780" cy="100" r="8" class="pillar" />
-                <circle cx="840" cy="115" r="8" class="pillar" />
-                <circle cx="890" cy="150" r="8" class="pillar" />
-                
-                <circle cx="670" cy="350" r="8" class="pillar" />
-                <circle cx="720" cy="385" r="8" class="pillar" />
-                <circle cx="780" cy="400" r="8" class="pillar" />
-                <circle cx="840" cy="385" r="8" class="pillar" />
-                <circle cx="890" cy="350" r="8" class="pillar" />
+              <!-- ============================================== -->
+              <!-- STUDIO 2 VENUE OUTER WALLS (Architectural Contour) -->
+              <!-- ============================================== -->
+              <!-- Chamfered top-right corner for Stand 4 + alcove bottom step -->
+              <path d="M 160 315 
+                       L 160 70 
+                       L 870 70 
+                       L 925 125 
+                       L 925 385 
+                       L 670 385 
+                       L 670 485 
+                       L 310 485 
+                       L 310 385 
+                       L 160 385" 
+                    fill="#FAF6F0" stroke="var(--text-charcoal)" stroke-width="2.5" stroke-linejoin="round" class="venue-outline" />
+
+              <!-- Main Entrance Door Opening (Left Wall, y=315 to y=385) -->
+              <line x1="160" y1="318" x2="160" y2="382" stroke="#FAF6F0" stroke-width="4" />
+              <!-- Door swing arc -->
+              <path d="M 160 325 A 50 50 0 0 1 205 365" fill="none" stroke="#8c0223" stroke-width="1.8" stroke-dasharray="3 3" />
+              <text x="175" y="380" font-family="var(--font-sans)" font-size="9.5" font-weight="900" fill="#8c0223">INGANG &rarr;</text>
+
+              <!-- North Exit Door Opening (Top Wall, x=500 to x=560) -->
+              <line x1="505" y1="70" x2="555" y2="70" stroke="#FAF6F0" stroke-width="4" />
+
+              <!-- Interior grid wash -->
+              <path d="M 160 70 L 870 70 L 925 125 L 925 385 L 670 385 L 670 485 L 310 485 L 310 385 L 160 385 Z" fill="url(#floor-grid)" />
+
+              <!-- Watermark Hall Identifier -->
+              <text x="540" y="235" class="map-hall-watermark">STUDIO 2 &bull; DE HALLEN</text>
+
+              <!-- Structural Pillars in De Hallen -->
+              <g class="studio-pillars">
+                <!-- Top Pillar Row -->
+                <rect x="285" y="145" width="10" height="10" rx="2" class="hall-pillar" />
+                <rect x="460" y="145" width="10" height="10" rx="2" class="hall-pillar" />
+                <rect x="635" y="145" width="10" height="10" rx="2" class="hall-pillar" />
+                <rect x="805" y="145" width="10" height="10" rx="2" class="hall-pillar" />
+
+                <!-- Bottom Pillar Row -->
+                <rect x="285" y="305" width="10" height="10" rx="2" class="hall-pillar" />
+                <rect x="500" y="305" width="10" height="10" rx="2" class="hall-pillar" />
+                <rect x="710" y="305" width="10" height="10" rx="2" class="hall-pillar" />
               </g>
 
-              <!-- EXTERNAL ANNOTATIONS & ZONES -->
-              <!-- Top-Right: Buitenruimte / Food Trucks / Vaten-Maker -->
-              <g class="map-annotation-zone">
-                <path d="M 770 40 Q 810 25 840 20 M 840 20 L 825 18 M 840 20 L 836 32" stroke="#8c0223" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                <text x="850" y="22" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="#8c0223">Workshop ruimte "Vaten-Maker"</text>
-                <text x="850" y="36" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="#8c0223">Food trucks</text>
-                <text x="850" y="50" font-family="var(--font-sans)" font-size="12" font-weight="900" fill="#b57402">Buitenterrein ↗</text>
+              <!-- Zone Guideline Dashes for Alcove -->
+              <line x1="310" y1="385" x2="670" y2="385" stroke="#E2D2C0" stroke-width="1.2" stroke-dasharray="4 4" />
+              <text x="490" y="405" font-family="var(--font-serif)" font-size="11" font-style="italic" fill="var(--text-muted)" opacity="0.4" text-anchor="middle">Studio 2 Alcove Zone</text>
+
+              <!-- ============================================== -->
+              <!-- STANDS (19 PHYSICAL STANDS EXACT TO OFFICIAL LIST) -->
+              <!-- ============================================== -->
+
+              <!-- STAND 1: Left wall upper (4 tables vertical - Nog te verkopen) -->
+              <g class="svg-stand" data-stand="1" title="Stand 1: Nog te verkopen">
+                <rect x="175" y="85" width="45" height="96" rx="3" class="stand-box stand-available" />
+                <!-- 4 tables dividers -->
+                <line x1="175" y1="109" x2="220" y2="109" class="stand-divider" />
+                <line x1="175" y1="133" x2="220" y2="133" class="stand-divider" />
+                <line x1="175" y1="157" x2="220" y2="157" class="stand-divider" />
+                <text x="197" y="139" class="stand-num">1</text>
               </g>
 
-              <!-- Top-Left: Garderobe en uitgang (Clean text label) -->
-              <g class="map-annotation-zone">
-                <text x="15" y="30" font-family="var(--font-sans)" font-size="13" font-weight="800" fill="var(--text-charcoal)">Garderobe en uitgang</text>
+              <!-- STAND 2: Left wall lower (3 tables vertical - DAM dranken - Thalassa) -->
+              <g class="svg-stand" data-stand="2" title="Stand 2: DAM dranken - Thalassa">
+                <rect x="175" y="195" width="45" height="75" rx="3" class="stand-box" />
+                <!-- 3 tables dividers -->
+                <line x1="175" y1="220" x2="220" y2="220" class="stand-divider" />
+                <line x1="175" y1="245" x2="220" y2="245" class="stand-divider" />
+                <text x="197" y="238" class="stand-num">2</text>
               </g>
 
-              <!-- Bottom-Left: Masterclass Zaal (Clean text label block) -->
-              <g class="map-annotation-zone" id="map-room-masterclass">
-                <text x="15" y="425" font-family="var(--font-sans)" font-size="13" font-weight="900" fill="var(--text-charcoal)">Masterclasses</text>
-                <text x="15" y="440" font-family="var(--font-sans)" font-size="11" font-weight="800" fill="var(--text-charcoal)">De Hallen Zaal</text>
+              <!-- STAND 3: Top wall (8 tables horizontal - De Monnik Dranken) -->
+              <g class="svg-stand" data-stand="3" title="Stand 3: De Monnik Dranken (8 Tafels)">
+                <rect x="245" y="85" width="224" height="45" rx="3" class="stand-box" />
+                <!-- 8 tables dividers -->
+                <line x1="273" y1="85" x2="273" y2="130" class="stand-divider" />
+                <line x1="301" y1="85" x2="301" y2="130" class="stand-divider" />
+                <line x1="329" y1="85" x2="329" y2="130" class="stand-divider" />
+                <line x1="357" y1="85" x2="357" y2="130" class="stand-divider" />
+                <line x1="385" y1="85" x2="385" y2="130" class="stand-divider" />
+                <line x1="413" y1="85" x2="413" y2="130" class="stand-divider" />
+                <line x1="441" y1="85" x2="441" y2="130" class="stand-divider" />
+                <text x="357" y="113" class="stand-num">3</text>
+              </g>
+
+              <!-- STAND 4: Top-right angled corner (3 tables angled - Mitra) -->
+              <g class="svg-stand" data-stand="4" title="Stand 4: Mitra Drankspeciaalzaken" transform="translate(865, 92) rotate(45)">
+                <rect x="-10" y="-20" width="78" height="40" rx="3" class="stand-box" />
+                <!-- 3 tables dividers -->
+                <line x1="16" y1="-20" x2="16" y2="20" class="stand-divider" />
+                <line x1="42" y1="-20" x2="42" y2="20" class="stand-divider" />
+                <text x="29" y="6" class="stand-num">4</text>
+              </g>
+
+              <!-- STAND 5: Right wall vertical (6 tables vertical - Bresser & Timmer) -->
+              <g class="svg-stand" data-stand="5" title="Stand 5: Bresser &amp; Timmer">
+                <rect x="865" y="170" width="45" height="144" rx="3" class="stand-box" />
+                <!-- 6 tables dividers -->
+                <line x1="865" y1="194" x2="910" y2="194" class="stand-divider" />
+                <line x1="865" y1="218" x2="910" y2="218" class="stand-divider" />
+                <line x1="865" y1="242" x2="910" y2="242" class="stand-divider" />
+                <line x1="865" y1="266" x2="910" y2="266" class="stand-divider" />
+                <line x1="865" y1="290" x2="910" y2="290" class="stand-divider" />
+                <text x="887" y="248" class="stand-num">5</text>
+              </g>
+
+              <!-- STAND 6: Bottom-right wall (5 tables horizontal - Whisky Import Nederland) -->
+              <g class="svg-stand" data-stand="6" title="Stand 6: Whisky Import Nederland (WIN)">
+                <rect x="725" y="325" width="130" height="45" rx="3" class="stand-box" />
+                <!-- 5 tables dividers -->
+                <line x1="751" y1="325" x2="751" y2="370" class="stand-divider" />
+                <line x1="777" y1="325" x2="777" y2="370" class="stand-divider" />
+                <line x1="803" y1="325" x2="803" y2="370" class="stand-divider" />
+                <line x1="829" y1="325" x2="829" y2="370" class="stand-divider" />
+                <text x="790" y="353" class="stand-num">6</text>
+              </g>
+
+              <!-- STAND 7: Bottom wall before alcove (2 tables horizontal - Nog te verkopen) -->
+              <g class="svg-stand" data-stand="7" title="Stand 7: Nog te verkopen">
+                <rect x="655" y="325" width="54" height="45" rx="3" class="stand-box stand-available" />
+                <!-- 2 tables divider -->
+                <line x1="682" y1="325" x2="682" y2="370" class="stand-divider" />
+                <text x="682" y="353" class="stand-num">7</text>
+              </g>
+
+              <!-- STAND 8: Alcove step wall vertical (3 tables vertical - Nog te verkopen) -->
+              <g class="svg-stand" data-stand="8" title="Stand 8: Nog te verkopen">
+                <rect x="610" y="400" width="45" height="72" rx="3" class="stand-box stand-available" />
+                <!-- 3 tables dividers -->
+                <line x1="610" y1="424" x2="655" y2="424" class="stand-divider" />
+                <line x1="610" y1="448" x2="655" y2="448" class="stand-divider" />
+                <text x="632" y="442" class="stand-num">8</text>
+              </g>
+
+              <!-- STAND 9: Alcove bottom right (4 tables horizontal - Craft Spirits) -->
+              <g class="svg-stand" data-stand="9" title="Stand 9: Craft Spirits">
+                <rect x="485" y="425" width="108" height="45" rx="3" class="stand-box" />
+                <!-- 4 tables dividers -->
+                <line x1="512" y1="425" x2="512" y2="470" class="stand-divider" />
+                <line x1="539" y1="425" x2="539" y2="470" class="stand-divider" />
+                <line x1="566" y1="425" x2="566" y2="470" class="stand-divider" />
+                <text x="539" y="453" class="stand-num">9</text>
+              </g>
+
+              <!-- STAND 10: Alcove bottom left (3 tables horizontal - Distilleerderij de Bronckhorst) -->
+              <g class="svg-stand" data-stand="10" title="Stand 10: Distilleerderij de Bronckhorst">
+                <rect x="385" y="425" width="84" height="45" rx="3" class="stand-box" />
+                <!-- 3 tables dividers -->
+                <line x1="413" y1="425" x2="413" y2="470" class="stand-divider" />
+                <line x1="441" y1="425" x2="441" y2="470" class="stand-divider" />
+                <text x="427" y="453" class="stand-num">10</text>
+              </g>
+
+              <!-- STAND 11: Alcove left vertical step (6 tables vertical - Van Weringhs Whisky World) -->
+              <g class="svg-stand" data-stand="11" title="Stand 11: Van Weringhs Whisky World">
+                <rect x="325" y="320" width="45" height="144" rx="3" class="stand-box" />
+                <!-- 6 tables dividers -->
+                <line x1="325" y1="344" x2="370" y2="344" class="stand-divider" />
+                <line x1="325" y1="368" x2="370" y2="368" class="stand-divider" />
+                <line x1="325" y1="392" x2="370" y2="392" class="stand-divider" />
+                <line x1="325" y1="416" x2="370" y2="416" class="stand-divider" />
+                <line x1="325" y1="440" x2="370" y2="440" class="stand-divider" />
+                <text x="347" y="398" class="stand-num">11</text>
+              </g>
+
+              <!-- STAND 12: Angled near entrance door (2 tables angled - Dutch Whisky Teers) -->
+              <g class="svg-stand" data-stand="12" title="Stand 12: Dutch Whisky Teers" transform="translate(210, 305) rotate(-20)">
+                <rect x="0" y="0" width="54" height="42" rx="3" class="stand-box" />
+                <!-- 2 tables divider -->
+                <line x1="27" y1="0" x2="27" y2="42" class="stand-divider" />
+                <text x="27" y="27" class="stand-num">12</text>
               </g>
 
               <!-- ============================================== -->
-              <!-- STANDS GRAPHICAL BLOCKS (SVG Interactive elements) -->
+              <!-- CENTRAL ISLAND CLUSTER (ORGANISATIE + STANDS 15-20) -->
               <!-- ============================================== -->
-              
-              <!-- LEFT AREA (Main Entrance & Stand U) -->
-              <g class="svg-stand" data-stand="U">
-                <rect x="50" y="210" width="60" height="80" rx="4" class="stand-box" />
-                <text x="80" y="255" class="stand-num">U</text>
+
+              <!-- ORGANISATIE (Central Island Top-Left: 4 tables with (i) badge) -->
+              <g class="svg-stand" data-stand="O" title="Organisatie stand (drams verkoop en informatie)">
+                <rect x="485" y="165" width="108" height="45" rx="3" class="stand-box organisation" />
+                <!-- 4 tables dividers -->
+                <line x1="512" y1="165" x2="512" y2="210" class="stand-divider" />
+                <line x1="539" y1="165" x2="539" y2="210" class="stand-divider" />
+                <line x1="566" y1="165" x2="566" y2="210" class="stand-divider" />
+                <circle cx="500" cy="187" r="7" fill="#8c0223" />
+                <text x="500" y="190" font-family="var(--font-sans)" font-size="9" font-weight="900" fill="#FFFFFF" text-anchor="middle">i</text>
+                <text x="548" y="192" class="stand-num text-bold" style="font-size: 8px; fill: #8c0223; letter-spacing: 0.12em;">ORGANISATIE</text>
               </g>
 
-              <!-- Entrance Text Labels (Above and Below Corridor) -->
-              <text x="80" y="195" font-family="var(--font-sans)" font-size="11" font-weight="900" fill="var(--text-charcoal)" text-anchor="middle">Uitgifte glazen +</text>
-              <text x="80" y="308" font-family="var(--font-sans)" font-size="11" font-weight="900" fill="var(--text-charcoal)" text-anchor="middle">Festival botteling</text>
-
-              <!-- Entrance Corridor Arrow pointing into the Schip -->
-              <g class="entrance-arrow">
-                <path d="M 120 250 L 138 250 M 132 245 L 138 250 L 132 255" stroke="var(--text-charcoal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- STAND 15: Central Island Top-Middle (2 tables - International Whisky Society) -->
+              <g class="svg-stand" data-stand="15" title="Stand 15: International Whisky Society">
+                <rect x="610" y="165" width="54" height="45" rx="3" class="stand-box" />
+                <!-- 2 tables divider -->
+                <line x1="637" y1="165" x2="637" y2="210" class="stand-divider" />
+                <text x="637" y="193" class="stand-num">15</text>
               </g>
 
-              <!-- Entrance Corridor Arrow pointing into the Schip -->
-              <g class="entrance-arrow">
-                <path d="M 125 250 L 140 250 M 135 245 L 140 250 L 135 255" stroke="var(--text-charcoal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- STAND 16: Central Island Top-Right (3 tables - Cane & Grain Slijterij) -->
+              <g class="svg-stand" data-stand="16" title="Stand 16: Cane &amp; Grain Slijterij">
+                <rect x="680" y="165" width="81" height="45" rx="3" class="stand-box" />
+                <!-- 3 tables dividers -->
+                <line x1="707" y1="165" x2="707" y2="210" class="stand-divider" />
+                <line x1="734" y1="165" x2="734" y2="210" class="stand-divider" />
+                <text x="720" y="193" class="stand-num">16</text>
               </g>
 
-              <!-- Stands 1 & 2 (Left wall above entrance passage) -->
-              <g class="svg-stand" data-stand="2">
-                <rect x="155" y="155" width="22" height="28" rx="2" class="stand-box" />
-                <text x="166" y="173" class="stand-num text-small">2</text>
-              </g>
-              <g class="svg-stand" data-stand="1">
-                <rect x="155" y="188" width="22" height="28" rx="2" class="stand-box" />
-                <text x="166" y="206" class="stand-num text-small">1</text>
-              </g>
-
-              <!-- Stand 13 (Left wall below entrance passage) -->
-              <g class="svg-stand" data-stand="13">
-                <rect x="155" y="260" width="22" height="28" rx="2" class="stand-box" />
-                <text x="166" y="278" class="stand-num text-small">13</text>
+              <!-- STAND 17: Central Island Right Vertical (4 tables vertical - Brugse Whisky Company) -->
+              <g class="svg-stand" data-stand="17" title="Stand 17: Brugse Whisky Company">
+                <rect x="740" y="225" width="45" height="96" rx="3" class="stand-box" />
+                <!-- 4 tables dividers -->
+                <line x1="740" y1="249" x2="785" y2="249" class="stand-divider" />
+                <line x1="740" y1="273" x2="785" y2="273" class="stand-divider" />
+                <line x1="740" y1="297" x2="785" y2="297" class="stand-divider" />
+                <text x="762" y="279" class="stand-num">17</text>
               </g>
 
-              <g class="svg-stand" data-stand="C">
-                <rect x="145" y="305" width="45" height="45" rx="4" class="stand-box catering" />
-                <text x="167" y="332" class="stand-num text-small">C</text>
+              <!-- STAND 18: Central Island Bottom Right (5 tables horizontal - Nog te verkopen) -->
+              <g class="svg-stand" data-stand="18" title="Stand 18: Nog te verkopen">
+                <rect x="545" y="250" width="130" height="45" rx="3" class="stand-box stand-available" />
+                <!-- 5 tables dividers -->
+                <line x1="571" y1="250" x2="571" y2="295" class="stand-divider" />
+                <line x1="597" y1="250" x2="597" y2="295" class="stand-divider" />
+                <line x1="623" y1="250" x2="623" y2="295" class="stand-divider" />
+                <line x1="649" y1="250" x2="649" y2="295" class="stand-divider" />
+                <text x="610" y="278" class="stand-num">18</text>
               </g>
 
-              <!-- Main Nave: Top Row (Stands 3, 4, 5, 6) -->
-              <g class="svg-stand" data-stand="3">
-                <rect x="155" y="85" width="85" height="45" rx="3" class="stand-box" />
-                <text x="197" y="112" class="stand-num">3</text>
-              </g>
-              <g class="svg-stand" data-stand="4">
-                <rect x="250" y="85" width="130" height="35" rx="3" class="stand-box" />
-                <text x="315" y="107" class="stand-num">4</text>
-              </g>
-
-              <g class="svg-stand" data-stand="5">
-                <rect x="410" y="85" width="50" height="35" rx="3" class="stand-box" />
-                <text x="435" y="107" class="stand-num">5</text>
+              <!-- STAND 19: Central Island Bottom Left (5 tables horizontal - Bacardi Martini) -->
+              <g class="svg-stand" data-stand="19" title="Stand 19: Bacardi Martini">
+                <rect x="395" y="250" width="130" height="45" rx="3" class="stand-box" />
+                <!-- 5 tables dividers -->
+                <line x1="421" y1="250" x2="421" y2="295" class="stand-divider" />
+                <line x1="447" y1="250" x2="447" y2="295" class="stand-divider" />
+                <line x1="473" y1="250" x2="473" y2="295" class="stand-divider" />
+                <line x1="499" y1="250" x2="499" y2="295" class="stand-divider" />
+                <text x="460" y="278" class="stand-num">19</text>
               </g>
 
-              <!-- Stand 6 is split into three table modules -->
-              <g class="svg-stand" data-stand="6">
-                <rect x="525" y="85" width="22" height="35" rx="2" class="stand-box" />
-                <text x="536" y="107" class="stand-num text-small">6</text>
-              </g>
-              <g class="svg-stand" data-stand="6">
-                <rect x="552" y="85" width="22" height="35" rx="2" class="stand-box" />
-                <text x="563" y="107" class="stand-num text-small">6</text>
-              </g>
-              <g class="svg-stand" data-stand="6">
-                <rect x="579" y="85" width="22" height="35" rx="2" class="stand-box" />
-                <text x="590" y="107" class="stand-num text-small">6</text>
+              <!-- STAND 20: Central Island Left Vertical (3 tables vertical - Nog te verkopen) -->
+              <g class="svg-stand" data-stand="20" title="Stand 20: Nog te verkopen">
+                <rect x="335" y="165" width="45" height="75" rx="3" class="stand-box stand-available" />
+                <!-- 3 tables dividers -->
+                <line x1="335" y1="190" x2="380" y2="190" class="stand-divider" />
+                <line x1="335" y1="215" x2="380" y2="215" class="stand-divider" />
+                <text x="357" y="208" class="stand-num">20</text>
               </g>
 
-              <!-- Main Nave: Middle-Left (Stands 12, 14, 14A, 19, 18, 17) -->
-              <g class="svg-stand" data-stand="12">
-                <rect x="250" y="170" width="130" height="60" rx="3" class="stand-box" />
-                <text x="315" y="205" class="stand-num">12</text>
-              </g>
-
-              <g class="svg-stand" data-stand="14">
-                <rect x="250" y="285" width="65" height="35" rx="3" class="stand-box" />
-                <text x="282" y="307" class="stand-num">14</text>
-              </g>
-              <g class="svg-stand" data-stand="15">
-                <rect x="315" y="285" width="65" height="35" rx="3" class="stand-box" />
-                <text x="347" y="307" class="stand-num">15</text>
-              </g>
-
-              <g class="svg-stand" data-stand="22">
-                <rect x="250" y="325" width="40" height="30" rx="3" class="stand-box" />
-                <text x="270" y="345" class="stand-num text-small">22</text>
-              </g>
-              <g class="svg-stand" data-stand="21">
-                <rect x="290" y="325" width="40" height="30" rx="3" class="stand-box" />
-                <text x="310" y="345" class="stand-num text-small">21</text>
-              </g>
-              <g class="svg-stand" data-stand="20">
-                <rect x="330" y="325" width="50" height="30" rx="3" class="stand-box" />
-                <text x="355" y="345" class="stand-num text-small">20</text>
-              </g>
-
-              <!-- Main Nave: Middle-Center (Stands 11, 8, 9, 10, O, 16, 15) -->
-              <g class="svg-stand" data-stand="11">
-                <rect x="440" y="170" width="80" height="70" rx="3" class="stand-box" />
-                <text x="480" y="210" class="stand-num">11</text>
-              </g>
-              <g class="svg-stand" data-stand="8">
-                <rect x="525" y="170" width="35" height="33" rx="3" class="stand-box" />
-                <text x="542" y="191" class="stand-num text-small">8</text>
-              </g>
-              <g class="svg-stand" data-stand="9">
-                <rect x="565" y="170" width="35" height="33" rx="3" class="stand-box" />
-                <text x="582" y="191" class="stand-num text-small">9</text>
-              </g>
-              <g class="svg-stand" data-stand="10">
-                <rect x="525" y="208" width="75" height="32" rx="3" class="stand-box" />
-                <text x="562" y="229" class="stand-num text-small">10</text>
-              </g>
-
-              <!-- Organisatie block: O (top-left), 16 (bottom-left), 17 (top-right), 18 (bottom-right) -->
-              <g class="svg-stand" data-stand="O">
-                <rect x="395" y="285" width="45" height="34" rx="3" class="stand-box organisation" />
-                <text x="417" y="307" class="stand-num text-small">O</text>
-              </g>
-              <g class="svg-stand" data-stand="16">
-                <rect x="395" y="322" width="45" height="34" rx="3" class="stand-box" />
-                <text x="417" y="343" class="stand-num text-small">16</text>
-              </g>
-              <g class="svg-stand" data-stand="17">
-                <rect x="443" y="285" width="45" height="34" rx="3" class="stand-box" />
-                <text x="465" y="307" class="stand-num text-small">17</text>
-              </g>
-              <g class="svg-stand" data-stand="18">
-                <rect x="443" y="322" width="45" height="34" rx="3" class="stand-box" />
-                <text x="465" y="343" class="stand-num text-small">18</text>
-              </g>
-              
-              <!-- Two central tasting island blocks: Stand 15 (Moët Hennessy) and Stand 19 (Helvetia Spirits) -->
-              <g class="svg-stand" data-stand="15">
-                <rect x="500" y="285" width="60" height="71" rx="3" class="stand-box" />
-                <text x="530" y="325" class="stand-num">15</text>
-              </g>
-              <g class="svg-stand" data-stand="19">
-                <rect x="570" y="285" width="60" height="71" rx="3" class="stand-box" />
-                <text x="600" y="325" class="stand-num">19</text>
-              </g>
-
-              <!-- Main Nave: Bottom Row (Stands 23, 24, S, 25, 26, 27, 28) -->
-              <g class="svg-stand" data-stand="23">
-                <rect x="250" y="375" width="75" height="35" rx="3" class="stand-box" />
-                <text x="287" y="397" class="stand-num text-small">23</text>
-              </g>
-              <g class="svg-stand" data-stand="24">
-                <rect x="330" y="375" width="50" height="35" rx="3" class="stand-box" />
-                <text x="355" y="397" class="stand-num text-small">24</text>
-              </g>
-
-              <g class="svg-stand" data-stand="S">
-                <rect x="260" y="420" width="110" height="60" rx="4" class="stand-box shop" />
-                <text x="315" y="455" class="stand-num">S</text>
-              </g>
-
-              <g class="svg-stand" data-stand="25">
-                <rect x="400" y="375" width="45" height="35" rx="3" class="stand-box" />
-                <text x="422" y="397" class="stand-num text-small">25</text>
-              </g>
-              <g class="svg-stand" data-stand="26">
-                <rect x="450" y="375" width="45" height="35" rx="3" class="stand-box" />
-                <text x="472" y="397" class="stand-num text-small">26</text>
-              </g>
-              <g class="svg-stand" data-stand="27">
-                <rect x="500" y="375" width="45" height="35" rx="3" class="stand-box" />
-                <text x="522" y="397" class="stand-num text-small">27</text>
-              </g>
-              <g class="svg-stand" data-stand="28">
-                <rect x="550" y="375" width="45" height="35" rx="3" class="stand-box" />
-                <text x="572" y="397" class="stand-num text-small">28</text>
-              </g>
-
-              <!-- EAST AREA: Chapels & Ambulatory (Choir area) -->
-              <!-- Kapel Noord (Stand 42) -->
-              <g class="svg-stand" data-stand="42">
-                <rect x="645" y="20" width="90" height="60" rx="4" class="stand-box chapel" />
-                <text x="690" y="55" class="stand-num">42</text>
-              </g>
-              <!-- Kapel Zuid (Stand 29) -->
-              <g class="svg-stand" data-stand="29">
-                <rect x="645" y="420" width="90" height="60" rx="4" class="stand-box chapel" />
-                <text x="690" y="455" class="stand-num">29</text>
-              </g>
-
-              <!-- Hoogkoor center (Stand 44) -->
-              <g class="svg-stand" data-stand="44">
-                <rect x="700" y="190" width="120" height="120" rx="6" class="stand-box choir" />
-                <text x="760" y="255" class="stand-num">44</text>
-              </g>
-
-              <!-- Inner ambulatory stands (43, 45, 46, 47, 48) -->
-              <g class="svg-stand" data-stand="43">
-                <rect x="795" y="150" width="30" height="30" rx="3" class="stand-box" />
-                <text x="810" y="170" class="stand-num text-small">43</text>
-              </g>
-              <g class="svg-stand" data-stand="45">
-                <rect x="830" y="170" width="30" height="30" rx="3" class="stand-box" />
-                <text x="845" y="190" class="stand-num text-small">45</text>
-              </g>
-              <g class="svg-stand" data-stand="46">
-                <rect x="845" y="210" width="30" height="80" rx="3" class="stand-box" />
-                <text x="860" y="255" class="stand-num text-small">46</text>
-              </g>
-              <g class="svg-stand" data-stand="47">
-                <rect x="830" y="300" width="30" height="30" rx="3" class="stand-box" />
-                <text x="845" y="320" class="stand-num text-small">47</text>
-              </g>
-              <g class="svg-stand" data-stand="48">
-                <rect x="795" y="320" width="30" height="30" rx="3" class="stand-box" />
-                <text x="810" y="340" class="stand-num text-small">48</text>
-              </g>
-
-              <!-- Outer Curved Wall Ambulatory: Top-Right (41, 40, 39, 38) -->
-              <g class="svg-stand" data-stand="41">
-                <rect x="680" y="85" width="35" height="28" rx="2" class="stand-box" />
-                <text x="697" y="103" class="stand-num text-small">41</text>
-              </g>
-              <g class="svg-stand" data-stand="40">
-                <rect x="720" y="85" width="35" height="28" rx="2" class="stand-box" />
-                <text x="737" y="103" class="stand-num text-small">40</text>
-              </g>
-              <g class="svg-stand" data-stand="39">
-                <rect x="760" y="85" width="35" height="28" rx="2" class="stand-box catering" />
-                <text x="777" y="103" class="stand-num text-small">39</text>
-              </g>
-              <g class="svg-stand" data-stand="38">
-                <rect x="800" y="85" width="35" height="28" rx="2" class="stand-box" />
-                <text x="817" y="103" class="stand-num text-small">38</text>
-              </g>
-
-              <!-- Outer Curved Wall: Right curving down (37, 36, 35, 34, 33, 32, 31, 30) -->
-              <!-- 100% Straight, unrotated SVG stand boxes placed along the curve contour -->
-              <g class="svg-stand" data-stand="37">
-                <rect x="838" y="105" width="35" height="28" rx="2" class="stand-box" />
-                <text x="855" y="123" class="stand-num text-small">37</text>
-              </g>
-
-              <g class="svg-stand" data-stand="36">
-                <rect x="865" y="145" width="35" height="28" rx="2" class="stand-box" />
-                <text x="882" y="163" class="stand-num text-small">36</text>
-              </g>
-
-              <g class="svg-stand" data-stand="35">
-                <rect x="880" y="190" width="28" height="38" rx="2" class="stand-box" />
-                <text x="894" y="214" class="stand-num text-small">35</text>
-              </g>
-
-              <g class="svg-stand" data-stand="34">
-                <rect x="880" y="265" width="28" height="38" rx="2" class="stand-box" />
-                <text x="894" y="289" class="stand-num text-small">34</text>
-              </g>
-
-              <g class="svg-stand" data-stand="33">
-                <rect x="865" y="325" width="35" height="28" rx="2" class="stand-box" />
-                <text x="882" y="343" class="stand-num text-small">33</text>
-              </g>
-
-              <g class="svg-stand" data-stand="32">
-                <rect x="838" y="365" width="35" height="28" rx="2" class="stand-box" />
-                <text x="855" y="383" class="stand-num text-small">32</text>
-              </g>
-
-              <g class="svg-stand" data-stand="31">
-                <rect x="800" y="385" width="40" height="28" rx="2" class="stand-box" />
-                <text x="820" y="403" class="stand-num text-small">31</text>
-              </g>
-              <g class="svg-stand" data-stand="30">
-                <rect x="755" y="385" width="40" height="28" rx="2" class="stand-box" />
-                <text x="775" y="403" class="stand-num text-small">30</text>
-              </g>
             </svg>
           </div>
         </div>
@@ -436,13 +364,13 @@ const exhibitors = await getStandhouders('amsterdam');
             <h3 class="card-inner-title text-center">Stand Detail</h3>
             <div class="vintage-line"></div>
             <p class="sidebar-card-text text-center italic-text">
-              Klik op een standnummer op de plattegrond of kies een standhouder uit de lijst om de details, merken en standlocatie te bekijken.
+              Klik op een standnummer op de plattegrond of kies een standhouder uit de lijst om de details, merken en zaallocatie te bekijken.
             </p>
           </div>
           
           <div class="card-padded" id="active-info-state" style="display: none;">
             <div class="detail-stand-badge-row">
-              <span class="detail-stand-number" id="detail-number">11</span>
+              <span class="detail-stand-number" id="detail-number">Stand 1</span>
               <span class="status-badge" id="detail-category-badge">Schots</span>
             </div>
             
@@ -450,11 +378,21 @@ const exhibitors = await getStandhouders('amsterdam');
               <h3 class="card-inner-title" id="detail-name">Standhouder Naam</h3>
               <div class="vintage-line" style="margin: 0.5rem 0 1rem 0;"></div>
               
+              <div class="detail-hall-row" id="detail-hall-box" style="display: none;">
+                <span class="hall-badge">
+                  <svg class="hall-pin-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span id="detail-hall">Studio 2</span>
+                </span>
+              </div>
+
               <p class="sidebar-card-text" id="detail-description">
                 Beschrijving van de standhouder.
               </p>
               
-              <div class="detail-brands-box">
+              <div class="detail-brands-box" id="detail-brands-box">
                 <span class="brands-label">Aanwezige Merken:</span>
                 <div class="brands-list-tags" id="detail-brands">
                   <!-- Dynamic brands go here -->
@@ -471,28 +409,47 @@ const exhibitors = await getStandhouders('amsterdam');
     <section class="directory-list-section">
       <div class="directory-section-header">
         <h2 class="directory-title">Deelnemerslijst (A-Z)</h2>
-        <span class="results-counter" id="results-count">48 standhouders gevonden</span>
+        <span class="results-counter" id="results-count">{exhibitors.length} standhouders gevonden</span>
       </div>
       
       <div class="directory-grid" id="directory-grid">
         {exhibitors.map((exh) => (
-          <div class="directory-item-card" data-id={exh.id} data-cat={exh.category} data-name={exh.name.toLowerCase()} data-brands={exh.brands.join(' ').toLowerCase()}>
+          <div class="directory-item-card" data-id={exh.id} data-cat={exh.category} data-name={exh.name.toLowerCase()} data-brands={(exh.brands || []).join(' ').toLowerCase()} data-hall={(exh.hall || '').toLowerCase()} data-available={exh.isAvailable ? 'true' : 'false'}>
             <div class="card-top-header">
-              <span class="card-stand-number">{exh.isNotOnMap ? 'Niet op plattegrond' : `Stand ${exh.id}`}</span>
-              <span class={`category-tag tag-${exh.category}`}>
-                {exh.category === 'scotch' ? 'Schots' : 
-                 exh.category === 'dutch' ? 'Nederlands' : 
-                 exh.category === 'independent' ? 'Onafhankelijke Bottelaar' : 
-                 exh.category === 'world' ? 'Wereld' : 
-                 exh.category === 'catering' ? 'Catering' : 'Organisatie'}
+              <span class="card-stand-number">
+                {exh.isNotOnMap ? 'Niet op plattegrond' : 
+                 exh.id === 'O' ? 'Infodesk & Organisatie' : 
+                 ('Stand ' + exh.id)}
+              </span>
+              <span class={'category-tag ' + (exh.isAvailable ? 'tag-available' : 'tag-' + exh.category)}>
+                {exh.isAvailable ? 'Beschikbaar' : (
+                  exh.category === 'scotch' ? 'Schots' : 
+                  exh.category === 'dutch' ? 'Nederlands' : 
+                  exh.category === 'independent' ? 'Onafhankelijk' : 
+                  exh.category === 'world' ? 'Wereld' : 
+                  exh.category === 'catering' ? 'Catering' : 'Organisatie'
+                )}
               </span>
             </div>
             <div class="card-body-content">
-              <h4>{exh.name}</h4>
-              <p>{exh.description}</p>
-              <div class="card-brands-row">
-                <strong>Merken:</strong> {exh.brands.join(', ')}
+              <div class="card-title-zone">
+                <h4>{exh.name}</h4>
+                {exh.hall && (
+                  <span class="hall-indicator-mini">
+                    <svg class="hall-pin-svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    {exh.hall}
+                  </span>
+                )}
               </div>
+              <p>{exh.description}</p>
+              {exh.brands && exh.brands.length > 0 && (
+                <div class="card-brands-row">
+                  <strong>Merken:</strong> {exh.brands.join(', ')}
+                </div>
+              )}
             </div>
             <div class="card-action-footer">
               {!exh.isNotOnMap && (
@@ -515,6 +472,7 @@ const exhibitors = await getStandhouders('amsterdam');
 <style>
   /* --- Page layout and structure --- */
   .standhouders-page-wrapper {
+    --primary-color: #8c0223;
     background-color: var(--bg-parchment);
     min-height: 100vh;
     padding: 9rem 3rem 6rem;
@@ -532,7 +490,7 @@ const exhibitors = await getStandhouders('amsterdam');
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
   }
 
@@ -542,7 +500,7 @@ const exhibitors = await getStandhouders('amsterdam');
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--whisky-gold-dark);
+    color: var(--whisky-gold, #caac8e);
   }
 
   .page-title {
@@ -550,7 +508,7 @@ const exhibitors = await getStandhouders('amsterdam');
     font-size: 3.75rem;
     color: var(--text-charcoal);
     margin: 0;
-    line-height: 1;
+    line-height: 1.05;
   }
 
   .page-subtitle {
@@ -598,6 +556,31 @@ const exhibitors = await getStandhouders('amsterdam');
     justify-content: flex-end;
   }
 
+  .filter-tab {
+    background-color: var(--bg-sand, #FAF0EB);
+    border: 1.5px solid var(--text-charcoal, #1D1C1A);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: var(--text-charcoal, #1D1C1A);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .filter-tab:hover {
+    background-color: #f3e5db;
+    border-color: #8c0223;
+  }
+
+  .filter-tab.active {
+    background-color: #8c0223 !important;
+    color: #FFFFFF !important;
+    border-color: var(--text-charcoal, #1D1C1A) !important;
+    box-shadow: 2px 2px 0px var(--text-charcoal, #1D1C1A);
+  }
+
   .search-icon-svg {
     display: block;
   }
@@ -608,13 +591,14 @@ const exhibitors = await getStandhouders('amsterdam');
     border-radius: 4px;
     box-shadow: 6px 6px 0px var(--text-charcoal);
     overflow: hidden;
+    border: 2px solid var(--text-charcoal);
   }
 
   .map-scroll-area {
     padding: 1.5rem !important;
     position: relative;
     overflow: auto;
-    max-height: 600px;
+    max-height: 640px;
   }
 
   .map-toolbar {
@@ -627,12 +611,24 @@ const exhibitors = await getStandhouders('amsterdam');
     font-family: var(--font-sans);
   }
 
+  .toolbar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   .toolbar-title {
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-charcoal);
+  }
+
+  .toolbar-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
   }
 
   .zoom-controls {
@@ -641,20 +637,22 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   .zoom-btn {
-    background-color: var(--bg-sand);
+    background-color: var(--bg-sand, #FAF0EB);
     border: 1.5px solid var(--text-charcoal);
     font-family: var(--font-sans);
     font-weight: 700;
-    padding: 0.25rem 0.65rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 3px;
     cursor: pointer;
     font-size: 0.85rem;
     transition: all 0.2s;
+    color: var(--text-charcoal);
   }
 
   .zoom-btn:hover {
-    background-color: var(--whisky-gold);
-    color: var(--bg-parchment);
+    background-color: #8c0223;
+    color: #FFFFFF;
+    border-color: var(--text-charcoal);
   }
 
   .svg-zoom-wrapper {
@@ -664,43 +662,54 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   /* --- SVG Map Styling --- */
-  .church-svg-map {
+  .studio2-svg-map {
     width: 100%;
     height: auto;
     display: block;
     user-select: none;
   }
 
-  .church-outline {
-    fill: var(--bg-sand);
+  .venue-outline {
     stroke: var(--text-charcoal);
     stroke-width: 2.5;
   }
 
-  .pillar {
-    fill: var(--border-color-dark);
+  .hall-pillar {
+    fill: #D8CEBC;
     stroke: var(--text-charcoal);
-    stroke-width: 1;
-    opacity: 0.9;
+    stroke-width: 1.2;
   }
 
-  .map-zone-label {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    fill: var(--text-muted);
-    opacity: 0.25;
+  .map-hall-watermark {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    fill: var(--text-charcoal);
+    opacity: 0.07;
     text-anchor: middle;
     pointer-events: none;
+    letter-spacing: 0.1em;
   }
 
   /* --- SVG Stand Boxes --- */
   .stand-box {
-    fill: var(--bg-paper-card);
+    fill: #FCFAF7;
     stroke: var(--text-charcoal);
     stroke-width: 1.8;
     cursor: pointer;
     transition: all 0.2s ease;
+  }
+
+  .stand-box.stand-available {
+    fill: #FFFDF9;
+    stroke: #7A7268;
+    stroke-dasharray: 4 2;
+  }
+
+  .stand-divider {
+    stroke: var(--text-charcoal);
+    stroke-width: 1;
+    opacity: 0.35;
+    pointer-events: none;
   }
 
   .stand-num {
@@ -713,8 +722,10 @@ const exhibitors = await getStandhouders('amsterdam');
     user-select: none;
   }
 
-  .stand-num.text-small {
-    font-size: 0.75rem;
+  .stand-box.organisation {
+    fill: rgba(140, 2, 35, 0.05);
+    stroke: #8c0223;
+    stroke-width: 2;
   }
 
   /* Hover states for SVG stands */
@@ -723,54 +734,34 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   .svg-stand:hover .stand-box {
-    fill: var(--whisky-gold-light);
-    stroke: var(--whisky-gold-dark);
-    filter: drop-shadow(0 2px 5px rgba(202, 172, 142, 0.2));
+    fill: #FAF0EB;
+    stroke: #8c0223;
+    stroke-dasharray: none;
+    filter: drop-shadow(0 2px 8px rgba(140, 2, 35, 0.25));
   }
 
-  /* Functional Areas Styling */
-  .stand-box.shop {
-    fill: rgba(44, 94, 67, 0.05);
-    stroke: var(--success-green);
-  }
-  .svg-stand[data-stand="S"]:hover .stand-box {
-    fill: var(--success-green-light);
-    stroke: var(--success-green);
-  }
-  .svg-stand[data-stand="S"] .stand-num {
-    fill: var(--success-green);
-  }
-
-  .stand-box.organisation {
-    fill: rgba(143, 91, 25, 0.05);
-    stroke: var(--whisky-gold-dark);
-  }
-  .svg-stand[data-stand="O"] .stand-num {
-    fill: var(--whisky-gold-dark);
-  }
-
-  .stand-box.catering {
-    fill: #FFF3CD;
-    stroke: #856404;
-  }
-  .svg-stand[data-stand="C"]:hover .stand-box {
-    fill: #FFEBAA;
-  }
-  .svg-stand[data-stand="C"] .stand-num {
-    fill: #856404;
+  .svg-stand:hover .stand-divider {
+    stroke: #8c0223;
+    opacity: 0.5;
   }
 
   /* Interactive active selection state in SVG */
   .svg-stand.selected-stand .stand-box {
-    fill: var(--whisky-gold-dark);
-    stroke: var(--text-charcoal);
+    fill: #8c0223 !important;
+    stroke: var(--text-charcoal) !important;
     stroke-width: 2.5px;
+    stroke-dasharray: none;
     animation: pulseGlow 1.5s infinite;
   }
 
   .svg-stand.selected-stand .stand-num {
-    fill: var(--bg-parchment) !important;
+    fill: #FAF7F2 !important;
     font-weight: 900;
+  }
+
+  .svg-stand.selected-stand .stand-divider {
+    stroke: #FAF7F2 !important;
+    opacity: 0.45;
   }
 
   /* Dimmed state during search/filter */
@@ -779,15 +770,15 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   .svg-stand.highlighted-search-stand .stand-box {
-    fill: var(--whisky-gold-light);
-    stroke: var(--whisky-gold-dark);
+    fill: #FAF0EB;
+    stroke: #8c0223;
     stroke-width: 2px;
   }
 
   @keyframes pulseGlow {
-    0% { filter: drop-shadow(0 0 0px var(--whisky-gold)); }
-    50% { filter: drop-shadow(0 0 8px var(--whisky-gold)); }
-    100% { filter: drop-shadow(0 0 0px var(--whisky-gold)); }
+    0% { filter: drop-shadow(0 0 0px #8c0223); }
+    50% { filter: drop-shadow(0 0 10px rgba(140, 2, 35, 0.7)); }
+    100% { filter: drop-shadow(0 0 0px #8c0223); }
   }
 
   /* --- Sidebar Panel --- */
@@ -811,7 +802,7 @@ const exhibitors = await getStandhouders('amsterdam');
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .card-inner-title {
@@ -854,26 +845,18 @@ const exhibitors = await getStandhouders('amsterdam');
     justify-content: center;
   }
 
-  .info-card-header-art {
-    font-size: 3rem;
-    text-align: center;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
   .detail-stand-badge-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--text-charcoal);
     padding-bottom: 0.75rem;
-    margin-bottom: 0.5rem;
   }
 
   .detail-stand-number {
     font-family: var(--font-display);
     font-size: 2.25rem;
-    color: var(--whisky-gold-dark);
+    color: #8c0223;
     line-height: 1;
   }
 
@@ -883,8 +866,32 @@ const exhibitors = await getStandhouders('amsterdam');
     gap: 0.85rem;
   }
 
+  .detail-hall-row {
+    margin-bottom: 0.25rem;
+  }
+
+  .hall-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--bg-sand, #FAF0EB);
+    color: var(--text-charcoal);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color, #E8D5D5);
+  }
+
+  .hall-pin-svg {
+    display: inline-block;
+    vertical-align: middle;
+    color: #8c0223;
+  }
+
   .detail-brands-box {
-    border-top: 1px dotted var(--border-color-dark);
+    border-top: 1px dotted var(--text-muted);
     padding-top: 0.85rem;
     display: flex;
     flex-direction: column;
@@ -907,8 +914,8 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   .brand-tag {
-    background-color: var(--bg-sand);
-    border: 1px solid var(--border-color-dark);
+    background-color: var(--bg-sand, #FAF0EB);
+    border: 1px solid var(--border-color, #E8D5D5);
     color: var(--text-charcoal);
     font-family: var(--font-sans);
     font-weight: 700;
@@ -925,7 +932,7 @@ const exhibitors = await getStandhouders('amsterdam');
 
   .form-control {
     width: 100%;
-    background-color: var(--bg-sand);
+    background-color: var(--bg-sand, #FAF0EB);
     border: 2px solid var(--text-charcoal);
     border-radius: 4px;
     padding: 0.75rem 1rem;
@@ -939,8 +946,8 @@ const exhibitors = await getStandhouders('amsterdam');
 
   .form-control:focus {
     background-color: var(--bg-paper-card);
-    border-color: var(--whisky-gold-dark);
-    box-shadow: 0 0 0 3px var(--whisky-gold-trans);
+    border-color: #8c0223;
+    box-shadow: 0 0 0 3px rgba(140, 2, 35, 0.12);
   }
 
   .search-icon-inside {
@@ -950,41 +957,6 @@ const exhibitors = await getStandhouders('amsterdam');
     transform: translateY(-50%);
     font-size: 1rem;
     pointer-events: none;
-  }
-
-  .filter-buttons-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    flex: 2;
-    justify-content: flex-end;
-  }
-
-  .filter-tab {
-    background-color: var(--bg-sand);
-    border: 1.5px solid var(--text-charcoal);
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.65rem 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-    color: var(--text-muted);
-  }
-
-  .filter-tab:hover {
-    background-color: var(--bg-paper-card);
-    color: var(--text-charcoal);
-  }
-
-  .filter-tab.active {
-    background-color: var(--text-charcoal);
-    color: var(--whisky-gold-light);
-    border-color: var(--text-charcoal);
   }
 
   /* --- Directory Section Below --- */
@@ -1008,6 +980,7 @@ const exhibitors = await getStandhouders('amsterdam');
     font-family: var(--font-display);
     font-size: 2.25rem;
     margin: 0;
+    color: var(--text-charcoal);
   }
 
   .results-counter {
@@ -1017,10 +990,10 @@ const exhibitors = await getStandhouders('amsterdam');
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-muted);
-    background-color: var(--bg-sand);
+    background-color: var(--bg-sand, #FAF0EB);
     padding: 0.35rem 0.85rem;
     border-radius: 20px;
-    border: 1px solid var(--border-color-dark);
+    border: 1px solid var(--border-color, #E8D5D5);
   }
 
   .directory-grid {
@@ -1043,13 +1016,13 @@ const exhibitors = await getStandhouders('amsterdam');
   .directory-item-card:hover {
     transform: translateY(-4px);
     box-shadow: 6px 6px 0px var(--text-charcoal);
-    border-color: var(--whisky-gold-dark);
+    border-color: #8c0223;
   }
 
   .directory-item-card.selected-card {
-    border-color: var(--whisky-gold-dark);
-    background-color: rgba(202, 172, 142, 0.03);
-    box-shadow: 6px 6px 0px var(--whisky-gold-dark);
+    border-color: #8c0223;
+    background-color: rgba(140, 2, 35, 0.03);
+    box-shadow: 6px 6px 0px #8c0223;
   }
 
   .card-top-header {
@@ -1058,7 +1031,7 @@ const exhibitors = await getStandhouders('amsterdam');
     align-items: center;
     border-bottom: 1.5px solid var(--text-charcoal);
     padding: 0.85rem 1.25rem;
-    background-color: var(--bg-sand);
+    background-color: var(--bg-sand, #FAF0EB);
   }
 
   .card-stand-number {
@@ -1078,12 +1051,13 @@ const exhibitors = await getStandhouders('amsterdam');
     border-radius: 20px;
   }
 
-  .category-tag.tag-scotch { background-color: var(--whisky-gold-trans); color: var(--whisky-gold-dark); border: 1px solid var(--whisky-gold); }
-  .category-tag.tag-dutch { background-color: rgba(44, 94, 67, 0.05); color: var(--success-green); border: 1px solid var(--success-green); }
-  .category-tag.tag-independent { background-color: #E2ECF7; color: #2C5A94; border: 1px solid #A2C4EC; }
-  .category-tag.tag-world { background-color: #F8E6E2; color: #9E3E2B; border: 1px solid #EFA79A; }
-  .category-tag.tag-catering { background-color: #FFF3CD; color: #856404; border: 1px solid #FFEBAA; }
-  .category-tag.tag-organisation { background-color: #E2E3E5; color: #383D41; border: 1px solid #D6D8DB; }
+  .category-tag.tag-scotch { background-color: rgba(140, 2, 35, 0.08); color: #8c0223; border: 1px solid #8c0223; }
+  .category-tag.tag-dutch { background-color: #F8EFEA; color: #8c0223; border: 1px solid #DFBEAF; }
+  .category-tag.tag-independent { background-color: #F3EAE2; color: #6E3218; border: 1px solid #DFBEAF; }
+  .category-tag.tag-world { background-color: #FAF0EB; color: #8C431A; border: 1px solid #E8C9B8; }
+  .category-tag.tag-catering { background-color: #FFF6E5; color: #855804; border: 1px solid #FFE0A3; }
+  .category-tag.tag-organisation { background-color: #EFECE8; color: #4B4642; border: 1px solid #D8D2C8; }
+  .category-tag.tag-available { background-color: #FAF0EB; color: #8c0223; border: 1.5px dashed #8c0223; font-weight: 800; }
 
   .card-body-content {
     padding: 1.25rem;
@@ -1093,13 +1067,32 @@ const exhibitors = await getStandhouders('amsterdam');
     flex-grow: 1;
   }
 
-  .card-body-content h4 {
+  .card-title-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .card-title-zone h4 {
     font-family: var(--font-serif);
     font-weight: 700;
     font-size: 1.15rem;
     color: var(--text-charcoal);
     text-transform: none;
     letter-spacing: 0;
+    margin: 0;
+  }
+
+  .hall-indicator-mini {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #8c0223;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
   }
 
   .card-body-content p {
@@ -1113,7 +1106,7 @@ const exhibitors = await getStandhouders('amsterdam');
     font-family: var(--font-sans);
     font-size: 0.8rem;
     color: var(--text-charcoal);
-    border-top: 1px dotted var(--border-color-dark);
+    border-top: 1px dotted var(--border-color, #E8D5D5);
     padding-top: 0.65rem;
     margin-top: auto;
   }
@@ -1126,7 +1119,7 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   .card-action-footer {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color, #E8D5D5);
     padding: 0.85rem 1.25rem;
     display: flex;
     justify-content: flex-end;
@@ -1140,7 +1133,7 @@ const exhibitors = await getStandhouders('amsterdam');
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--whisky-gold-dark);
+    color: #8c0223;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1200,14 +1193,14 @@ const exhibitors = await getStandhouders('amsterdam');
       font-size: 0.95rem !important;
     }
 
-    .map-view-card {
+    .map-scroll-area {
       overflow-x: auto !important;
       -webkit-overflow-scrolling: touch !important;
       padding: 1rem 0.75rem !important;
     }
 
-    .church-map-svg {
-      min-width: 650px !important;
+    .studio2-svg-map {
+      min-width: 700px !important;
       height: auto !important;
     }
 
@@ -1246,7 +1239,6 @@ const exhibitors = await getStandhouders('amsterdam');
   // Initialize elements
   const searchInput = document.getElementById('exhibitor-search');
   const filterTabs = document.querySelectorAll('.filter-tab');
-  const directoryGrid = document.getElementById('directory-grid');
   const directoryCards = document.querySelectorAll('.directory-item-card');
   const resultsCount = document.getElementById('results-count');
   
@@ -1258,9 +1250,12 @@ const exhibitors = await getStandhouders('amsterdam');
   const detailName = document.getElementById('detail-name');
   const detailDesc = document.getElementById('detail-description');
   const detailBrands = document.getElementById('detail-brands');
+  const detailBrandsBox = document.getElementById('detail-brands-box');
+  const detailHall = document.getElementById('detail-hall');
+  const detailHallBox = document.getElementById('detail-hall-box');
 
   // SVG Elements
-  const svgMap = document.getElementById('church-map');
+  const svgMap = document.getElementById('studio2-map');
   const svgStands = document.querySelectorAll('.svg-stand');
   const zoomTarget = document.getElementById('svg-zoom-target');
 
@@ -1285,27 +1280,29 @@ const exhibitors = await getStandhouders('amsterdam');
   };
 
   // --- Zoom Controls ---
-  document.getElementById('zoom-in').addEventListener('click', () => {
+  document.getElementById('zoom-in')?.addEventListener('click', () => {
     if (scale < maxScale) {
       scale += zoomStep;
       applyZoom();
     }
   });
 
-  document.getElementById('zoom-out').addEventListener('click', () => {
+  document.getElementById('zoom-out')?.addEventListener('click', () => {
     if (scale > minScale) {
       scale -= zoomStep;
       applyZoom();
     }
   });
 
-  document.getElementById('zoom-reset').addEventListener('click', () => {
+  document.getElementById('zoom-reset')?.addEventListener('click', () => {
     scale = 1;
     applyZoom();
   });
 
   function applyZoom() {
-    zoomTarget.style.transform = `scale(${scale})`;
+    if (zoomTarget) {
+      zoomTarget.style.transform = 'scale(' + scale + ')';
+    }
   }
 
   // --- Update Details Card ---
@@ -1317,22 +1314,49 @@ const exhibitors = await getStandhouders('amsterdam');
     }
 
     // Set stand numbers & titles
-    detailNumber.textContent = exh.isNotOnMap ? "Niet op plattegrond" : "Stand " + exh.id;
+    if (exh.isNotOnMap) {
+      detailNumber.textContent = "Niet op plattegrond";
+    } else if (exh.id === 'O') {
+      detailNumber.textContent = "Organisatie & Infodesk";
+    } else if (exh.isAvailable) {
+      detailNumber.textContent = "Stand " + exh.id + " (Beschikbaar)";
+    } else {
+      detailNumber.textContent = "Stand " + exh.id;
+    }
+
     detailName.textContent = exh.name;
     detailDesc.textContent = exh.description;
     
+    // Hall info
+    if (exh.hall) {
+      detailHall.textContent = exh.hall;
+      detailHallBox.style.display = 'block';
+    } else {
+      detailHallBox.style.display = 'none';
+    }
+
     // Category mapping
-    detailCategory.textContent = categoryLabels[exh.category] || 'Overig';
-    detailCategory.className = `status-badge category-tag tag-${exh.category}`;
+    if (exh.isAvailable) {
+      detailCategory.textContent = 'Beschikbaar';
+      detailCategory.className = 'status-badge category-tag tag-available';
+    } else {
+      detailCategory.textContent = categoryLabels[exh.category] || 'Overig';
+      detailCategory.className = 'status-badge category-tag tag-' + exh.category;
+    }
 
     // Clear and fill brands
     detailBrands.innerHTML = '';
-    exh.brands.forEach(brand => {
-      const tag = document.createElement('span');
-      tag.className = 'brand-tag';
-      tag.textContent = brand;
-      detailBrands.appendChild(tag);
-    });
+    if (exh.brands && exh.brands.length > 0) {
+      exh.brands.forEach(brand => {
+        const tag = document.createElement('span');
+        tag.className = 'brand-tag';
+        tag.textContent = brand;
+        detailBrands.appendChild(tag);
+      });
+      detailBrandsBox.style.display = 'flex';
+    } else {
+      detailBrandsBox.style.display = 'none';
+    }
 
     defaultInfoState.style.display = 'none';
     activeInfoState.style.display = 'flex';
@@ -1343,10 +1367,12 @@ const exhibitors = await getStandhouders('amsterdam');
     let count = 0;
     
     directoryCards.forEach(card => {
-      const name = card.getAttribute('data-name');
-      const brands = card.getAttribute('data-brands');
-      const cat = card.getAttribute('data-cat');
-      const matchesSearch = name.includes(activeSearch) || brands.includes(activeSearch);
+      const name = card.getAttribute('data-name') || '';
+      const brands = card.getAttribute('data-brands') || '';
+      const cat = card.getAttribute('data-cat') || '';
+      const hall = card.getAttribute('data-hall') || '';
+      const isAvailable = card.getAttribute('data-available') === 'true';
+      const matchesSearch = name.includes(activeSearch) || brands.includes(activeSearch) || hall.includes(activeSearch) || (isAvailable && 'beschikbaar'.includes(activeSearch));
       const matchesFilter = activeFilter === 'all' || cat === activeFilter;
 
       if (matchesSearch && matchesFilter) {
@@ -1357,20 +1383,23 @@ const exhibitors = await getStandhouders('amsterdam');
       }
     });
 
-    resultsCount.textContent = `${count} standhouders gevonden`;
+    if (resultsCount) {
+      resultsCount.textContent = count + ' standhouders gevonden';
+    }
 
-    // Also update SVG map visuals (dim non-matching stands)
+    // Update SVG map visuals (dim non-matching stands)
     svgStands.forEach(group => {
       const standId = group.getAttribute('data-stand');
       const standExhibitors = exhibitors.filter(e => e.id === standId);
 
-      // Check if any exhibitor on this stand matches
       let matches = false;
       if (standExhibitors.length > 0) {
         matches = standExhibitors.some(e => {
           const nameMatches = e.name.toLowerCase().includes(activeSearch);
-          const brandsMatches = e.brands.join(' ').toLowerCase().includes(activeSearch);
-          const matchesSearch = nameMatches || brandsMatches;
+          const brandsMatches = (e.brands || []).join(' ').toLowerCase().includes(activeSearch);
+          const hallMatches = (e.hall || '').toLowerCase().includes(activeSearch);
+          const availableMatches = e.isAvailable && 'beschikbaar'.includes(activeSearch);
+          const matchesSearch = nameMatches || brandsMatches || hallMatches || availableMatches;
           const matchesFilter = activeFilter === 'all' || e.category === activeFilter;
           return matchesSearch && matchesFilter;
         });
@@ -1392,7 +1421,7 @@ const exhibitors = await getStandhouders('amsterdam');
   }
 
   // Search Input Listener
-  searchInput.addEventListener('input', (e) => {
+  searchInput?.addEventListener('input', (e) => {
     activeSearch = e.target.value.toLowerCase().trim();
     filterAndSearch();
   });
@@ -1445,9 +1474,7 @@ const exhibitors = await getStandhouders('amsterdam');
   // --- List card click & locate listeners ---
   directoryCards.forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't trigger if clicking the button (handled separately)
       if (e.target.classList.contains('btn-locate-stand')) return;
-      
       const id = card.getAttribute('data-id');
       selectStand(id);
     });
@@ -1461,8 +1488,8 @@ const exhibitors = await getStandhouders('amsterdam');
       const targetId = btn.getAttribute('data-target');
       selectStand(targetId);
       
-      // Scroll to SVG map
-      document.querySelector('.map-visual-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Scroll smoothly to SVG map
+      document.querySelector('.map-visual-container')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 </script>

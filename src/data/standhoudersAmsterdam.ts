@@ -1,5 +1,5 @@
-﻿// src/data/standhouders.ts
-// Centrale dataset voor standhouders / exposanten
+// src/data/standhoudersAmsterdam.ts
+// Officiële dataset voor standhouders / exposanten - Amsterdam Whisky Festival (De Hallen Studio 2)
 
 export interface ExhibitorItem {
   id: string;
@@ -8,64 +8,253 @@ export interface ExhibitorItem {
   brands: string[];
   description: string;
   isNotOnMap?: boolean;
+  hall?: string;
+  isAvailable?: boolean;
 }
 
 export const EXHIBITORS_AMSTERDAM: ExhibitorItem[] = [
-  { id: "1", name: "Distilleerderij de Bronckhorst", category: "dutch", brands: ["Nederlandse Whisky"], description: "Ambachtelijke Nederlandse single malt whisky, ter plaatse gedistilleerd in de Achterhoek." },
-  { id: "2", name: "Mitra", category: "world", brands: ["Merken volgen later"], description: "Mitra slijterijen presenteert een gevarieerde selectie van bekende en zeldzame whisky's." },
-  { id: "3", name: "Bresser en Timmer", category: "scotch", brands: ["Craft Spirits", "Merken volgen later"], description: "Toonaangevende importeur van craft spirits. Is 1 stand geworden (stand 3 & 4) t.o.v. 2025." },
-  { id: "4", name: "Bresser en Timmer", category: "scotch", brands: ["Craft Spirits", "Merken volgen later"], description: "Toonaangevende importeur van craft spirits. Is 1 stand geworden (stand 3 & 4) t.o.v. 2025." },
-  { id: "5", name: "Cley Whisky + Cley Warehouse", category: "dutch", brands: ["Nederlandse Whisky (Rotterdam)"], description: "Rotterdamse craft distilleerderij die eigentijdse single malt en rye whisky's maakt met lokaal graan." },
-  { id: "6", name: "SMWS (Scotch Malt Whisky Society)", category: "world", brands: ["Whisky Club"], description: "De Schotse Malt Whisky Society biedt exclusieve single cask bottelingen voor clubleden." },
-  { id: "7", name: "De Monnik Dranken", category: "scotch", brands: ["Merken volgen later"], description: "Familiebedrijf en importeur met een prachtig portfolio aan Schotse single malts." },
-  { id: "8", name: "Whisky Import Nederland (WIN)", category: "independent", brands: ["Merken volgen later"], description: "Importeur van exclusieve onafhankelijke bottelingen." },
-  { id: "9", name: "Cane & Grain", category: "independent", brands: ["Merken volgen later"], description: "Onafhankelijke bottelingen en unieke single casks." },
-  { id: "10", name: "Anker Amsterdam Spirits", category: "world", brands: ["Merken volgen later"], description: "Groothandel en importeur van diverse dranken en spirits." },
-  { id: "11", name: "Diageo", category: "scotch", brands: ["Singleton", "Talisker", "Lagavulin"], description: "Klassieke Schotse single malts, van de zachte Singleton tot de intens rokerige Lagavulin en maritieme Talisker." },
-  { id: "12", name: "Van Wees Holland", category: "independent", brands: ["Merken volgen later"], description: "Bekende importeur uit Amersfoort met een rijk aanbod aan onafhankelijke bottelingen." },
-  { id: "13", name: "Maltstock", category: "world", brands: ["Whisky Club", "Trail begeleiders"], description: "Het gezelligste whisky-weekend ter wereld, met proeverijen en trail-begeleiding." },
-  { id: "14", name: "Brouwers2Import", category: "world", brands: ["Merken volgen later", "Ardbeg", "Glenmorangie"], description: "Importeur van diverse internationale whisky's en gedistilleerd." },
-  { id: "15", name: "Moët Hennessy", category: "scotch", brands: ["Ardbeg", "Glenmorangie"], description: "De ultieme Islay malts Ardbeg en de verfijnde Glenmorangie uit de hoogste ketels van Schotland." },
-  { id: "16", name: "Trade in Spirits", category: "world", brands: ["Merken volgen later"], description: "Importeur van diverse premium spirits." },
-  { id: "17", name: "International Whisky Society (IWS)", category: "world", brands: ["Whisky Club", "Festival Bottelings door de jaren heen", "NIEUW en speciaal voor het 25-jarig jubileum", "Gifts", "Glazen"], description: "De International Whisky Society viert het 25-jarig jubileum met exclusieve festivalbottelingen door de jaren heen, glazen en gifts!" },
-  { id: "18", name: "BUS Whisky", category: "dutch", brands: ["Nederlandse Whisky"], description: "Duurzame Nederlandse single malt whisky, lokaal verbouwd op de BUS boerderij." },
-  { id: "19", name: "Stand 19 (Centraal Eiland)", category: "organisation", brands: ["Proeftafel / Eiland"], description: "Centrale eiland standruimte." },
-  { id: "20", name: "Helvetia Spirits", category: "world", brands: ["Zwitserse Whisky"], description: "Ambachtelijke single malt whisky uit Zwitserland." },
-  { id: "21", name: "The Chamberick", category: "dutch", brands: ["Nederlandse Whisky"], description: "Lokale Nederlandse whisky uit Kamerik." },
-  { id: "22", name: "Ben Becula Distillery", category: "scotch", brands: ["Ben Becula"], description: "Nieuwe distilleerderij van de Schotse Outer Hebrides." },
-  { id: "23", name: "Willem’s Whisky", category: "dutch", brands: ["Merken volgen later"], description: "Ambachtelijke Nederlandse whisky." },
-  { id: "24", name: "Het Anker België", category: "world", brands: ["Merken volgen later"], description: "Belgische whisky en bieren van stokerij Het Anker." },
-  { id: "25", name: "Bresser en Timmer (Proeftafel)", category: "scotch", brands: ["Merken volgen later"], description: "Extra proeftafel van Bresser en Timmer." },
-  { id: "27", name: "Nog te VERKOPEN als stand", category: "organisation", brands: ["Volgt asap"], description: "Standruimte beschikbaar." },
-  { id: "28", name: "Bacardi", category: "world", brands: ["Teeling", "Meer merken volgen later"], description: "Importeur van Teeling Irish Whiskey en andere premium merken." },
-  { id: "29", name: "Remy Cointreau", category: "scotch", brands: ["Bruichladdich"], description: "Progressieve Islay distilleerderij, producent van Bruichladdich, Port Charlotte en Octomore." },
-  { id: "30", name: "Well of Wine", category: "world", brands: ["Wijnen & Proeverij"], description: "Wijnen en proeverij selectie op het festival." },
-  { id: "31", name: "La Martiniquaise Benelux", category: "scotch", brands: ["Merken volgen later"], description: "Toegankelijke Speyside single malts met rijping op diverse vaten." },
-  { id: "32", name: "Dutch Whisky Teers", category: "independent", brands: ["Merken volgen later"], description: "Onafhankelijke bottelaars van bijzondere en zeldzame whisky's." },
-  { id: "34", name: "Barrel Tea", category: "catering", brands: ["Alcohol vrije whisky – Thee", "Gifts"], description: "Alcoholvrije whisky-thee en diverse whisky-gerelateerde gifts." },
-  { id: "35", name: "Brugse Whisky Company", category: "world", brands: ["Belgische Whisky uit Brugge"], description: "Belgische single malt en rye whisky uit Brugge." },
-  { id: "36", name: "Perfect Dram", category: "independent", brands: ["Merken volgen later"], description: "Standruimte voor Perfect Dram." },
-  { id: "37", name: "Absolutely Nuts Spirits", category: "independent", brands: ["Craft Spirits"], description: "Ambachtelijke gedistilleerde dranken en whisky." },
-  { id: "38", name: "Nog te VERKOPEN als stand", category: "organisation", brands: ["Volgt asap"], description: "Standruimte beschikbaar." },
-  { id: "39", name: "Worsten-stand", category: "catering", brands: ["Afhalen worstenplateau tijden VIP sessie", "Verkoop Worsten", "Verkoop hapjes"], description: "Uitgifte van worstenplateaus tijdens VIP sessies, verkoop van worsten en hapjes." },
-  { id: "40", name: "Barrel Atelier", category: "catering", brands: ["Gifts"], description: "Ambachtelijke meubels en accessoires gemaakt van gebruikte eikenhouten whiskyvaten." },
-  { id: "41", name: "Whisky Boeken – Whisky Passion", category: "catering", brands: ["Gifts en boeken"], description: "Het bekende tijdschrift Whisky Passion en diverse whiskyboeken & gifts." },
-  { id: "42", name: "Kapel Noord (Tasting Room)", category: "organisation", brands: ["Exclusieve Tasting Room"], description: "Exclusieve tasting room in Kapel Noord." },
-  { id: "43", name: "Stokerij Sculte", category: "dutch", brands: ["Nederlandse Whisky"], description: "Bekroonde Nederlandse single malt whisky, gerijpt op Twents eiken." },
-  { id: "44", name: "De Monnik Dranken (Tafel B)", category: "scotch", brands: ["Merken volgen later"], description: "Extra tasting proeftafel van De Monnik Dranken." },
-  { id: "45", name: "Disaronno International", category: "world", brands: ["The Irishman", "Cotswolds", "Meer merken volgen later"], description: "Importeur van The Irishman Irish Whiskey en Cotswolds single malt." },
-  { id: "46", name: "Maple & More", category: "world", brands: ["Whisky Likeur uit Canada"], description: "Canadian Whisky Liqueur." },
-  { id: "47", name: "Koninklijke De Kuyper", category: "world", brands: ["Bowmore", "Laphroaig", "House of Suntory"], description: "De Kuyper Royal Distillers toont legendarische turfwhisky's (Bowmore, Laphroaig) en Japanse whisky's van House of Suntory." },
-  { id: "48", name: "Perfect Dram (Stand 48)", category: "independent", brands: ["Merken volgen later"], description: "Tasting stand van Perfect Dram." },
-  { id: "O", name: "Organisatie & Infobalie", category: "organisation", brands: ["Algemene Vragen", "Muntinname", "Plattegronden"], description: "De centrale organisatiebalie voor al uw praktische vragen over het festival, muntinname en programmaonderdelen." },
-  { id: "S", name: "S: Slijterij", category: "organisation", brands: ["Selectie flessen die te koop is"], description: "De officiële festivalslijterij waar u geselecteerde flessen kunt kopen." },
-  { id: "C", name: "C: Catering", category: "catering", brands: ["Afhalen bitterballen plateau tijdens VIP sessie", "Food"], description: "Afhalen bitterballen plateau tijdens VIP sessie, snacks en catering." },
-  { id: "U", name: "U: Uitgifte glazen & bottelingen", category: "organisation", brands: ["Uitgifte glazen in het begin", "Uitgifte festival botteling aan het einde van de sessie"], description: "Uitgifte van festivalproefglazen bij de entree en uitgifte van festivalbottelingen aan het einde van de sessie." },
-  
-  // Niet op de plattegrond
-  { id: "NP1", name: "Demi’s Chocolaterie", category: "catering", brands: ["Food", "Gifts", "Whisky Bonbons"], description: "Ambachtelijke chocolade, gifts en whisky bonbons.", isNotOnMap: true },
-  { id: "NP2", name: "Kiltshop", category: "catering", brands: ["Gifts", "Kleding"], description: "Traditionele Schotse kilts, kleding en accessoires.", isNotOnMap: true },
-  { id: "NP3", name: "Van Weringhs Whisky World", category: "independent", brands: ["Oude Whisky’s", "Specials"], description: "Zeldzame en oude whisky specials.", isNotOnMap: true },
-  { id: "NP4", name: "Kaas Ad Rehorst", category: "catering", brands: ["Uitgifte kaas-plateau’s tijden VIP sessie", "Gifts", "Verkoop kaas-plateau"], description: "Uitgifte kaas-plateaus tijdens VIP sessies, gifts en verkoop van kaasplateaus.", isNotOnMap: true },
-  { id: "NP5", name: "Whisky Base", category: "world", brands: ["Whisky Database & Community"], description: "De grootste online whisky database en community ter wereld.", isNotOnMap: true }
+  // --- Organisatie Stand (Centraal Eiland Studio 2) ---
+  {
+    id: "O",
+    name: "Organisatie stand (drams verkoop en informatie)",
+    category: "organisation",
+    brands: ["Drams Verkoop", "Informatie", "Muntverkoop", "Festival Boekjes", "Programma Vragen"],
+    description: "Centrale infodesk van het Amsterdam Whisky Festival. Hier kunt u terecht voor drams verkoop, festivalgidsen, vragen over het programma en algemene assistentie.",
+    hall: "Studio 2"
+  },
+
+  // --- Fysieke Stands in Studio 2 (conform officiële standhouderlijst 1 t/m 20) ---
+  {
+    id: "1",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze standplek in Studio 2 is momenteel nog beschikbaar. Geïnteresseerde standhouders kunnen contact opnemen met de organisatie.",
+    hall: "Studio 2",
+    isAvailable: true
+  },
+  {
+    id: "2",
+    name: "DAM dranken - Thalassa",
+    category: "independent",
+    brands: ["Thalassa", "DAM Dranken Selecties", "Craft Spirits"],
+    description: "DAM dranken presenteert Thalassa en een unieke selectie van ambachtelijke spirits en karaktervolle whisky's voor de fijnproever.",
+    hall: "Studio 2"
+  },
+  {
+    id: "3",
+    name: "De Monnik Dranken",
+    category: "scotch",
+    brands: ["Glenallachie", "Loch Lomond", "Glen Scotia", "Tomatin", "Glencadam"],
+    description: "Koninklijk bekroond familiebedrijf en kwaliteitsimporteur met een prachtig portfolio aan Schotse single malts uit de Highlands, Speyside en Campbeltown. Grote presentatie langs de noordwand.",
+    hall: "Studio 2"
+  },
+  {
+    id: "4",
+    name: "Mitra Drankspeciaalzaken",
+    category: "world",
+    brands: ["Mitra Selecties", "Single Casks", "Exclusieve Import", "Festival Aanbiedingen"],
+    description: "Mitra Drankspeciaalzaken presenteert een gevarieerde selectie van bekende en zeldzame whisky's, deskundig advies en unieke festivalaanbiedingen in de noordoosthoek.",
+    hall: "Studio 2"
+  },
+  {
+    id: "5",
+    name: "Bresser & Timmer",
+    category: "scotch",
+    brands: ["Craft Spirits", "Signatory Vintage", "Edradour", "Kilchoman", "Gordon & MacPhail"],
+    description: "Toonaangevende kwaliteitsimporteur van craft spirits, Schotse independent bottelings en legendarische distilleerderijen.",
+    hall: "Studio 2"
+  },
+  {
+    id: "6",
+    name: "Whisky Import Nederland (WIN)",
+    category: "independent",
+    brands: ["Blackadder", "The Ultimate", "Samaroli", "Creative Whisky Co."],
+    description: "Gespecialiseerd importeur van exclusieve onafhankelijke bottelingen, ongefilterde single casks en legendarische distillaatjaren.",
+    hall: "Studio 2"
+  },
+  {
+    id: "7",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze standplek in Studio 2 is momenteel nog beschikbaar. Geïnteresseerde standhouders kunnen contact opnemen met de organisatie.",
+    hall: "Studio 2",
+    isAvailable: true
+  },
+  {
+    id: "8",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze standplek in de alkoof van Studio 2 is momenteel nog beschikbaar. Geïnteresseerde standhouders kunnen contact opnemen met de organisatie.",
+    hall: "Studio 2",
+    isAvailable: true
+  },
+  {
+    id: "9",
+    name: "Craft Spirits",
+    category: "independent",
+    brands: ["Craft Spirits Selecties", "Artisan Malts", "Small Batch Releases"],
+    description: "Ambachtelijke gedistilleerde dranken, unieke small-batch whisky's en innovatieve expressies met een puur en eigenzinnig karakter.",
+    hall: "Studio 2"
+  },
+  {
+    id: "10",
+    name: "Distilleerderij de Bronckhorst",
+    category: "dutch",
+    brands: ["Bronckhorst Single Malt", "Achterhoekse Graanwhisky", "Special Cask Finishes"],
+    description: "Ambachtelijke Nederlandse single malt whisky, ter plaatse gedistilleerd in de Achterhoek met passie voor lokaal graan en eikenhout.",
+    hall: "Studio 2"
+  },
+  {
+    id: "11",
+    name: "Van Weringhs Whisky World",
+    category: "independent",
+    brands: ["Oude Whisky’s", "Zeldzame Specials", "Vintage Bottelingen", "Collectibles"],
+    description: "Zeldzame en oude whisky specials, historische verzamelflessen en bijzondere vondsten voor de doorgewinterde kenner en verzamelaar.",
+    hall: "Studio 2"
+  },
+  {
+    id: "12",
+    name: "Dutch Whisky Teers",
+    category: "dutch",
+    brands: ["Dutch Whisky Teers", "Single Casks", "Independent Selections"],
+    description: "Passievolle Nederlandse whisky-enthousiastelingen en bottelaars met eigenzinnige drams, single casks en een hart voor het ambacht.",
+    hall: "Studio 2"
+  },
+  {
+    id: "13",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze standplek is momenteel nog beschikbaar. Neem contact op met de organisatie voor deelname als standhouder.",
+    hall: "Studio 2",
+    isAvailable: true,
+    isNotOnMap: true
+  },
+  {
+    id: "14",
+    name: "Niet op plattegrond",
+    category: "organisation",
+    brands: ["Niet op plattegrond"],
+    description: "Standnummer 14 bevindt zich niet op de zaalplattegrond van Studio 2.",
+    hall: "Niet op plattegrond",
+    isNotOnMap: true
+  },
+  {
+    id: "15",
+    name: "International Whisky Society",
+    category: "world",
+    brands: ["IWS Club", "Festival Bottelingen 2000-2026", "25 Jaar Jubileum Uitgaven", "Glazen & Merchandise"],
+    description: "De International Whisky Society viert het festivaljubileum met historische festivalbottelingen, exclusieve glazen, clublidmaatschappen en merchandise.",
+    hall: "Studio 2"
+  },
+  {
+    id: "16",
+    name: "Cane & Grain Slijterij",
+    category: "independent",
+    brands: ["Cane & Grain Selecties", "Rare Malts", "Distillery Collectibles"],
+    description: "Onafhankelijke bottelingen, zeldzame whisky-vondsten en unieke single casks met een verhaal.",
+    hall: "Studio 2"
+  },
+  {
+    id: "17",
+    name: "Brugse Whisky Company",
+    category: "world",
+    brands: ["Brugse Single Malt", "Vlaamse Whisky Expressies", "Special Cask Finishes"],
+    description: "Ambachtelijke whisky rechtstreeks uit het historische Brugge met karaktervolle vatrijpingen en passie voor het vak.",
+    hall: "Studio 2"
+  },
+  {
+    id: "18",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze centrale standplek in Studio 2 is momenteel nog beschikbaar. Geïnteresseerde standhouders kunnen contact opnemen met de organisatie.",
+    hall: "Studio 2",
+    isAvailable: true
+  },
+  {
+    id: "19",
+    name: "Bacardi Martini",
+    category: "scotch",
+    brands: ["Aberfeldy", "Aultmore", "Craigellachie", "The Deveron", "Royal Brackla"],
+    description: "Het befaamde 'Last Great Malts of Scotland' portfolio van Bacardi met o.a. de honingzachte single malts van Aberfeldy en de expressies van Craigellachie.",
+    hall: "Studio 2"
+  },
+  {
+    id: "20",
+    name: "Nog te verkopen",
+    category: "independent",
+    brands: ["Beschikbare Standplek"],
+    description: "Deze standplek in Studio 2 is momenteel nog beschikbaar. Geïnteresseerde standhouders kunnen contact opnemen met de organisatie.",
+    hall: "Studio 2",
+    isAvailable: true
+  },
+
+  // --- Exposanten & Specialisten in Foyer / Niet op zaalplattegrond ---
+  {
+    id: "S",
+    name: "Festival Slijterij",
+    category: "organisation",
+    brands: ["Festival Botteling 2026", "Flesverkoop Standhouders"],
+    description: "De officiële festivalslijterij waar u geproefde flessen en speciale festivaluitgaven direct kunt aanschaffen voor thuis.",
+    hall: "Foyer / Doorgang",
+    isNotOnMap: true
+  },
+  {
+    id: "C",
+    name: "Festival Catering & Food",
+    category: "catering",
+    brands: ["Warme Hapjes", "Broodjes", "Waterpunten"],
+    description: "Cateringpunten voor een stevige bodem tijdens het proeven, snacks en gratis waterpunten.",
+    hall: "Foyer / Passage",
+    isNotOnMap: true
+  },
+  {
+    id: "NP1",
+    name: "Demi’s Chocolaterie",
+    category: "catering",
+    brands: ["Ambachtelijke Bonbons", "Whisky Truffels"],
+    description: "Ambachtelijke chocolaterie gespecialiseerd in handgemaakte chocolade en whisky bonbons.",
+    hall: "Foyer",
+    isNotOnMap: true
+  },
+  {
+    id: "NP2",
+    name: "Kiltshop & Celtic Crafts",
+    category: "catering",
+    brands: ["Traditionele Kilts", "Schotse Accessoires", "Tweed"],
+    description: "Traditionele Schotse kilts, kleding, glencairn-accessoires en Keltische geschenken.",
+    hall: "Foyer",
+    isNotOnMap: true
+  },
+  {
+    id: "NP3",
+    name: "Barrel Atelier",
+    category: "catering",
+    brands: ["Vatmeubilair", "Eikenhouten Accessoires"],
+    description: "Handgemaakte meubels en decoratieve accessoires vervaardigd uit authentieke gebruikte whiskyvaten.",
+    hall: "Foyer",
+    isNotOnMap: true
+  },
+  {
+    id: "NP4",
+    name: "Whisky Passion Magazine",
+    category: "catering",
+    brands: ["Tijdschrift Whisky Passion", "Boeken & Naslagwerken"],
+    description: "Het toonaangevende Nederlandstalige whiskymagazine met achtergrondverhalen, distilleerderij-reportages en boeken.",
+    hall: "Foyer",
+    isNotOnMap: true
+  },
+  {
+    id: "NP5",
+    name: "Whisky Base",
+    category: "world",
+    brands: ["WhiskyBase Community", "Bottle Archive"],
+    description: "De grootste online whisky database en community ter wereld met proefnotities, scores en marktinzichten.",
+    hall: "Digitaal / Community",
+    isNotOnMap: true
+  }
 ];

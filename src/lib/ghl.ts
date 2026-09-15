@@ -86,6 +86,8 @@ function sortTickets(ticketsList: TicketItem[]): TicketItem[] {
 
 function sortStandhouders(standsList: ExhibitorItem[]): ExhibitorItem[] {
   return standsList.sort((a, b) => {
+    if (a.id === 'O') return -1;
+    if (b.id === 'O') return 1;
     const numA = parseInt(a.id, 10);
     const numB = parseInt(b.id, 10);
     if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
@@ -139,7 +141,12 @@ export async function getTickets(city: string = 'amsterdam'): Promise<TicketItem
     }
 
     const json = await response.json();
-    const records = json.customObjectRecords || json.records || [];
+    const rawRecords = json.customObjectRecords || json.records || [];
+    const records = rawRecords.filter((r: any) => {
+      const p = r.properties || r;
+      const c = (p.festival_city || p.festival_slug || '').toLowerCase();
+      return c === normalizedCity || c.includes(normalizedCity);
+    });
     
     if (!Array.isArray(records) || records.length === 0) {
       console.info(`[GHL API] No ticket records found in GHL for ${city}. Using fallback dataset.`);
@@ -153,12 +160,20 @@ export async function getTickets(city: string = 'amsterdam'): Promise<TicketItem
       const sold = parseInt(p.sold, 10) || 0;
       const effectiveSoldOut = isSoldOut || (capacity > 0 && sold >= capacity);
 
-      let statusBadge: 'sold-out' | 'limited' | 'popular' | 'selling-fast' | undefined = undefined;
+      let statusBadge: 'sold-out' | 'limited' | 'popular' | 'selling-fast' | 'coming-soon' | undefined = undefined;
+      const isComingSoon = p.status_badge === 'comingsoon' || p.status_badge === 'coming-soon' || p.status_badge === 'coming_soon';
+
       if (effectiveSoldOut) {
         statusBadge = 'sold-out';
+      } else if (isComingSoon) {
+        statusBadge = 'coming-soon';
       } else if (p.status_badge && p.status_badge !== 'none') {
-        statusBadge = p.status_badge;
+        statusBadge = p.status_badge === 'sold_out' ? 'sold-out' : (p.status_badge === 'selling_fast' ? 'selling-fast' : p.status_badge);
       }
+
+      const bookingType = p.booking_type === 'enkel_met_entree' || p.booking_type === 'Enkel i.c.m. entreeticket'
+        ? 'Enkel i.c.m. entreeticket'
+        : 'Vrij te boeken voor iedereen';
 
       return {
         id: r.id || `ghl-ticket-${idx}`,
@@ -171,14 +186,15 @@ export async function getTickets(city: string = 'amsterdam'): Promise<TicketItem
         daypart: p.daypart || 'all',
         category: p.category || 'entree',
         categoryName: p.category ? (p.category.charAt(0).toUpperCase() + p.category.slice(1)) : 'Entreeticket',
-        bookingType: p.booking_type || 'Vrij te boeken voor iedereen',
+        bookingType: bookingType,
         location: p.location || '',
         capacity: capacity,
         sold: sold,
         isSoldOut: effectiveSoldOut,
         isLowStock: capacity > 0 && (capacity - sold <= 10) && !effectiveSoldOut,
+        bookingDisabled: isComingSoon || undefined,
         status: statusBadge,
-        statusText: effectiveSoldOut ? 'Uitverkocht' : undefined,
+        statusText: isComingSoon ? 'Binnenkort bekend' : (effectiveSoldOut ? 'Uitverkocht' : undefined),
         description: p.ticket_description || p.description || '',
         extra: p.ticket_description || p.description || '',
         ambassadorName: p.ambassador_name || undefined,
@@ -242,7 +258,12 @@ export async function getStandhouders(city: string = 'amsterdam'): Promise<Exhib
     }
 
     const json = await response.json();
-    const records = json.customObjectRecords || json.records || [];
+    const rawRecords = json.customObjectRecords || json.records || [];
+    const records = rawRecords.filter((r: any) => {
+      const p = r.properties || r;
+      const c = (p.festival_city || p.festival_slug || '').toLowerCase();
+      return c === normalizedCity || c.includes(normalizedCity);
+    });
 
     if (!Array.isArray(records) || records.length === 0) {
       console.info(`[GHL API] No standhouder records found in GHL for ${city}. Using fallback dataset.`);
@@ -256,17 +277,35 @@ export async function getStandhouders(city: string = 'amsterdam'): Promise<Exhib
         ? rawBrands
         : String(rawBrands).split(',').map(b => b.trim()).filter(Boolean);
 
+      const standName = p.name || 'Standhouder';
+      const isAvailable = parseGhlBoolean(p.is_available) || standName.toLowerCase().includes('nog te verkopen');
+      const isNotOnMap = parseGhlBoolean(p.is_not_on_map);
+
       return {
         id: String(p.stand_id || r.id),
-        name: p.name || 'Standhouder',
+        name: standName,
         category: p.category || 'world',
         brands: brandsList,
         description: p.stand_description || p.description || '',
-        isNotOnMap: parseGhlBoolean(p.is_not_on_map)
+        isNotOnMap: isNotOnMap,
+        hall: p.hall || (isNotOnMap ? 'Niet op plattegrond' : 'Studio 2'),
+        isAvailable: isAvailable || undefined
       };
     });
 
-    const sortedStandhouders = sortStandhouders(parsedStandhouders);
+    // Merge with static dataset so all 28 stands remain active even if GHL only has a subset
+    const ghlMap = new Map(parsedStandhouders.map(e => [e.id, e]));
+    const mergedStandhouders = EXHIBITORS_AMSTERDAM.map(fallback => {
+      const ghlExh = ghlMap.get(fallback.id);
+      return ghlExh ? { ...fallback, ...ghlExh } : fallback;
+    });
+    parsedStandhouders.forEach(ge => {
+      if (!EXHIBITORS_AMSTERDAM.some(fe => fe.id === ge.id)) {
+        mergedStandhouders.push(ge);
+      }
+    });
+
+    const sortedStandhouders = sortStandhouders(mergedStandhouders);
     standsCache[normalizedCity] = { data: sortedStandhouders, timestamp: now };
     return sortedStandhouders;
   } catch (err) {
