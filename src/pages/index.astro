@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import TicketStub from '../components/TicketStub.astro';
 import { getTickets } from '../lib/ghl';
 import LogoSvg from '../assets/Logo/Logo.svg?raw';
-import GlasswareSvg15 from '../assets/Logo/FINAL LOGO AMSTERDAM/Amsterdam wit.svg?raw';
+import GlasswareSvg15 from '../assets/Logo/FINAL LOGO AMSTERDAM/Logo amsterdam wit.svg?raw';
 
 const tickets = await getTickets('amsterdam');
 ---
@@ -5919,6 +5919,11 @@ const tickets = await getTickets('amsterdam');
           };
           localStorage.setItem('wf_last_order', JSON.stringify(orderData));
 
+          const myAccountLink = document.getElementById("my-account-link");
+          if (myAccountLink) {
+            myAccountLink.setAttribute("href", `/account?view=login&email=${encodeURIComponent(email)}&order=${encodeURIComponent(finalResNumber)}`);
+          }
+
           const successResNumEl = document.querySelector("#modal-step-3 .ticket-summary-box strong");
           if (successResNumEl) successResNumEl.textContent = finalResNumber;
           
@@ -7464,6 +7469,12 @@ const tickets = await getTickets('amsterdam');
     const emailDisplay = (orderData && (orderData.customerEmail || orderData.email)) || "uw e-mailadres";
     if (receiptSentEmail) {
       receiptSentEmail.textContent = emailDisplay;
+    }
+
+    const myAccountLink = document.getElementById("my-account-link");
+    if (myAccountLink) {
+      const emailForLink = (orderData && (orderData.customerEmail || orderData.email)) || '';
+      myAccountLink.setAttribute("href", `/account?view=login&email=${encodeURIComponent(emailForLink)}&order=${encodeURIComponent(orderNumber)}`);
     }
 
     if (receiptTicketsList) {
