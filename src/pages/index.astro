@@ -5280,7 +5280,7 @@ const tickets = await getTickets('amsterdam');
 
       const isPlus = btn.classList.contains('sidebar-qty-plus');
       if (isPlus) {
-        cart[id].qty = Math.min(10, (cart[id].qty || 0) + 1);
+        cart[id].qty = (cart[id].qty || 0) + 1;
       } else {
         if (cart[id].qty > 1) {
           cart[id].qty -= 1;
@@ -5683,7 +5683,7 @@ const tickets = await getTickets('amsterdam');
     if (vatenmakenTimeSelect) cart[id].timeslot = vatenmakenTimeSelect.value;
 
     if (action === 'plus') {
-      cart[id].qty = Math.min(10, (cart[id].qty || 0) + 1);
+      cart[id].qty = (cart[id].qty || 0) + 1;
       if (qtyVal) qtyVal.textContent = String(cart[id].qty);
       card.classList.add('selected');
       updateShop();
@@ -6967,7 +6967,7 @@ const tickets = await getTickets('amsterdam');
     }
 
     if (action === 'plus') {
-      cart[mcId].qty = Math.min(10, (cart[mcId].qty || 0) + 1);
+      cart[mcId].qty = (cart[mcId].qty || 0) + 1;
     } else if (action === 'minus') {
       if (cart[mcId].qty > 1) {
         cart[mcId].qty -= 1;
@@ -7354,7 +7354,7 @@ const tickets = await getTickets('amsterdam');
     if (!id || !cart[id]) return;
 
     if (action === 'plus') {
-      cart[id].qty = Math.min(10, cart[id].qty + 1);
+      cart[id].qty = cart[id].qty + 1;
     } else if (action === 'minus') {
       cart[id].qty = Math.max(0, cart[id].qty - 1);
       if (cart[id].qty === 0) {
@@ -7404,7 +7404,7 @@ const tickets = await getTickets('amsterdam');
           time: item.time || ''
         };
       } else {
-        cart[id].qty = Math.min(10, (cart[id].qty || 0) + 1);
+        cart[id].qty = (cart[id].qty || 0) + 1;
       }
 
       // Synchronize ticket card on page if exists
@@ -7426,7 +7426,7 @@ const tickets = await getTickets('amsterdam');
       if (!id || !cart[id]) return;
 
       if (action === 'plus') {
-        cart[id].qty = Math.min(10, cart[id].qty + 1);
+        cart[id].qty = cart[id].qty + 1;
       } else if (action === 'minus') {
         cart[id].qty = Math.max(0, cart[id].qty - 1);
         if (cart[id].qty === 0) {
