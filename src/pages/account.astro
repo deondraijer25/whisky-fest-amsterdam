@@ -1476,7 +1476,7 @@ import Footer from '../components/Footer.astro';
   /* 2. Middle Row: 3-Column Meta Grid */
   .ticket-meta-trio {
     display: grid;
-    grid-template-columns: 1.2fr 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
     background: #FAF7F2;
     border: 1px solid var(--border-color, #E2D9CC);
@@ -2749,10 +2749,6 @@ import Footer from '../components/Footer.astro';
                         <span class="meta-col-label">Locatie</span>
                         <strong class="meta-col-val">${locationName}</strong>
                       </div>
-                      <div class="meta-col">
-                        <span class="meta-col-label">Ticket Code</span>
-                        <strong class="meta-col-val font-mono">${displayCode}</strong>
-                      </div>
                     </div>
 
                     <!-- 3. Bottom Row: Action Buttons -->
@@ -2908,10 +2904,6 @@ import Footer from '../components/Footer.astro';
                         <div class="meta-col">
                           <span class="meta-col-label">Locatie</span>
                           <strong class="meta-col-val">De Hallen, Amsterdam</strong>
-                        </div>
-                        <div class="meta-col">
-                          <span class="meta-col-label">Ticket Code</span>
-                          <strong class="meta-col-val font-mono">${displayCode}</strong>
                         </div>
                       </div>
 
